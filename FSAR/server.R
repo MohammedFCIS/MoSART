@@ -10,18 +10,20 @@
 library(shiny)
 library(tidyquant)
 
-# Define server logic required to draw a histogram
+stock_indexes <- c("Russell 1000" = "RUSSELL1000", "Russell 2000" = "RUSSELL2000",
+                   "Russell 3000" = "RUSSELL3000", "DOW" = "DOW",
+                   "DOW Global" = "DOWGLOBAL", "S&P 400" = "SP400",
+                   "S&P 500" = "SP500", "S&P 600" = "SP600",
+                   "S&P 1000" = "SP1000")
+stock_exchanges <- c("AMEX" = "AMEX", "NASDAQ" = "NASDAQ", "NYSE" = "NYSE")
+
 shinyServer(function(input, output) {
-   
-  output$distPlot <- renderPlot({
-    
-    # generate bins based on input$bins from ui.R
-    x    <- faithful[, 2] 
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-    
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white')
-    
-  })
-  
+   stock_choices <- reactive({
+     switch(input$stockType,
+            "index" = stock_indexes,
+            "exchange" = stock_exchanges)
+   })
+   output$stock <- renderUI({
+     selectInput("stock", label = h3("Select Stock"), choices = stock_choices())
+   })
 })

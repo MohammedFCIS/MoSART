@@ -8,10 +8,7 @@
 #
 
 library(shiny)
-library(tidyquant)
 
-# popuplate the selections below
-# switch input based on the radio button
 # display datatable with the output
 ## Refs:
 # https://cran.r-project.org/web/packages/tidyquant/vignettes/TQ01-core-functions-in-tidyquant.html
@@ -19,9 +16,9 @@ library(tidyquant)
 #http://shiny.rstudio.com/gallery/update-input-demo.html
 #http://shiny.rstudio.com/gallery/dynamic-ui.html
 #https://gallery.shinyapps.io/076-widget-select/
-stock_indexes <- c()
-stock_exchanges <- c()
+
 # Define UI for application that draws a histogram
+stock_choices <- c("Stock Indexes" = "index", "Stock Exchanges" = "exchange")
 shinyUI(fluidPage(
   
   # Application title
@@ -30,9 +27,11 @@ shinyUI(fluidPage(
 
   sidebarLayout(
     sidebarPanel(
-      radioButtons("stockType", label = h3("Please select stock type"),
-                   choices = list("Stock Indexes" = 1, "Stock Exchanges" = 2), 
-                   selected = 1)
+      radioButtons("stockType", label = h3("Select Stock Type"),
+                   choices = stock_choices, 
+                   selected = "index"),
+      uiOutput("stock")
+                  
     ),
     
     # Show a plot of the generated distribution
