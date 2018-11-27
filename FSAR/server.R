@@ -23,7 +23,23 @@ shinyServer(function(input, output) {
             "index" = stock_indexes,
             "exchange" = stock_exchanges)
    })
+   
+   stocks_df <- reactive({
+     switch(input$stockType,
+            "index" = tq_index(input$stock),
+            "exchange" = tq_exchange(input$stock))
+   })
+   
    output$stock <- renderUI({
-     selectInput("stock", label = h3("Select Stock"), choices = stock_choices())
+     selectInput("stock", label = h3("Select Stock"), choices = stock_choices(), 
+                 selected = stock_choices()[1])
+   })
+   
+   output$stocks <- DT::renderDataTable({
+     if (is.null(input$stock))
+       return()
+     DT::datatable(data = stocks_df (), 
+                   options = list(pageLength = 10), 
+                   rownames = FALSE)
    })
 })

@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+library(DT)
 
 # display datatable with the output
 ## Refs:
@@ -34,9 +35,9 @@ shinyUI(fluidPage(
                   
     ),
     
-    # Show a plot of the generated distribution
+    # returned stocks
     mainPanel(
-       
+      dataTableOutput("stocks")
     )
   )
 ))
