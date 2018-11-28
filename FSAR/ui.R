@@ -10,7 +10,10 @@
 library(shiny)
 library(DT)
 
-# display datatable with the output
+# fix switch between stock types
+# https://stackoverflow.com/questions/29716868/r-shiny-how-to-get-an-reactive-data-frame-updated-each-time-pressing-an-actionb
+# complete user selections
+# data table features
 ## Refs:
 # https://cran.r-project.org/web/packages/tidyquant/vignettes/TQ01-core-functions-in-tidyquant.html
 #https://github.com/MohammedFCIS/shinyapps-tutorials/blob/master/Movie-Rating/app.R
@@ -29,8 +32,7 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
       radioButtons("stockType", label = h3("Select Stock Type"),
-                   choices = stock_choices, 
-                   selected = "index"),
+                   choices = stock_choices),
       uiOutput("stock")
                   
     ),
