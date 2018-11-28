@@ -16,6 +16,9 @@ stock_indexes <- c("Russell 1000" = "RUSSELL1000", "Russell 2000" = "RUSSELL2000
                    "S&P 500" = "SP500", "S&P 600" = "SP600",
                    "S&P 1000" = "SP1000")
 stock_exchanges <- c("AMEX" = "AMEX", "NASDAQ" = "NASDAQ", "NYSE" = "NYSE")
+index_headers <- c("Symbol", "Company", "Weight", "Sector", "Shared Held")
+exchange_headers <- c("Symbol", "Company", "Last Sale Price", "Market Capital", 
+                      "IPO", "Sector", "Industry")
 
 shinyServer(function(input, output) {
    stock_choices <- reactive({
@@ -23,13 +26,21 @@ shinyServer(function(input, output) {
             "index" = stock_indexes,
             "exchange" = stock_exchanges)
    })
-   
+   # return the correct stock based on stock type
    stocks_df <- reactive({
      switch(input$stockType,
             "index" = tq_index(input$stock),
             "exchange" = tq_exchange("AMEX"))
    })
    
+   # return the correct table headers based on stock type
+   stocks_df_headers <- reactive({
+     switch(input$stockType,
+            "index" = index_headers,
+            "exchange" = exchange_headers)
+   })
+   
+   # render available stocks subtypes for main type
    output$stock <- renderUI({
      selectInput("stock", label = h3("Select Stock"), choices = stock_choices())
    })
@@ -39,6 +50,8 @@ shinyServer(function(input, output) {
        return()
      DT::datatable(data = stocks_df (), 
                    options = list(pageLength = 10), 
-                   rownames = FALSE)
+                   rownames = FALSE,
+                   selection = "single",
+                   colnames = stocks_df_headers())
    })
 })

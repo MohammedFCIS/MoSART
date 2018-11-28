@@ -10,14 +10,13 @@
 library(shiny)
 library(DT)
 
-# fix switch between stock types
-# https://stackoverflow.com/questions/29716868/r-shiny-how-to-get-an-reactive-data-frame-updated-each-time-pressing-an-actionb
+
+
 # complete user selections
 # data table features
 ## Refs:
 # https://cran.r-project.org/web/packages/tidyquant/vignettes/TQ01-core-functions-in-tidyquant.html
 #https://github.com/MohammedFCIS/shinyapps-tutorials/blob/master/Movie-Rating/app.R
-#http://shiny.rstudio.com/gallery/update-input-demo.html
 #http://shiny.rstudio.com/gallery/dynamic-ui.html
 #https://gallery.shinyapps.io/076-widget-select/
 
