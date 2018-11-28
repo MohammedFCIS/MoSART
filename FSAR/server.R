@@ -52,6 +52,7 @@ shinyServer(function(input, output) {
                    options = list(pageLength = 10), 
                    rownames = FALSE,
                    selection = "single",
-                   colnames = stocks_df_headers())
+                   colnames = stocks_df_headers(),
+                   filter = "top")
    })
 })
