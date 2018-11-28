@@ -48,11 +48,16 @@ shinyServer(function(input, output) {
    output$stocks <- DT::renderDataTable({
      if (is.null(input$stock))
        return()
-     DT::datatable(data = stocks_df (), 
+     current_stocks <- stocks_df ()
+     current_stocks$sector <- as.factor(current_stocks$sector)
+     if ("industry" %in% colnames(current_stocks)) {
+       current_stocks$industry <- as.factor(current_stocks$industry)
+     }
+     DT::datatable(data = current_stocks, 
                    options = list(pageLength = 10), 
                    rownames = FALSE,
                    selection = "single",
-                   colnames = stocks_df_headers(),
+                   #colnames = stocks_df_headers(),
                    filter = "top")
    })
 })
