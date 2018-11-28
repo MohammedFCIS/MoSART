@@ -54,10 +54,10 @@ shinyServer(function(input, output) {
        current_stocks$industry <- as.factor(current_stocks$industry)
      }
      DT::datatable(data = current_stocks, 
-                   options = list(pageLength = 10), 
+                   options = list(pageLength = 10, orderClasses = TRUE), 
                    rownames = FALSE,
                    selection = "single",
-                   #colnames = stocks_df_headers(),
+                   colnames = stocks_df_headers(),
                    filter = "top")
    })
 })
