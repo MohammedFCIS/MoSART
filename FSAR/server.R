@@ -53,7 +53,7 @@ shinyServer(function(input, output) {
      if ("industry" %in% colnames(current_stocks)) {
        current_stocks$industry <- as.factor(current_stocks$industry)
      }
-     DT::datatable(data = current_stocks, 
+     stocks_Dt <- DT::datatable(data = current_stocks, 
                    options = list(columnDefs = list(list(
                      targets = 1,
                      render = JS(
@@ -67,5 +67,10 @@ shinyServer(function(input, output) {
                    selection = "single",
                    colnames = stocks_df_headers(),
                    filter = "top")
+     if ("weight" %in% colnames(current_stocks)) {
+       return(stocks_Dt %>% 
+                DT::formatRound("weight", 6))
+     }
+     return(stocks_Dt)
    })
 })
