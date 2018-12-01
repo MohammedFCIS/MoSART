@@ -54,7 +54,15 @@ shinyServer(function(input, output) {
        current_stocks$industry <- as.factor(current_stocks$industry)
      }
      DT::datatable(data = current_stocks, 
-                   options = list(pageLength = 10, orderClasses = TRUE), 
+                   options = list(columnDefs = list(list(
+                     targets = 1,
+                     render = JS(
+                       "function(data, type, row, meta) {",
+                       "return type === 'display' && data.length > 25 ?",
+                       "'<span title=\"' + data + '\">' + data.substr(0, 25) + '...</span>' : data;",
+                       "}")
+                   )),
+                   pageLength = 10, orderClasses = TRUE), 
                    rownames = FALSE,
                    selection = "single",
                    colnames = stocks_df_headers(),
