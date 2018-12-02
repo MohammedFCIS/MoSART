@@ -11,6 +11,7 @@ library(shiny)
 library(tidyquant)
 library(alphavantager)
 library(Quandl)
+library(XML)
 
 Quandl.api_key("2AxuBQTEuzWdH_rFH-y9")
 av_api_key("JEMUK6SHIYMEVJKW")
@@ -291,5 +292,22 @@ shinyServer(function(input, output, session) {
            geom_line(aes(col = factor(category)), size = 1)  +
            theme_tq() +
            scale_color_tq())
+  })
+  
+  # return thestock key ratios
+  stock_key_stats_df <- reactive({
+    url <- paste0("http://finviz.com/quote.ashx?t=", selected_stock())
+    webpage <- readLines(url)
+    html <- htmlTreeParse(webpage, useInternalNodes = TRUE, asText = TRUE)
+    tableNodes <- getNodeSet(html, "//table")
+    
+    # ASSIGN TO STOCK NAMED DFS
+    stats <- readHTMLTable(tableNodes[[9]], 
+                            header= c("data1", "data2", "data3", "data4", "data5", "data6",
+                                      "data7", "data8", "data9", "data10", "data11", "data12"))
+  })
+  
+  output$stock_key_stats <- DT::renderDataTable({
+    DT::datatable(data = stock_key_stats_df())
   })
 })

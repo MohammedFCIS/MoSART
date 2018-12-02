@@ -98,7 +98,8 @@ shinyUI(
       )
     ),
     tabPanel(title = "Stock Key Stats",
-             value = "keyStats"),
+             value = "keyStats",
+             dataTableOutput("stock_key_stats")),
     tabPanel(title = "Stock Finance Statement",
              value = "financeStatement")
   )
