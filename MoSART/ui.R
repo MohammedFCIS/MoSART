@@ -8,12 +8,12 @@
 #
 
 library(shiny)
+library(DT)
 
 
-
-
-# complete user selections
-# data table features
+# Determine what infromation to be retrieved and associated apis/input and output
+# Determine the best layour
+# implement them
 ## Refs:
 # https://cran.r-project.org/web/packages/tidyquant/vignettes/TQ01-core-functions-in-tidyquant.html
 #https://github.com/MohammedFCIS/shinyapps-tutorials/blob/master/Movie-Rating/app.R
