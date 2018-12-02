@@ -208,38 +208,88 @@ shinyServer(function(input, output, session) {
     )
   })
   
-  # return thestock key ratios 
+  # return thestock key ratios
   stock_key_ratios <- reactive({
     tq_get(selected_stock(), get = "key.ratios")
   })
   
   output$stock_ratios_financials <- DT::renderDataTable({
-    print(stock_key_ratios()[1,])
-    DT::datatable(data = stock_key_ratios()[[1,2]])
+    DT::datatable(data = stock_key_ratios()[[1, 2]])
+  })
+  
+  output$ratios_financials_plot <- renderPlot({
+    plot(stock_key_ratios()[[1, 2]] %>%
+           ggplot(aes(x = date, y = value)) +
+           geom_line(aes(col = factor(category)), size = 1)  +
+           theme_tq())
   })
   
   output$stock_ratios_profitability <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[2,2]])
+    DT::datatable(data = stock_key_ratios()[[2, 2]])
+  })
+  
+  output$ratios_profitability_plot <- renderPlot({
+    plot(stock_key_ratios()[[2, 2]] %>%
+           ggplot(aes(x = date, y = value)) +
+           geom_line(aes(col = factor(category)), size = 1)  +
+           theme_tq() )
   })
   
   output$stock_ratios_growth <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[3,2]])
+    DT::datatable(data = stock_key_ratios()[[3, 2]])
+  })
+  
+  output$ratios_growth_plot <- renderPlot({
+    plot(stock_key_ratios()[[3, 2]] %>%
+           ggplot(aes(x = date, y = value)) +
+           geom_line(aes(col = factor(category)), size = 1)  +
+           theme_tq())
   })
   
   output$stock_ratios_cash_flow <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[4,2]])
+    DT::datatable(data = stock_key_ratios()[[4, 2]])
+  })
+  
+  output$ratios_cash_flow_plot <- renderPlot({
+    plot(stock_key_ratios()[[4, 2]] %>%
+           ggplot(aes(x = date, y = value)) +
+           geom_line(aes(col = factor(category)), size = 1)  +
+           theme_tq() +
+           scale_color_tq())
   })
   
   output$stock_ratios_financial_health <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[5,2]])
+    DT::datatable(data = stock_key_ratios()[[5, 2]])
+  })
+  
+  output$ratios_financial_health_plot <- renderPlot({
+    plot(stock_key_ratios()[[5, 2]] %>%
+           ggplot(aes(x = date, y = value)) +
+           geom_line(aes(col = factor(category)), size = 1)  +
+           theme_tq() )
   })
   
   output$stock_ratios_efficiency <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[6,2]])
+    DT::datatable(data = stock_key_ratios()[[6, 2]])
   })
-  
+
+  output$ratios_efficiency_plot <- renderPlot({
+    plot(stock_key_ratios()[[6, 2]] %>%
+           ggplot(aes(x = date, y = value)) +
+           geom_line(aes(col = factor(category)), size = 1)  +
+           theme_tq() +
+           scale_color_tq())
+  })
+    
   output$stock_ratios_value_ratios <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[7,2]])
+    DT::datatable(data = stock_key_ratios()[[7, 2]])
   })
   
+  output$ratios_value_ratios_plot <- renderPlot({
+    plot(stock_key_ratios()[[7, 2]] %>%
+           ggplot(aes(x = date, y = value)) +
+           geom_line(aes(col = factor(category)), size = 1)  +
+           theme_tq() +
+           scale_color_tq())
+  })
 })
