@@ -63,12 +63,33 @@ shinyUI(
           
         ),
         # returned stocks
-        mainPanel(dataTableOutput("stock_prices"),
-                  plotOutput("close_prices_plot"))
+        mainPanel(
+          dataTableOutput("stock_prices"),
+          plotOutput("close_prices_plot")
+        )
       )
     ),
-    tabPanel(title = "Stock key Ratios",
-             value = "keyRatios"),
+    tabPanel(
+      title = "Stock key Ratios",
+      value = "keyRatios",
+      navlistPanel(
+        "key Ratios Analysis",
+        tabPanel("Financials",
+                 dataTableOutput("stock_ratios_financials")),
+        tabPanel("Profitability",
+                 dataTableOutput("stock_ratios_profitability")),
+        tabPanel("Cash Flow",
+                 dataTableOutput("stock_ratios_cash_flow")),
+        tabPanel("Financial Health",
+                 dataTableOutput("stock_ratios_financial_health")),
+        tabPanel("Efficiency Ratios",
+                 dataTableOutput("stock_ratios_efficiency")),
+        tabPanel("Growth",
+                 dataTableOutput("stock_ratios_growth")),
+        tabPanel("Valuation Ratios",
+                 dataTableOutput("stock_ratios_value_ratios"))
+      )
+    ),
     tabPanel(title = "Stock Key Stats",
              value = "keyStats"),
     tabPanel(title = "Stock Finance Statement",

@@ -161,7 +161,7 @@ shinyServer(function(input, output, session) {
                       selected = "financeStatement")
   })
   
-  # return the correct stocks based on stock type
+  # return the correct stock prices based on stock source
   stock_pricess_df <- reactive({
     switch(
       input$pricesSource,
@@ -178,7 +178,6 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_prices <- DT::renderDataTable({
-    cat("selected_stock:", selected_stock())
     stocks_Dt <- DT::datatable(data = stock_pricess_df())
   })
   
@@ -208,4 +207,39 @@ shinyServer(function(input, output, session) {
         theme_tq()
     )
   })
+  
+  # return thestock key ratios 
+  stock_key_ratios <- reactive({
+    tq_get(selected_stock(), get = "key.ratios")
+  })
+  
+  output$stock_ratios_financials <- DT::renderDataTable({
+    print(stock_key_ratios()[1,])
+    DT::datatable(data = stock_key_ratios()[[1,2]])
+  })
+  
+  output$stock_ratios_profitability <- DT::renderDataTable({
+    DT::datatable(data = stock_key_ratios()[[2,2]])
+  })
+  
+  output$stock_ratios_growth <- DT::renderDataTable({
+    DT::datatable(data = stock_key_ratios()[[3,2]])
+  })
+  
+  output$stock_ratios_cash_flow <- DT::renderDataTable({
+    DT::datatable(data = stock_key_ratios()[[4,2]])
+  })
+  
+  output$stock_ratios_financial_health <- DT::renderDataTable({
+    DT::datatable(data = stock_key_ratios()[[5,2]])
+  })
+  
+  output$stock_ratios_efficiency <- DT::renderDataTable({
+    DT::datatable(data = stock_key_ratios()[[6,2]])
+  })
+  
+  output$stock_ratios_value_ratios <- DT::renderDataTable({
+    DT::datatable(data = stock_key_ratios()[[7,2]])
+  })
+  
 })
