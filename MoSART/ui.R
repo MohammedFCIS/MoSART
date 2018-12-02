@@ -24,11 +24,13 @@ library(DT)
 stock_choices <-
   c("Stock Indexes" = "index", "Stock Exchanges" = "exchange")
 shinyUI(navbarPage(
-  "MoSART",
+  title = "MoSART",
+  id = "mosart",
   tabPanel(
-    "Stock Selection",
+    title = "Stock Selection",
+    value = "stockSelector",
     # Application title
-    titlePanel("Retrieve Consolidated Symbol Data"),
+   # titlePanel("Retrieve Consolidated Symbol Data"),
     sidebarLayout(
       sidebarPanel(
         radioButtons(
@@ -40,19 +42,26 @@ shinyUI(navbarPage(
         
       ),
       # returned stocks
-      mainPanel(dataTableOutput("stocks"))
+      mainPanel(
+        dataTableOutput("stocks"),
+        uiOutput("stock_actions")
+        )
     )
   ),
   tabPanel(
-    "Stock Prices Analysis"
+    title = "Stock Prices Analysis",
+    value = "stockPrices"
   ),
   tabPanel(
-    "Stock key Ratios"
+    title = "Stock key Ratios",
+    value = "keyRatios"
   ),
   tabPanel(
-    "Stock Key Stats"
+    title = "Stock Key Stats",
+    value = "keyStats"
   ),
   tabPanel(
-    "Stock Finance Statement"
+    title = "Stock Finance Statement",
+    value = "financeStatement"
   )
 ))

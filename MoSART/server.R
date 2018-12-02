@@ -37,7 +37,7 @@ exchange_headers <-
     "Sector",
     "Industry")
 
-shinyServer(function(input, output) {
+shinyServer(function(input, output, session) {
   stock_choices <- reactive({
     switch(input$stockType,
            "index" = stock_indexes,
@@ -106,5 +106,43 @@ shinyServer(function(input, output) {
                DT::formatRound("weight", 6))
     }
     return(stocks_Dt)
+  })
+  
+  selected_stock <- reactive(input$stocks_rows_selected)
+  
+  output$stock_actions <- renderUI({
+    if (!is.null(selected_stock())) {
+      span(
+      actionButton("jumpToPrices", "Prices"),
+      actionButton("jumpToRatios", "Key Ratios"),
+      actionButton("jumpToStats", "Key Stats"),
+      actionButton("jumpToFinanceStatement", "Finance Statement")
+      )
+    }
+    
+  })
+  
+  observeEvent(input$jumpToPrices, {
+    updateTabsetPanel(session = session, 
+                      inputId =  "mosart",
+                      selected = "stockPrices")
+  })
+  
+  observeEvent(input$jumpToRatios, {
+    updateTabsetPanel(session = session, 
+                      inputId =  "mosart",
+                      selected = "keyRatios")
+  })
+  
+  observeEvent(input$jumpToStats, {
+    updateTabsetPanel(session = session, 
+                      inputId =  "mosart",
+                      selected = "keyStats")
+  })
+  
+  observeEvent(input$jumpToFinanceStatement, {
+    updateTabsetPanel(session = session, 
+                      inputId =  "mosart",
+                      selected = "financeStatement")
   })
 })
