@@ -233,7 +233,7 @@ shinyServer(function(input, output, session) {
     plot(stock_key_ratios()[[2, 2]] %>%
            ggplot(aes(x = date, y = value)) +
            geom_line(aes(col = factor(category)), size = 1)  +
-           theme_tq() )
+           theme_tq())
   })
   
   output$stock_ratios_growth <- DT::renderDataTable({
@@ -252,11 +252,13 @@ shinyServer(function(input, output, session) {
   })
   
   output$ratios_cash_flow_plot <- renderPlot({
-    plot(stock_key_ratios()[[4, 2]] %>%
-           ggplot(aes(x = date, y = value)) +
-           geom_line(aes(col = factor(category)), size = 1)  +
-           theme_tq() +
-           scale_color_tq())
+    plot(
+      stock_key_ratios()[[4, 2]] %>%
+        ggplot(aes(x = date, y = value)) +
+        geom_line(aes(col = factor(category)), size = 1)  +
+        theme_tq() +
+        scale_color_tq()
+    )
   })
   
   output$stock_ratios_financial_health <- DT::renderDataTable({
@@ -267,47 +269,111 @@ shinyServer(function(input, output, session) {
     plot(stock_key_ratios()[[5, 2]] %>%
            ggplot(aes(x = date, y = value)) +
            geom_line(aes(col = factor(category)), size = 1)  +
-           theme_tq() )
+           theme_tq())
   })
   
   output$stock_ratios_efficiency <- DT::renderDataTable({
     DT::datatable(data = stock_key_ratios()[[6, 2]])
   })
-
+  
   output$ratios_efficiency_plot <- renderPlot({
-    plot(stock_key_ratios()[[6, 2]] %>%
-           ggplot(aes(x = date, y = value)) +
-           geom_line(aes(col = factor(category)), size = 1)  +
-           theme_tq() +
-           scale_color_tq())
+    plot(
+      stock_key_ratios()[[6, 2]] %>%
+        ggplot(aes(x = date, y = value)) +
+        geom_line(aes(col = factor(category)), size = 1)  +
+        theme_tq() +
+        scale_color_tq()
+    )
   })
-    
+  
   output$stock_ratios_value_ratios <- DT::renderDataTable({
     DT::datatable(data = stock_key_ratios()[[7, 2]])
   })
   
   output$ratios_value_ratios_plot <- renderPlot({
-    plot(stock_key_ratios()[[7, 2]] %>%
-           ggplot(aes(x = date, y = value)) +
-           geom_line(aes(col = factor(category)), size = 1)  +
-           theme_tq() +
-           scale_color_tq())
+    plot(
+      stock_key_ratios()[[7, 2]] %>%
+        ggplot(aes(x = date, y = value)) +
+        geom_line(aes(col = factor(category)), size = 1)  +
+        theme_tq() +
+        scale_color_tq()
+    )
   })
   
-  # return thestock key ratios
-  stock_key_stats_df <- reactive({
+  # return stock finviz stats
+  stock_key_stats_finviz_df <- reactive({
     url <- paste0("http://finviz.com/quote.ashx?t=", selected_stock())
     webpage <- readLines(url)
-    html <- htmlTreeParse(webpage, useInternalNodes = TRUE, asText = TRUE)
+    html <-
+      htmlTreeParse(webpage, useInternalNodes = TRUE, asText = TRUE)
     tableNodes <- getNodeSet(html, "//table")
     
     # ASSIGN TO STOCK NAMED DFS
-    stats <- readHTMLTable(tableNodes[[9]], 
-                            header= c("data1", "data2", "data3", "data4", "data5", "data6",
-                                      "data7", "data8", "data9", "data10", "data11", "data12"))
+    stats <- readHTMLTable(
+      tableNodes[[9]],
+      header = c(
+        "data1",
+        "data2",
+        "data3",
+        "data4",
+        "data5",
+        "data6",
+        "data7",
+        "data8",
+        "data9",
+        "data10",
+        "data11",
+        "data12"
+      )
+    )
+  })
+  # return stock yahoo stats
+  stock_key_stats_yahoo_df <- reactive({
+    url <-
+      paste('https://finance.yahoo.com/quote/HD/analysts?p=',
+            selected_stock(),
+            sep = "")
+    webpage <- readLines(url)
+    html <-
+      htmlTreeParse(webpage, useInternalNodes = TRUE, asText = TRUE)
+    tableNodes <- getNodeSet(html, "//table")
+    
+    list(
+      readHTMLTable(tableNodes[[1]]),
+      readHTMLTable(tableNodes[[2]]),
+      readHTMLTable(tableNodes[[3]]),
+      readHTMLTable(tableNodes[[4]]),
+      readHTMLTable(tableNodes[[5]]),
+      readHTMLTable(tableNodes[[6]])
+    )
   })
   
-  output$stock_key_stats <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_df())
+  output$stock_key_stats_finviz <- DT::renderDataTable({
+    DT::datatable(data = stock_key_stats_finviz_df())
   })
+  
+  output$stock_key_stats_earning_estimates <- DT::renderDataTable({
+    DT::datatable(data = stock_key_stats_yahoo_df()[[1]], caption = "Earning Estimates")
+  })
+  
+  output$stock_key_stats_earning_history <- DT::renderDataTable({
+    DT::datatable(data = stock_key_stats_yahoo_df()[[3]], caption = "Earning History")
+  })
+  
+  output$stock_key_stats_revenue_estimates <- DT::renderDataTable({
+    DT::datatable(data = stock_key_stats_yahoo_df()[[2]], caption = "Revenue Estimates")
+  })
+  
+  output$stock_key_stats_eps_trend <- DT::renderDataTable({
+    DT::datatable(data = stock_key_stats_yahoo_df()[[4]], caption = "EPS Trend")
+  })
+  
+  output$stock_key_stats_eps_revisions <- DT::renderDataTable({
+    DT::datatable(data = stock_key_stats_yahoo_df()[[5]], caption = "EPS Revisions")
+  })
+  
+  output$stock_key_stats_growth_est <- DT::renderDataTable({
+    DT::datatable(data = stock_key_stats_yahoo_df()[[6]], caption = "Growth Estimates")
+  })
+  
 })

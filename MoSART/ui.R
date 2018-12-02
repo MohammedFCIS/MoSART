@@ -74,32 +74,58 @@ shinyUI(
       value = "keyRatios",
       navlistPanel(
         "key Ratios Analysis",
-        tabPanel("Financials",
-                 dataTableOutput("stock_ratios_financials"),
-                 plotOutput("ratios_financials_plot")),
-        tabPanel("Profitability",
-                 dataTableOutput("stock_ratios_profitability"),
-                 plotOutput("ratios_profitability_plot")),
-        tabPanel("Cash Flow",
-                 dataTableOutput("stock_ratios_cash_flow"),
-                 plotOutput("ratios_cash_flow_plot")),
-        tabPanel("Financial Health",
-                 dataTableOutput("stock_ratios_financial_health"),
-                 plotOutput("ratios_financial_health_plot")),
-        tabPanel("Efficiency Ratios",
-                 dataTableOutput("stock_ratios_efficiency"),
-                 plotOutput("ratios_efficiency_plot")),
-        tabPanel("Growth",
-                 dataTableOutput("stock_ratios_growth"),
-                 plotOutput("ratios_growth_plot")),
-        tabPanel("Valuation Ratios",
-                 dataTableOutput("stock_ratios_value_ratios"),
-                 plotOutput("ratios_value_ratios_plot"))
+        tabPanel(
+          "Financials",
+          dataTableOutput("stock_ratios_financials"),
+          plotOutput("ratios_financials_plot")
+        ),
+        tabPanel(
+          "Profitability",
+          dataTableOutput("stock_ratios_profitability"),
+          plotOutput("ratios_profitability_plot")
+        ),
+        tabPanel(
+          "Cash Flow",
+          dataTableOutput("stock_ratios_cash_flow"),
+          plotOutput("ratios_cash_flow_plot")
+        ),
+        tabPanel(
+          "Financial Health",
+          dataTableOutput("stock_ratios_financial_health"),
+          plotOutput("ratios_financial_health_plot")
+        ),
+        tabPanel(
+          "Efficiency Ratios",
+          dataTableOutput("stock_ratios_efficiency"),
+          plotOutput("ratios_efficiency_plot")
+        ),
+        tabPanel(
+          "Growth",
+          dataTableOutput("stock_ratios_growth"),
+          plotOutput("ratios_growth_plot")
+        ),
+        tabPanel(
+          "Valuation Ratios",
+          dataTableOutput("stock_ratios_value_ratios"),
+          plotOutput("ratios_value_ratios_plot")
+        )
       )
     ),
-    tabPanel(title = "Stock Key Stats",
-             value = "keyStats",
-             dataTableOutput("stock_key_stats")),
+    tabPanel(
+      title = "Stock Key Stats",
+      value = "keyStats",
+      tabsetPanel(type = "tabs",
+                  tabPanel("Yahoo", 
+                    dataTableOutput("stock_key_stats_earning_estimates"),
+                    hr(),
+                    dataTableOutput("stock_key_stats_revenue_estimates"),
+                    dataTableOutput("stock_key_stats_earning_history"),
+                    dataTableOutput("stock_key_stats_eps_trend"),
+                    dataTableOutput("stock_key_stats_eps_revisions"),
+                    dataTableOutput("stock_key_stats_growth_est")
+                    ),
+                  tabPanel("FinViz", dataTableOutput("stock_key_stats_finviz")))
+    ),
     tabPanel(title = "Stock Finance Statement",
              value = "financeStatement")
   )
