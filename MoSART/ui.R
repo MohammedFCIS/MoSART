@@ -23,45 +23,55 @@ library(DT)
 # Define UI for application that draws a histogram
 stock_choices <-
   c("Stock Indexes" = "index", "Stock Exchanges" = "exchange")
-shinyUI(navbarPage(
-  title = "MoSART",
-  id = "mosart",
-  tabPanel(
-    title = "Stock Selection",
-    value = "stockSelector",
-    # Application title
-   # titlePanel("Retrieve Consolidated Symbol Data"),
-    sidebarLayout(
-      sidebarPanel(
-        radioButtons(
-          "stockType",
-          label = h3("Select Stock Type"),
-          choices = stock_choices
+prices_choices <-
+  c("Yahoo" = "yahoo",
+    "Qundl" = "qundl",
+    "Alpha Vantage" = "alphavantage")
+
+shinyUI(
+  navbarPage(
+    title = "MoSART",
+    id = "mosart",
+    tabPanel(
+      title = "Stock Selection",
+      value = "stockSelector",
+      sidebarLayout(
+        sidebarPanel(
+          radioButtons(
+            "stockType",
+            label = h3("Select Stock Type"),
+            choices = stock_choices
+          ),
+          uiOutput("stock")
+          
         ),
-        uiOutput("stock")
-        
-      ),
-      # returned stocks
-      mainPanel(
-        dataTableOutput("stocks"),
-        uiOutput("stock_actions")
-        )
-    )
-  ),
-  tabPanel(
-    title = "Stock Prices Analysis",
-    value = "stockPrices"
-  ),
-  tabPanel(
-    title = "Stock key Ratios",
-    value = "keyRatios"
-  ),
-  tabPanel(
-    title = "Stock Key Stats",
-    value = "keyStats"
-  ),
-  tabPanel(
-    title = "Stock Finance Statement",
-    value = "financeStatement"
+        # returned stocks
+        mainPanel(dataTableOutput("stocks"),
+                  uiOutput("stock_actions"))
+      )
+    ),
+    tabPanel(
+      title = "Stock Prices Analysis",
+      value = "stockPrices",
+      sidebarLayout(
+        sidebarPanel(
+          radioButtons(
+            "pricesSource",
+            label = h3("Select Price Source"),
+            choices = prices_choices
+          )
+          
+        ),
+        # returned stocks
+        mainPanel(dataTableOutput("stock_prices"),
+                  plotOutput("close_prices_plot"))
+      )
+    ),
+    tabPanel(title = "Stock key Ratios",
+             value = "keyRatios"),
+    tabPanel(title = "Stock Key Stats",
+             value = "keyStats"),
+    tabPanel(title = "Stock Finance Statement",
+             value = "financeStatement")
   )
-))
+)

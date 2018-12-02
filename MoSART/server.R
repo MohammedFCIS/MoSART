@@ -9,6 +9,11 @@
 
 library(shiny)
 library(tidyquant)
+library(alphavantager)
+library(Quandl)
+
+Quandl.api_key("2AxuBQTEuzWdH_rFH-y9")
+av_api_key("JEMUK6SHIYMEVJKW")
 
 stock_indexes <-
   c(
@@ -43,8 +48,11 @@ shinyServer(function(input, output, session) {
            "index" = stock_indexes,
            "exchange" = stock_exchanges)
   })
-  # return the correct stock based on stock type
+  # return the correct stocks based on stock type
   stocks_df <- reactive({
+    if (is.null(input$stockType)) {
+      return()
+    }
     switch(
       input$stockType,
       "index" = tq_index(input$stock),
@@ -90,11 +98,15 @@ shinyServer(function(input, output, session) {
         pageLength = 10,
         orderClasses = TRUE,
         dom = 'Bfrtip',
-        buttons =  list('copy', 'print', list(
-          extend = 'collection',
-          buttons = c('csv', 'excel', 'pdf'),
-          text = 'Download'
-        ))
+        buttons =  list(
+          'copy',
+          'print',
+          list(
+            extend = 'collection',
+            buttons = c('csv', 'excel', 'pdf'),
+            text = 'Download'
+          )
+        )
       ),
       rownames = FALSE,
       selection = "single",
@@ -108,41 +120,92 @@ shinyServer(function(input, output, session) {
     return(stocks_Dt)
   })
   
-  selected_stock <- reactive(input$stocks_rows_selected)
+  selected_stock <-
+    reactive(if (!is.null(input$stocks_rows_selected)) {
+      stocks_df()[input$stocks_rows_selected, "symbol"]
+    })
   
   output$stock_actions <- renderUI({
-    if (!is.null(selected_stock())) {
+    if (length(selected_stock()) > 0 && !is.null(selected_stock())) {
       span(
-      actionButton("jumpToPrices", "Prices"),
-      actionButton("jumpToRatios", "Key Ratios"),
-      actionButton("jumpToStats", "Key Stats"),
-      actionButton("jumpToFinanceStatement", "Finance Statement")
+        actionButton("jumpToPrices", "Prices"),
+        actionButton("jumpToRatios", "Key Ratios"),
+        actionButton("jumpToStats", "Key Stats"),
+        actionButton("jumpToFinanceStatement", "Finance Statement")
       )
     }
     
   })
   
   observeEvent(input$jumpToPrices, {
-    updateTabsetPanel(session = session, 
+    updateTabsetPanel(session = session,
                       inputId =  "mosart",
                       selected = "stockPrices")
   })
   
   observeEvent(input$jumpToRatios, {
-    updateTabsetPanel(session = session, 
+    updateTabsetPanel(session = session,
                       inputId =  "mosart",
                       selected = "keyRatios")
   })
   
   observeEvent(input$jumpToStats, {
-    updateTabsetPanel(session = session, 
+    updateTabsetPanel(session = session,
                       inputId =  "mosart",
                       selected = "keyStats")
   })
   
   observeEvent(input$jumpToFinanceStatement, {
-    updateTabsetPanel(session = session, 
+    updateTabsetPanel(session = session,
                       inputId =  "mosart",
                       selected = "financeStatement")
+  })
+  
+  # return the correct stocks based on stock type
+  stock_pricess_df <- reactive({
+    switch(
+      input$pricesSource,
+      "yahoo" = tq_get(selected_stock(), get = "stock.prices"),
+      "qundl" = tq_get(paste("WIKI", "/", selected_stock(), sep = ""),
+                       get = "quandl"),
+      "alphavantage" = tq_get(
+        selected_stock(),
+        get = "alphavantager",
+        av_fun = "TIME_SERIES_INTRADAY",
+        interval = "5min"
+      )
+    )
+  })
+  
+  output$stock_prices <- DT::renderDataTable({
+    cat("selected_stock:", selected_stock())
+    stocks_Dt <- DT::datatable(data = stock_pricess_df())
+  })
+  
+  output$close_prices_plot <- renderPlot({
+    plot(
+      stock_pricess_df() %>% ggplot(aes(
+        x = date, y = close, volume = volume
+      )) +
+        geom_candlestick(aes(
+          open = open,
+          high = high,
+          low = low,
+          close = close
+        )) +
+        geom_ma(
+          ma_fun = VWMA,
+          n = 15,
+          wilder = TRUE,
+          linetype = 5
+        ) +
+        geom_ma(
+          ma_fun = VWMA,
+          n = 50,
+          wilder = TRUE,
+          color = "red"
+        ) +
+        theme_tq()
+    )
   })
 })
