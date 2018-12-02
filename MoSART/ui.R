@@ -114,19 +114,35 @@ shinyUI(
     tabPanel(
       title = "Stock Key Stats",
       value = "keyStats",
-      tabsetPanel(type = "tabs",
-                  tabPanel("Yahoo", 
-                    dataTableOutput("stock_key_stats_earning_estimates"),
-                    hr(),
-                    dataTableOutput("stock_key_stats_revenue_estimates"),
-                    dataTableOutput("stock_key_stats_earning_history"),
-                    dataTableOutput("stock_key_stats_eps_trend"),
-                    dataTableOutput("stock_key_stats_eps_revisions"),
-                    dataTableOutput("stock_key_stats_growth_est")
-                    ),
-                  tabPanel("FinViz", dataTableOutput("stock_key_stats_finviz")))
+      tabsetPanel(
+        type = "tabs",
+        tabPanel(
+          "Yahoo",
+          br(),
+          dataTableOutput("stock_key_stats_earning_estimates"),
+          hr(),
+          dataTableOutput("stock_key_stats_revenue_estimates"),
+          hr(),
+          dataTableOutput("stock_key_stats_earning_history"),
+          hr(),
+          dataTableOutput("stock_key_stats_eps_trend"),
+          hr(),
+          dataTableOutput("stock_key_stats_eps_revisions"),
+          hr(),
+          dataTableOutput("stock_key_stats_growth_est")
+        ),
+        tabPanel("FinViz", dataTableOutput("stock_key_stats_finviz"))
+      )
     ),
-    tabPanel(title = "Stock Finance Statement",
-             value = "financeStatement")
+    tabPanel(
+      title = "Stock Finance Statement",
+      value = "financeStatement",
+      br(),
+      dataTableOutput("stock_finance_statement_is"),
+      hr(),
+      dataTableOutput("stock_finance_statement_bs"),
+      hr(),
+      dataTableOutput("stock_finance_statement_cf")
+    )
   )
 )
