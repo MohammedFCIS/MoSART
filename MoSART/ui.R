@@ -3,7 +3,7 @@
 # run the application by clicking 'Run App' above.
 #
 # Find out more about building applications with Shiny here:
-# 
+#
 #    http://shiny.rstudio.com/
 #
 
@@ -21,24 +21,38 @@ library(DT)
 #https://gallery.shinyapps.io/076-widget-select/
 
 # Define UI for application that draws a histogram
-stock_choices <- c("Stock Indexes" = "index", "Stock Exchanges" = "exchange")
-shinyUI(fluidPage(
-  
-  # Application title
-  titlePanel("Retrieve Consolidated Symbol Data"),
-  
-
-  sidebarLayout(
-    sidebarPanel(
-      radioButtons("stockType", label = h3("Select Stock Type"),
-                   choices = stock_choices),
-      uiOutput("stock")
-                  
-    ),
-    
-    # returned stocks
-    mainPanel(
-      dataTableOutput("stocks")
+stock_choices <-
+  c("Stock Indexes" = "index", "Stock Exchanges" = "exchange")
+shinyUI(navbarPage(
+  "MoSART",
+  tabPanel(
+    "Stock Selection",
+    # Application title
+    titlePanel("Retrieve Consolidated Symbol Data"),
+    sidebarLayout(
+      sidebarPanel(
+        radioButtons(
+          "stockType",
+          label = h3("Select Stock Type"),
+          choices = stock_choices
+        ),
+        uiOutput("stock")
+        
+      ),
+      # returned stocks
+      mainPanel(dataTableOutput("stocks"))
     )
+  ),
+  tabPanel(
+    "Stock Prices Analysis"
+  ),
+  tabPanel(
+    "Stock key Ratios"
+  ),
+  tabPanel(
+    "Stock Key Stats"
+  ),
+  tabPanel(
+    "Stock Finance Statement"
   )
 ))
