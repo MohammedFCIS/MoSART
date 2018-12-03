@@ -6,7 +6,7 @@
 #
 #    http://shiny.rstudio.com/
 #
-
+library("XLConnect")
 library(shiny)
 library(tidyquant)
 library(alphavantager)
