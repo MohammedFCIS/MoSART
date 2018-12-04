@@ -65,6 +65,7 @@ shinyUI(
         # returned stocks
         mainPanel(
           dataTableOutput("stock_prices"),
+          br(),
           plotOutput("close_prices_plot")
         )
       )
