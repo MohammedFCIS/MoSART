@@ -13,6 +13,7 @@ library(alphavantager)
 library(Quandl)
 library(XML)
 
+
 Quandl.api_key("2AxuBQTEuzWdH_rFH-y9")
 av_api_key("JEMUK6SHIYMEVJKW")
 
@@ -178,42 +179,59 @@ shinyServer(function(input, output, session) {
     )
   })
   
-  output$stock_prices <- DT::renderDataTable({
-    stocks_Dt <- DT::datatable(data = stock_pricess_df(),
-                               caption = paste(selected_stock(), 
-                                               "Prices from",
-                                               min(stock_pricess_df()$date),
-                                               "to",
-                                               max(stock_pricess_df()$date)))
+  stock_pricess_xts <- reactive({
+    xts(stock_pricess_df()[-1], order.by = stock_pricess_df()$date)
   })
   
-  output$close_prices_plot <- renderPlot({
-    plot(
-      stock_pricess_df() %>% ggplot(aes(
-        x = date, y = close, volume = volume
-      )) +
-        geom_candlestick(aes(
-          open = open,
-          high = high,
-          low = low,
-          close = close
-        )) +
-        geom_ma(
-          ma_fun = VWMA,
-          n = 15,
-          wilder = TRUE,
-          linetype = 5
-        ) +
-        geom_ma(
-          ma_fun = VWMA,
-          n = 50,
-          wilder = TRUE,
-          color = "red"
-        ) +
-        theme_tq()
+  output$stock_prices <- DT::renderDataTable({
+    stocks_Dt <- DT::datatable(
+      data = stock_pricess_df(),
+      caption = paste(
+        selected_stock(),
+        "Prices from",
+        min(stock_pricess_df()$date),
+        "to",
+        max(stock_pricess_df()$date)
+      )
     )
   })
   
+  output$close_prices_plot <-
+    renderPlot({
+      switch(input$pricesChartType,
+             "line" =
+               chartSeries(stock_pricess_xts(),
+                           theme = chartTheme("white"),
+                           name = paste(selected_stock(), "chart")))
+    })
+  
+  #   renderPlot({
+  #   plot(
+  #     stock_pricess_df() %>% ggplot(aes(
+  #       x = date, y = close, volume = volume
+  #     )) +
+  #       geom_candlestick(aes(
+  #         open = open,
+  #         high = high,
+  #         low = low,
+  #         close = close
+  #       )) +
+  #       geom_ma(
+  #         ma_fun = VWMA,
+  #         n = 15,
+  #         wilder = TRUE,
+  #         linetype = 5
+  #       ) +
+  #       geom_ma(
+  #         ma_fun = VWMA,
+  #         n = 50,
+  #         wilder = TRUE,
+  #         color = "red"
+  #       ) +
+  #       theme_tq()
+  #   )
+  # })
+  #
   # return thestock key ratios
   stock_key_ratios <- reactive({
     tq_get(selected_stock(), get = "key.ratios")
@@ -418,10 +436,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       IS <- p[[1]]
-      colnames(IS) <- paste(IS[1,])
-      IS <- IS[-c(1, 5, 12, 20, 25),]
+      colnames(IS) <- paste(IS[1, ])
+      IS <- IS[-c(1, 5, 12, 20, 25), ]
       names_row <- paste(IS[, 1])
-      IS <- IS[,-1]
+      IS <- IS[, -1]
       IS <- apply(IS, 2, function(x) {
         gsub(",", "", x)
       })
@@ -435,10 +453,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       BS <- p[[1]]
-      colnames(BS) <- BS[1,]
-      BS <- BS[-c(1, 2, 17, 28),]
+      colnames(BS) <- BS[1, ]
+      BS <- BS[-c(1, 2, 17, 28), ]
       names_row <- BS[, 1]
-      BS <- BS[,-1]
+      BS <- BS[, -1]
       BS <- apply(BS, 2, function(x) {
         gsub(",", "", x)
       })
@@ -452,10 +470,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       CF <- p[[1]]
-      colnames(CF) <- CF[1,]
-      CF <- CF[-c(1, 3, 11, 16),]
+      colnames(CF) <- CF[1, ]
+      CF <- CF[-c(1, 3, 11, 16), ]
       names_row <- CF[, 1]
-      CF <- CF[,-1]
+      CF <- CF[, -1]
       CF <- apply(CF, 2, function(x) {
         gsub(",", "", x)
       })

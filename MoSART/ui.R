@@ -27,6 +27,10 @@ prices_choices <-
   c("Yahoo" = "yahoo",
     "Qundl" = "qundl",
     "Alpha Vantage" = "alphavantage")
+prices_chart_types <- c("Line Chart" = "line",
+                        "Bar Chart" = "bar",
+                        "Candlestick Chart" = "candle")
+
 
 shinyUI(
   navbarPage(
@@ -59,6 +63,12 @@ shinyUI(
             "pricesSource",
             label = h3("Select Price Source"),
             choices = prices_choices
+          ),
+          hr(),
+          radioButtons(
+            "pricesChartType",
+            label = h3("Select Chart Type"),
+            choices = prices_chart_types
           )
           
         ),
