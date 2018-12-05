@@ -28,8 +28,9 @@ prices_choices <-
     "Qundl" = "qundl",
     "Alpha Vantage" = "alphavantage")
 prices_chart_types <- c("Line Chart" = "line",
-                        "Bar Chart" = "bar",
-                        "Candlestick Chart" = "candle")
+                        "Bar Chart" = "bars",
+                        "Match Sticks" = "matchsticks",
+                        "Candlestick Chart" = "candlesticks")
 
 
 shinyUI(
