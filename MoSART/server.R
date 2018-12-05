@@ -13,6 +13,25 @@ library(alphavantager)
 library(Quandl)
 library(XML)
 
+# add chart series setup (its different parameters and options)
+## https://www.quantmod.com/examples/charting/
+## https://shiny.rstudio.com/tutorial/written-tutorial/lesson6/
+
+# add zooming feature
+## https://www.quantmod.com/documentation/zoomChart.html
+## https://stackoverflow.com/questions/9137350/using-rechart-in-quantmod
+## https://stackoverflow.com/questions/42131839/r-zoomchart-shiny
+## https://rdrr.io/rforge/quantmod/src/R/zoomChart.R
+## https://stackoverflow.com/questions/42270664/r-shiny-quantmod-zoomchart-and-fixed-coloring-of-points
+## https://stackoverflow.com/questions/53150221/quanstrat-with-shiny
+## https://groups.google.com/forum/#!topic/shiny-discuss/vR7Jx8OfwSg
+
+# add indicators
+## https://www.quantmod.com/examples/charting/
+## https://stackoverflow.com/questions/45984122/r-addta-function-in-shiny-app
+
+# add the rest of analysis
+## https://www.business-science.io/investments/2016/10/23/SP500_Analysis.html
 
 Quandl.api_key("2AxuBQTEuzWdH_rFH-y9")
 av_api_key("JEMUK6SHIYMEVJKW")
@@ -167,42 +186,59 @@ shinyServer(function(input, output, session) {
   stock_pricess_df <- reactive({
     switch(
       input$pricesSource,
-      "yahoo" = tq_get(selected_stock(), get = "stock.prices"),
-      "qundl" = tq_get(paste("WIKI", "/", selected_stock(), sep = ""),
-                       get = "quandl"),
-      "alphavantage" = tq_get(
-        selected_stock(),
-        get = "alphavantager",
-        av_fun = "TIME_SERIES_INTRADAY",
-        interval = "5min"
-      )
+      "yahoo" = {
+        stock_df <- tq_get(selected_stock(), get = "stock.prices")
+        return(xts(stock_df[-1], order.by = stock_df$date))
+      },
+      "qundl" = {
+        stock_df <- tq_get(paste("WIKI", "/", selected_stock(), sep = ""),
+                           get = "quandl")
+        return(xts(stock_df[-1], order.by = stock_df$date))
+      },
+      "alphavantage" = {
+        stock_df <- tq_get(
+          selected_stock(),
+          get = "alphavantager",
+          av_fun = "TIME_SERIES_INTRADAY",
+          interval = "5min"
+        )
+        return(xts(stock_df[-1], order.by = stock_df$timestamp))
+      }
     )
   })
   
-  stock_pricess_xts <- reactive({
-    xts(stock_pricess_df()[-1], order.by = stock_pricess_df()$date)
-  })
+  # stock_pricess_xts <- reactive({
+  #   str(stock_pricess_df())
+  #   if ("timestamp" %in% names(stock_pricess_df)){
+  #     return(xts(stock_pricess_df()[-1], order.by = stock_pricess_df()$timestamp))
+  #   } else if ("date" %in% names(stock_pricess_df)){
+  #     return(xts(stock_pricess_df()[-1], order.by = stock_pricess_df()$date))
+  #   } else {
+  #     return(tibble())
+  #   }
+  #
+  # })
   
   output$stock_prices <- DT::renderDataTable({
-    stocks_Dt <- DT::datatable(
-      data = stock_pricess_df(),
-      caption = paste(
-        selected_stock(),
-        "Prices from",
-        min(stock_pricess_df()$date),
-        "to",
-        max(stock_pricess_df()$date)
-      )
-    )
+    stocks_Dt <- DT::datatable(data = stock_pricess_df(),
+                               caption = paste(selected_stock(),
+                                               "Prices from",
+                                               min(index(stock_pricess_df())),
+                                               "to",
+                                               max(index(stock_pricess_df()))))
   })
   
   output$close_prices_plot <-
     renderPlot({
-      switch(input$pricesChartType,
-             "line" =
-               chartSeries(stock_pricess_xts(),
-                           theme = chartTheme("white"),
-                           name = paste(selected_stock(), "chart")))
+      switch(
+        input$pricesChartType,
+        "line" =
+          chartSeries(
+            stock_pricess_df(),
+            theme = chartTheme("white"),
+            name = paste(selected_stock(), "chart")
+          )
+      )
     })
   
   #   renderPlot({
@@ -418,73 +454,74 @@ shinyServer(function(input, output, session) {
   })
   
 })
-
-getFin <- function(stock) {
-  if ("rvest" %in% installed.packages()) {
-    library(rvest)
-  } else{
-    install.packages("rvest")
-    library(rvest)
-  }
-  for (i in 1:length(stock)) {
-    tryCatch({
-      url <- "https://finance.yahoo.com/quote/"
-      url <- paste0(url, stock[i], "/financials?p=", stock[i])
-      wahis.session <-
-        html_session(url)
-      p <-    wahis.session %>%
-        html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
-        html_table(fill = TRUE)
-      IS <- p[[1]]
-      colnames(IS) <- paste(IS[1, ])
-      IS <- IS[-c(1, 5, 12, 20, 25), ]
-      names_row <- paste(IS[, 1])
-      IS <- IS[, -1]
-      IS <- apply(IS, 2, function(x) {
-        gsub(",", "", x)
-      })
-      IS <- as.data.frame(apply(IS, 2, as.numeric))
-      rownames(IS) <- paste(names_row)
-      temp1 <- IS
-      url <- "https://finance.yahoo.com/quote/"
-      url <- paste0(url, stock[i], "/balance-sheet?p=", stock[i])
-      wahis.session <- html_session(url)
-      p <-    wahis.session %>%
-        html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
-        html_table(fill = TRUE)
-      BS <- p[[1]]
-      colnames(BS) <- BS[1, ]
-      BS <- BS[-c(1, 2, 17, 28), ]
-      names_row <- BS[, 1]
-      BS <- BS[, -1]
-      BS <- apply(BS, 2, function(x) {
-        gsub(",", "", x)
-      })
-      BS <- as.data.frame(apply(BS, 2, as.numeric))
-      rownames(BS) <- paste(names_row)
-      temp2 <- BS
-      url <- "https://finance.yahoo.com/quote/"
-      url <- paste0(url, stock[i], "/cash-flow?p=", stock[i])
-      wahis.session <- html_session(url)
-      p <-    wahis.session %>%
-        html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
-        html_table(fill = TRUE)
-      CF <- p[[1]]
-      colnames(CF) <- CF[1, ]
-      CF <- CF[-c(1, 3, 11, 16), ]
-      names_row <- CF[, 1]
-      CF <- CF[, -1]
-      CF <- apply(CF, 2, function(x) {
-        gsub(",", "", x)
-      })
-      CF <- as.data.frame(apply(CF, 2, as.numeric))
-      rownames(CF) <- paste(names_row)
-      temp3 <- CF
-      return(list(IS = temp1, BS = temp2, CF = temp3))
-      
-    },
-    error = function(cond) {
-      message(stock[i], "Give error ", cond)
-    })
-  }
-}
+    
+    getFin <- function(stock) {
+      if ("rvest" %in% installed.packages()) {
+        library(rvest)
+      } else{
+        install.packages("rvest")
+        library(rvest)
+      }
+      for (i in 1:length(stock)) {
+        tryCatch({
+          url <- "https://finance.yahoo.com/quote/"
+          url <- paste0(url, stock[i], "/financials?p=", stock[i])
+          wahis.session <-
+            html_session(url)
+          p <-    wahis.session %>%
+            html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
+            html_table(fill = TRUE)
+          IS <- p[[1]]
+          colnames(IS) <- paste(IS[1,])
+          IS <- IS[-c(1, 5, 12, 20, 25),]
+          names_row <- paste(IS[, 1])
+          IS <- IS[,-1]
+          IS <- apply(IS, 2, function(x) {
+            gsub(",", "", x)
+          })
+          IS <- as.data.frame(apply(IS, 2, as.numeric))
+          rownames(IS) <- paste(names_row)
+          temp1 <- IS
+          url <- "https://finance.yahoo.com/quote/"
+          url <- paste0(url, stock[i], "/balance-sheet?p=", stock[i])
+          wahis.session <- html_session(url)
+          p <-    wahis.session %>%
+            html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
+            html_table(fill = TRUE)
+          BS <- p[[1]]
+          colnames(BS) <- BS[1,]
+          BS <- BS[-c(1, 2, 17, 28),]
+          names_row <- BS[, 1]
+          BS <- BS[,-1]
+          BS <- apply(BS, 2, function(x) {
+            gsub(",", "", x)
+          })
+          BS <- as.data.frame(apply(BS, 2, as.numeric))
+          rownames(BS) <- paste(names_row)
+          temp2 <- BS
+          url <- "https://finance.yahoo.com/quote/"
+          url <- paste0(url, stock[i], "/cash-flow?p=", stock[i])
+          wahis.session <- html_session(url)
+          p <-    wahis.session %>%
+            html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
+            html_table(fill = TRUE)
+          CF <- p[[1]]
+          colnames(CF) <- CF[1,]
+          CF <- CF[-c(1, 3, 11, 16),]
+          names_row <- CF[, 1]
+          CF <- CF[,-1]
+          CF <- apply(CF, 2, function(x) {
+            gsub(",", "", x)
+          })
+          CF <- as.data.frame(apply(CF, 2, as.numeric))
+          rownames(CF) <- paste(names_row)
+          temp3 <- CF
+          return(list(IS = temp1, BS = temp2, CF = temp3))
+          
+        },
+        error = function(cond) {
+          message(stock[i], "Give error ", cond)
+        })
+      }
+    }
+    
