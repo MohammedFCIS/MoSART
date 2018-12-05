@@ -65,9 +65,10 @@ shinyUI(
             choices = prices_choices
           ),
           hr(),
+          h3("Chart Setup"),
           radioButtons(
             "pricesChartType",
-            label = h3("Select Chart Type"),
+            label = h5("Chart Type"),
             choices = prices_chart_types
           )
           
@@ -76,7 +77,7 @@ shinyUI(
         mainPanel(
           dataTableOutput("stock_prices"),
           br(),
-          plotOutput("close_prices_plot")
+          plotOutput("prices_plot")
         )
       )
     ),

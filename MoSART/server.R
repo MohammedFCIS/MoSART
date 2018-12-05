@@ -228,12 +228,24 @@ shinyServer(function(input, output, session) {
                                                max(index(stock_pricess_df()))))
   })
   
-  output$close_prices_plot <-
+  output$prices_plot <-
     renderPlot({
       switch(
         input$pricesChartType,
         "line" =
-          chartSeries(
+          lineChart(
+            stock_pricess_df(),
+            theme = chartTheme("white"),
+            name = paste(selected_stock(), "chart")
+          ),
+        "bar" =
+          barChart(
+            stock_pricess_df(),
+            theme = chartTheme("white"),
+            name = paste(selected_stock(), "chart")
+          ),
+        "candle" =
+          candleChart(
             stock_pricess_df(),
             theme = chartTheme("white"),
             name = paste(selected_stock(), "chart")
