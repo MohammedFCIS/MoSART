@@ -27,12 +27,14 @@ prices_choices <-
   c("Yahoo" = "yahoo",
     "Qundl" = "qundl",
     "Alpha Vantage" = "alphavantage")
-prices_chart_types <- c("Line Chart" = "line",
-                        "Bar Chart" = "bars",
-                        "Match Sticks" = "matchsticks",
-                        "Candlestick Chart" = "candlesticks")
+prices_chart_types <- c(
+  "Bar Chart" = "bars",
+  "Line Chart" = "line",
+  "Match Sticks" = "matchsticks",
+  "Candlestick Chart" = "candlesticks"
+)
 prices_chart_themes <- c("White" = "white",
-                        "Black" = "black")
+                         "Black" = "black")
 
 
 shinyUI(
@@ -82,8 +84,10 @@ shinyUI(
           ),
           checkboxInput("priceChartGrid",
                         "Show Grid",
-                        value = TRUE)
-          
+                        value = TRUE),
+          checkboxInput("priceLogScale",
+                        "Log Scale",
+                        value = FALSE)
         ),
         # returned stocks
         mainPanel(

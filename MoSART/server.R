@@ -227,7 +227,8 @@ shinyServer(function(input, output, session) {
         type = input$pricesChartType,
         theme = chartTheme(input$pricesChartTheme),
         name = paste(selected_stock(), "chart"),
-        show.grid = input$priceChartGrid
+        show.grid = input$priceChartGrid,
+        log.scale = input$priceLogScale
       )
     })
   
