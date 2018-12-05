@@ -31,6 +31,8 @@ prices_chart_types <- c("Line Chart" = "line",
                         "Bar Chart" = "bars",
                         "Match Sticks" = "matchsticks",
                         "Candlestick Chart" = "candlesticks")
+prices_chart_themes <- c("White" = "white",
+                        "Black" = "black")
 
 
 shinyUI(
@@ -71,7 +73,16 @@ shinyUI(
             "pricesChartType",
             label = h5("Chart Type"),
             choices = prices_chart_types
-          )
+          ),
+          br(),
+          radioButtons(
+            "pricesChartTheme",
+            label = h5("Chart Theme"),
+            choices = prices_chart_themes
+          ),
+          checkboxInput("priceChartGrid",
+                        "Show Grid",
+                        value = TRUE)
           
         ),
         # returned stocks

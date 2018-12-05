@@ -207,18 +207,6 @@ shinyServer(function(input, output, session) {
     )
   })
   
-  # stock_pricess_xts <- reactive({
-  #   str(stock_pricess_df())
-  #   if ("timestamp" %in% names(stock_pricess_df)){
-  #     return(xts(stock_pricess_df()[-1], order.by = stock_pricess_df()$timestamp))
-  #   } else if ("date" %in% names(stock_pricess_df)){
-  #     return(xts(stock_pricess_df()[-1], order.by = stock_pricess_df()$date))
-  #   } else {
-  #     return(tibble())
-  #   }
-  #
-  # })
-  
   output$stock_prices <- DT::renderDataTable({
     stocks_Dt <- DT::datatable(
       data = stock_pricess_df(),
@@ -237,8 +225,9 @@ shinyServer(function(input, output, session) {
       chartSeries(
         stock_pricess_df(),
         type = input$pricesChartType,
-        theme = chartTheme("white"),
-        name = paste(selected_stock(), "chart")
+        theme = chartTheme(input$pricesChartTheme),
+        name = paste(selected_stock(), "chart"),
+        show.grid = input$priceChartGrid
       )
     })
   
