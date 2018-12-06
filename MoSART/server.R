@@ -236,7 +236,28 @@ shinyServer(function(input, output, session) {
         switch (ind,
           "addVo" = print(addVo()),
           "addADX" = print(addADX()),
-          "addATR" = print(addATR())
+          "addATR" = print(addATR()),
+          "addBBands" = print(addBBands()),
+          "addCCI" = print(addCCI()),
+          "addCMF" = print(addCMF()),
+          "addCMO" = print(addCMO()),
+          "addDEMA" = print(addDEMA()),
+          "addDPO" = print(addDPO()),
+          "addEMA" = print(addEMA()),
+          "addEnvelope" = print(addEnvelope()),
+          "addEVWMA" = print(addEVWMA()),
+          "addExpiry" = print(addExpiry()),
+          "addMACD" = print(addMACD()),
+          "addMomentum" = print(addMomentum()),
+          "addROC" = print(addROC()),
+          "addRSI" = print(addRSI()),
+          "addSAR" = print(addSAR()),
+          "addSMA" = print(addSMA()),
+          "addSMI" = print(addSMI()),
+          "addTRIX" = print(addTRIX()),
+          "addWMA" = print(addWMA()),
+          "addWPR" = print(addWPR()),
+          "addZLEMA" = print(addZLEMA())
         )
       }
     })

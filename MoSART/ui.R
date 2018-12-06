@@ -37,7 +37,27 @@ prices_chart_themes <- c("White" = "white",
                          "Black" = "black")
 indicators <- c("Volume" = "addVo",
                 "Welles Wilder's Directional Movement Indicator" = "addADX",
-                "Average True Range" = "addATR")
+                "Average True Range" = "addATR",
+                "Bollinger Bands" = "addBBands",
+                "Commodity Channel Index" = "addCCI",
+                "Chaiken Money Flow" = "addCMF",
+                "Chande Momentum Oscillator" = "addCMO",
+                "Double Exponential Moving Average" = "addDEMA",
+                "Detrended Price Oscillator" = "addDPO",
+                "Exponential Moving Average" = "addEMA",
+                "Price Envelope" = "addEnvelope",
+                "Exponential Volume Weigthed Moving Average" = "addEVWMA",
+                "Options and Futures Expiration" = "addExpiry",
+                "Moving Average Convergence Divergence" = "addMACD",
+                "Momentum" = "addMomentum",
+                "Rate of Change" = "addROC",
+                "Relative Strength Indicator" = "addRSI",
+                "Parabolic Stop and Reverse" = "addSAR",
+                "Stocastic Momentum Index" = "addSMI",
+                "Triple Smoothed Exponential Oscillator" = "addTRIX",
+                "Weighted Moving Average" = "addWMA",
+                "Williams %R" = "addWPR",
+                "ZLEMA" = "addZLEMA")
 
 shinyUI(
   navbarPage(
