@@ -111,8 +111,9 @@ shinyUI(
                         "Log Scale",
                         value = FALSE),
           selectInput("indicators", "Indicators", 
-                         indicators , multiple = TRUE,
-                          selected = "addVo()")
+                         indicators , multiple = TRUE),
+          dateRangeInput(inputId = "daterange", label = "Date range",
+                         start = Sys.Date() - 365, end = Sys.Date())
         ),
         # returned stocks
         mainPanel(
