@@ -35,7 +35,9 @@ prices_chart_types <- c(
 )
 prices_chart_themes <- c("White" = "white",
                          "Black" = "black")
-
+indicators <- c("Volume" = "addVo",
+                "Welles Wilder's Directional Movement Indicator" = "addADX",
+                "Average True Range" = "addATR")
 
 shinyUI(
   navbarPage(
@@ -87,7 +89,10 @@ shinyUI(
                         value = TRUE),
           checkboxInput("priceLogScale",
                         "Log Scale",
-                        value = FALSE)
+                        value = FALSE),
+          selectInput("indicators", "Indicators", 
+                         indicators , multiple = TRUE,
+                          selected = "addVo()")
         ),
         # returned stocks
         mainPanel(

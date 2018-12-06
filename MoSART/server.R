@@ -16,6 +16,7 @@ library(XML)
 # add chart series setup (its different parameters and options)
 ## https://www.quantmod.com/examples/charting/
 ## https://shiny.rstudio.com/tutorial/written-tutorial/lesson6/
+## https://rpubs.com/Felix/6653
 
 # add zooming feature
 ## https://www.quantmod.com/documentation/zoomChart.html
@@ -222,14 +223,22 @@ shinyServer(function(input, output, session) {
   
   output$prices_plot <-
     renderPlot({
-      chartSeries(
+      print(chartSeries(
         stock_pricess_df(),
         type = input$pricesChartType,
         theme = chartTheme(input$pricesChartTheme),
         name = paste(selected_stock(), "chart"),
         show.grid = input$priceChartGrid,
-        log.scale = input$priceLogScale
-      )
+        log.scale = input$priceLogScale,
+        TA = NULL
+      ))
+      for(ind in input$indicators) {
+        switch (ind,
+          "addVo" = print(addVo()),
+          "addADX" = print(addADX()),
+          "addATR" = print(addATR())
+        )
+      }
     })
   
   #   renderPlot({
