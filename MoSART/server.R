@@ -265,7 +265,20 @@ shinyServer(function(input, output, session) {
         )
       }
     })
-  
+  output$return_plot <- renderPlot({
+    get_returns(stock.symbol = selected_stock(),
+                from_to = paste(input$daterange_return, collapse = "::"),
+                type = input$return_function,
+                period = input$return_period) %>% 
+      ggplot(aes(x = date_trans, y = returns)) +
+      geom_hline(yintercept = 0, color = palette_light()[[1]]) +
+      geom_point(size = 2, color = palette_light()[[3]]) +
+      geom_line(size = 1, color = palette_light()[[3]]) +
+      geom_smooth(method = "lm") +
+      labs(title = paste(selected_stock(), "Visualizing Trends in Annual Returns", sep = ":"),
+           x = "", y = "Annual Returns", color = "") +
+      theme_tq()
+  })
   #   renderPlot({
   #   plot(
   #     stock_pricess_df() %>% ggplot(aes(
@@ -549,4 +562,29 @@ getFin <- function(stock) {
       message(stock[i], "Give error ", cond)
     })
   }
+}
+
+get_returns <- function(stock.symbol,
+                        from_to = paste(Sys.Date() - 365,
+                                        Sys.Date(), sep = "::"),
+                        select     = "adjusted",
+                        mutate_fun = "periodReturn",
+                        type       = "log",
+                        period     = "yearly") {
+  stock.symbol %>%
+    tq_get(get  = "stock.prices") %>%
+    tq_transmute(select     = select, 
+                 mutate_fun = periodReturn, 
+                 type       = type, 
+                 period     = period,
+                 subset     = from_to,
+                 col_rename = "returns",
+                 leading = TRUE) %>% 
+    mutate(date_trans = switch (period,
+      "yearly" = year(date),
+      "quarterly" = quarter(date),
+      "monthly" = month(date),
+      "weekly" = week(date),
+      "daily" = day(date)
+    ))
 }

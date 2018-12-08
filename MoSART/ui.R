@@ -35,31 +35,49 @@ prices_chart_types <- c(
 )
 prices_chart_themes <- c("White" = "white",
                          "Black" = "black")
-indicators <- c("Volume" = "addVo",
-                "Welles Wilder's Directional Movement Indicator" = "addADX",
-                "Average True Range" = "addATR",
-                "Bollinger Bands" = "addBBands",
-                "Bollinger Band Width" = "addBBands2",
-                "Bollinger %b" = "addBBands3",
-                "Commodity Channel Index" = "addCCI",
-                "Chaiken Money Flow" = "addCMF",
-                "Chande Momentum Oscillator" = "addCMO",
-                "Double Exponential Moving Average" = "addDEMA",
-                "Detrended Price Oscillator" = "addDPO",
-                "Exponential Moving Average" = "addEMA",
-                "Price Envelope" = "addEnvelope",
-                "Exponential Volume Weigthed Moving Average" = "addEVWMA",
-                "Options and Futures Expiration" = "addExpiry",
-                "Moving Average Convergence Divergence" = "addMACD",
-                "Momentum" = "addMomentum",
-                "Rate of Change" = "addROC",
-                "Relative Strength Indicator" = "addRSI",
-                "Parabolic Stop and Reverse" = "addSAR",
-                "Stocastic Momentum Index" = "addSMI",
-                "Triple Smoothed Exponential Oscillator" = "addTRIX",
-                "Weighted Moving Average" = "addWMA",
-                "Williams %R" = "addWPR",
-                "ZLEMA" = "addZLEMA")
+indicators <- c(
+  "Volume" = "addVo",
+  "Welles Wilder's Directional Movement Indicator" = "addADX",
+  "Average True Range" = "addATR",
+  "Bollinger Bands" = "addBBands",
+  "Bollinger Band Width" = "addBBands2",
+  "Bollinger %b" = "addBBands3",
+  "Commodity Channel Index" = "addCCI",
+  "Chaiken Money Flow" = "addCMF",
+  "Chande Momentum Oscillator" = "addCMO",
+  "Double Exponential Moving Average" = "addDEMA",
+  "Detrended Price Oscillator" = "addDPO",
+  "Exponential Moving Average" = "addEMA",
+  "Price Envelope" = "addEnvelope",
+  "Exponential Volume Weigthed Moving Average" = "addEVWMA",
+  "Options and Futures Expiration" = "addExpiry",
+  "Moving Average Convergence Divergence" = "addMACD",
+  "Momentum" = "addMomentum",
+  "Rate of Change" = "addROC",
+  "Relative Strength Indicator" = "addRSI",
+  "Parabolic Stop and Reverse" = "addSAR",
+  "Stocastic Momentum Index" = "addSMI",
+  "Triple Smoothed Exponential Oscillator" = "addTRIX",
+  "Weighted Moving Average" = "addWMA",
+  "Williams %R" = "addWPR",
+  "ZLEMA" = "addZLEMA"
+)
+return_features <- c(
+  "Open" = "open",
+  "Close" = "close",
+  "High" = "high",
+  "Low" = "low",
+  "Adjusted" = "adjusted"
+)
+return_options <- c("Log" = "log",
+                    "Arithmetic" = "arithmetic")
+return_period_options <- c(
+  "Yearly" = "yearly",
+  "Quarterly" = "quarterly",
+  "Monthly" = "monthly",
+  "Weekly" = "weekly",
+  "Daily" = "daily"
+)
 
 shinyUI(
   navbarPage(
@@ -89,8 +107,8 @@ shinyUI(
       tabsetPanel(
         type = "tabs",
         tabPanel(
-          "Indicators & Signals",
-          "indi_sig",
+          title = "Indicators & Signals",
+          value = "indi_sig",
           sidebarLayout(
             sidebarPanel(
               radioButtons(
@@ -117,10 +135,14 @@ shinyUI(
               checkboxInput("priceLogScale",
                             "Log Scale",
                             value = FALSE),
-              selectInput("indicators", "Indicators", 
+              selectInput("indicators", "Indicators",
                           indicators , multiple = TRUE),
-              dateRangeInput(inputId = "daterange", label = "Date range",
-                             start = Sys.Date() - 365, end = Sys.Date())
+              dateRangeInput(
+                inputId = "daterange",
+                label = "Date range",
+                start = Sys.Date() - 365,
+                end = Sys.Date()
+              )
             ),
             # returned stocks
             mainPanel(
@@ -131,8 +153,29 @@ shinyUI(
           )
         ),
         tabPanel(
-          "Periodic Returns",
-          "perdioic_returns"
+          title = "Periodic Returns",
+          value = "perdioic_returns",
+          sidebarLayout(
+            sidebarPanel(
+              dateRangeInput(
+                inputId = "daterange_return",
+                label = "Date range",
+                start = Sys.Date() - 365,
+                end = Sys.Date()
+              ),
+              selectInput("return_features", "Apply return to",
+                          return_features),
+              selectInput("return_function", "Transformation Function",
+                          return_options),
+              selectInput(
+                "return_period",
+                "Transformation Priod",
+                return_period_options,
+                selected = "yearly"
+              )
+            ),
+            mainPanel(plotOutput("return_plot"))
+          )
         )
       )
     ),
