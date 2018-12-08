@@ -14,7 +14,7 @@ library(Quandl)
 library(XML)
 
 # add chart series setup (its different parameters and options)
-## https://www.quantmod.com/examples/charting/
+## https://www.quantmod.com/examples/charting/ (done)
 ## https://shiny.rstudio.com/tutorial/written-tutorial/lesson6/
 ## https://rpubs.com/Felix/6653
 
@@ -26,6 +26,7 @@ library(XML)
 ## https://stackoverflow.com/questions/42270664/r-shiny-quantmod-zoomchart-and-fixed-coloring-of-points
 ## https://stackoverflow.com/questions/53150221/quanstrat-with-shiny
 ## https://groups.google.com/forum/#!topic/shiny-discuss/vR7Jx8OfwSg
+## https://github.com/timelyportfolio/shiny-websockets/blob/master/shiny-chartseries.r
 
 # add indicators
 ## https://www.quantmod.com/examples/charting/
@@ -239,6 +240,8 @@ shinyServer(function(input, output, session) {
           "addADX" = print(addADX()),
           "addATR" = print(addATR()),
           "addBBands" = print(addBBands()),
+          "addBBands2" = print(addBBands(draw = "width")),
+          "addBBands3" = print(addBBands(draw = "percent")),
           "addCCI" = print(addCCI()),
           "addCMF" = print(addCMF()),
           "addCMO" = print(addCMO()),
