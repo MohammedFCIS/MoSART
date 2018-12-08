@@ -86,42 +86,53 @@ shinyUI(
     tabPanel(
       title = "Stock Prices Analysis",
       value = "stockPrices",
-      sidebarLayout(
-        sidebarPanel(
-          radioButtons(
-            "pricesSource",
-            label = h3("Select Price Source"),
-            choices = prices_choices
-          ),
-          hr(),
-          h3("Chart Setup"),
-          radioButtons(
-            "pricesChartType",
-            label = h5("Chart Type"),
-            choices = prices_chart_types
-          ),
-          br(),
-          radioButtons(
-            "pricesChartTheme",
-            label = h5("Chart Theme"),
-            choices = prices_chart_themes
-          ),
-          checkboxInput("priceChartGrid",
-                        "Show Grid",
-                        value = TRUE),
-          checkboxInput("priceLogScale",
-                        "Log Scale",
-                        value = FALSE),
-          selectInput("indicators", "Indicators", 
-                         indicators , multiple = TRUE),
-          dateRangeInput(inputId = "daterange", label = "Date range",
-                         start = Sys.Date() - 365, end = Sys.Date())
+      tabsetPanel(
+        type = "tabs",
+        tabPanel(
+          "Indicators & Signals",
+          "indi_sig",
+          sidebarLayout(
+            sidebarPanel(
+              radioButtons(
+                "pricesSource",
+                label = h3("Select Price Source"),
+                choices = prices_choices
+              ),
+              hr(),
+              h3("Chart Setup"),
+              radioButtons(
+                "pricesChartType",
+                label = h5("Chart Type"),
+                choices = prices_chart_types
+              ),
+              br(),
+              radioButtons(
+                "pricesChartTheme",
+                label = h5("Chart Theme"),
+                choices = prices_chart_themes
+              ),
+              checkboxInput("priceChartGrid",
+                            "Show Grid",
+                            value = TRUE),
+              checkboxInput("priceLogScale",
+                            "Log Scale",
+                            value = FALSE),
+              selectInput("indicators", "Indicators", 
+                          indicators , multiple = TRUE),
+              dateRangeInput(inputId = "daterange", label = "Date range",
+                             start = Sys.Date() - 365, end = Sys.Date())
+            ),
+            # returned stocks
+            mainPanel(
+              dataTableOutput("stock_prices"),
+              br(),
+              plotOutput("prices_plot")
+            )
+          )
         ),
-        # returned stocks
-        mainPanel(
-          dataTableOutput("stock_prices"),
-          br(),
-          plotOutput("prices_plot")
+        tabPanel(
+          "Periodic Returns",
+          "perdioic_returns"
         )
       )
     ),
