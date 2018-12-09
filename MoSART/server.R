@@ -7,6 +7,7 @@
 #    http://shiny.rstudio.com/
 #
 library("XLConnect")
+library(tidyverse)
 library(shiny)
 library(tidyquant)
 library(alphavantager)
@@ -265,11 +266,42 @@ shinyServer(function(input, output, session) {
         )
       }
     })
+  return_df <- reactive({
+    switch (input$return_features,
+      "high" = get_returns(stock.symbol = selected_stock(),
+                           from_to = paste(input$daterange_return, collapse = "::"),
+                           type = input$return_function,
+                           period = input$return_period,
+                           select = c("high")),
+      "open" = get_returns(stock.symbol = selected_stock(),
+                           from_to = paste(input$daterange_return, collapse = "::"),
+                           type = input$return_function,
+                           period = input$return_period,
+                           select = c("open")),
+      "low" = get_returns(stock.symbol = selected_stock(),
+                           from_to = paste(input$daterange_return, collapse = "::"),
+                           type = input$return_function,
+                           period = input$return_period,
+                           select = c("low")),
+      "close" = get_returns(stock.symbol = selected_stock(),
+                           from_to = paste(input$daterange_return, collapse = "::"),
+                           type = input$return_function,
+                           period = input$return_period,
+                           select = c("close")),
+      "adjusted" = get_returns(stock.symbol = selected_stock(),
+                           from_to = paste(input$daterange_return, collapse = "::"),
+                           type = input$return_function,
+                           period = input$return_period,
+                           select = c("adjusted")),
+      "volume" = get_returns(stock.symbol = selected_stock(),
+                           from_to = paste(input$daterange_return, collapse = "::"),
+                           type = input$return_function,
+                           period = input$return_period,
+                           select = c("volume"))
+    )
+  })
   output$return_plot <- renderPlot({
-    get_returns(stock.symbol = selected_stock(),
-                from_to = paste(input$daterange_return, collapse = "::"),
-                type = input$return_function,
-                period = input$return_period) %>% 
+    return_df() %>% 
       ggplot(aes(x = date_trans, y = returns)) +
       geom_hline(yintercept = 0, color = palette_light()[[1]]) +
       geom_point(size = 2, color = palette_light()[[3]]) +
@@ -565,7 +597,7 @@ getFin <- function(stock) {
 }
 
 get_returns <- function(stock.symbol,
-                        from_to = paste(Sys.Date() - 365,
+                        from_to = paste(Sys.Date() - 3650,
                                         Sys.Date(), sep = "::"),
                         select     = "adjusted",
                         mutate_fun = "periodReturn",

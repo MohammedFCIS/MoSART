@@ -67,7 +67,8 @@ return_features <- c(
   "Close" = "close",
   "High" = "high",
   "Low" = "low",
-  "Adjusted" = "adjusted"
+  "Adjusted" = "adjusted",
+  "Volume" = "volume"
 )
 return_options <- c("Log" = "log",
                     "Arithmetic" = "arithmetic")
@@ -160,7 +161,7 @@ shinyUI(
               dateRangeInput(
                 inputId = "daterange_return",
                 label = "Date range",
-                start = Sys.Date() - 365,
+                start = Sys.Date() - 3650,
                 end = Sys.Date()
               ),
               selectInput("return_features", "Apply return to",
