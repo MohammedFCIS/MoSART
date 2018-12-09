@@ -225,18 +225,21 @@ shinyServer(function(input, output, session) {
   
   output$prices_plot <-
     renderPlot({
-      print(chartSeries(
-        stock_pricess_df(),
-        type = input$pricesChartType,
-        theme = chartTheme(input$pricesChartTheme),
-        name = paste(selected_stock(), "chart"),
-        show.grid = input$priceChartGrid,
-        log.scale = input$priceLogScale,
-        TA = NULL,
-        subset    = paste(input$daterange, collapse = "::")
-      ))
-      for(ind in input$indicators) {
-        switch (ind,
+      print(
+        chartSeries(
+          stock_pricess_df(),
+          type = input$pricesChartType,
+          theme = chartTheme(input$pricesChartTheme),
+          name = paste(selected_stock(), "chart"),
+          show.grid = input$priceChartGrid,
+          log.scale = input$priceLogScale,
+          TA = NULL,
+          subset    = paste(input$daterange, collapse = "::")
+        )
+      )
+      for (ind in input$indicators) {
+        switch (
+          ind,
           "addVo" = print(addVo()),
           "addADX" = print(addADX()),
           "addATR" = print(addATR()),
@@ -267,48 +270,74 @@ shinyServer(function(input, output, session) {
       }
     })
   return_df <- reactive({
-    switch (input$return_features,
-      "high" = get_returns(stock.symbol = selected_stock(),
-                           from_to = paste(input$daterange_return, collapse = "::"),
-                           type = input$return_function,
-                           period = input$return_period,
-                           select = c("high")),
-      "open" = get_returns(stock.symbol = selected_stock(),
-                           from_to = paste(input$daterange_return, collapse = "::"),
-                           type = input$return_function,
-                           period = input$return_period,
-                           select = c("open")),
-      "low" = get_returns(stock.symbol = selected_stock(),
-                           from_to = paste(input$daterange_return, collapse = "::"),
-                           type = input$return_function,
-                           period = input$return_period,
-                           select = c("low")),
-      "close" = get_returns(stock.symbol = selected_stock(),
-                           from_to = paste(input$daterange_return, collapse = "::"),
-                           type = input$return_function,
-                           period = input$return_period,
-                           select = c("close")),
-      "adjusted" = get_returns(stock.symbol = selected_stock(),
-                           from_to = paste(input$daterange_return, collapse = "::"),
-                           type = input$return_function,
-                           period = input$return_period,
-                           select = c("adjusted")),
-      "volume" = get_returns(stock.symbol = selected_stock(),
-                           from_to = paste(input$daterange_return, collapse = "::"),
-                           type = input$return_function,
-                           period = input$return_period,
-                           select = c("volume"))
+    switch (
+      input$return_features,
+      "high" = get_returns(
+        stock.symbol = selected_stock(),
+        from_to = paste(input$daterange_return, collapse = "::"),
+        type = input$return_function,
+        period = input$return_period,
+        select = c("high")
+      ),
+      "open" = get_returns(
+        stock.symbol = selected_stock(),
+        from_to = paste(input$daterange_return, collapse = "::"),
+        type = input$return_function,
+        period = input$return_period,
+        select = c("open")
+      ),
+      "low" = get_returns(
+        stock.symbol = selected_stock(),
+        from_to = paste(input$daterange_return, collapse = "::"),
+        type = input$return_function,
+        period = input$return_period,
+        select = c("low")
+      ),
+      "close" = get_returns(
+        stock.symbol = selected_stock(),
+        from_to = paste(input$daterange_return, collapse = "::"),
+        type = input$return_function,
+        period = input$return_period,
+        select = c("close")
+      ),
+      "adjusted" = get_returns(
+        stock.symbol = selected_stock(),
+        from_to = paste(input$daterange_return, collapse = "::"),
+        type = input$return_function,
+        period = input$return_period,
+        select = c("adjusted")
+      ),
+      "volume" = get_returns(
+        stock.symbol = selected_stock(),
+        from_to = paste(input$daterange_return, collapse = "::"),
+        type = input$return_function,
+        period = input$return_period,
+        select = c("volume")
+      )
     )
   })
   output$return_plot <- renderPlot({
-    return_df() %>% 
+    return_df() %>%
       ggplot(aes(x = date_trans, y = returns)) +
       geom_hline(yintercept = 0, color = palette_light()[[1]]) +
       geom_point(size = 2, color = palette_light()[[3]]) +
       geom_line(size = 1, color = palette_light()[[3]]) +
       geom_smooth(method = "lm") +
-      labs(title = paste(selected_stock(), "Visualizing Trends in Annual Returns", sep = ":"),
-           x = "", y = "Annual Returns", color = "") +
+      labs(
+        title = paste(
+          selected_stock(),
+          paste(
+            "Visualizing Trends in",
+            firstup(input$return_period),
+            "Returns"
+          ),
+          sep = ":"
+        ),
+        x = "",
+        y = paste(firstup(input$return_period),
+                  "Returns"),
+        color = ""
+      ) +
       theme_tq()
   })
   #   renderPlot({
@@ -605,18 +634,26 @@ get_returns <- function(stock.symbol,
                         period     = "yearly") {
   stock.symbol %>%
     tq_get(get  = "stock.prices") %>%
-    tq_transmute(select     = select, 
-                 mutate_fun = periodReturn, 
-                 type       = type, 
-                 period     = period,
-                 subset     = from_to,
-                 col_rename = "returns",
-                 leading = TRUE) %>% 
-    mutate(date_trans = switch (period,
+    tq_transmute(
+      select     = select,
+      mutate_fun = periodReturn,
+      type       = type,
+      period     = period,
+      subset     = from_to,
+      col_rename = "returns",
+      leading = TRUE
+    ) %>%
+    mutate(date_trans = switch (
+      period,
       "yearly" = year(date),
       "quarterly" = quarter(date),
       "monthly" = month(date),
       "weekly" = week(date),
       "daily" = day(date)
     ))
+}
+
+firstup <- function(x) {
+  substr(x, 1, 1) <- toupper(substr(x, 1, 1))
+  x
 }
