@@ -177,6 +177,20 @@ shinyUI(
             ),
             mainPanel(plotOutput("return_plot"))
           )
+        ),
+        tabPanel(
+          title = "Simulation",
+          value = "simulation",
+          sidebarLayout(
+            sidebarPanel(
+              numericInput("days_num","Number of Stock Price Simulations", value = 252),
+              numericInput("sim_num", "Number of Monte Carlo Simulations", value = 250)
+            ),
+            mainPanel(
+              plotOutput("daily_return_plot"),
+              plotOutput("simulation_plot")
+            )
+          )
         )
       )
     ),

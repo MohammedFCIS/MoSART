@@ -316,6 +316,7 @@ shinyServer(function(input, output, session) {
       )
     )
   })
+  
   output$return_plot <- renderPlot({
     return_df() %>%
       ggplot(aes(x = date_trans, y = returns)) +
@@ -339,6 +340,19 @@ shinyServer(function(input, output, session) {
         color = ""
       ) +
       theme_tq()
+  })
+  
+  output$daily_return_plot <- renderPlot({
+    stock <- selected_stock() %>%
+      tq_get(get  = "stock.prices")
+    
+    xts(stock[-1], order.by = stock$date) %>%
+      Ad() %>%
+      dailyReturn(type = "log") %>%
+      ggplot(aes(x = daily.returns)) +
+      geom_histogram(bins = 100) +
+      geom_density() +
+      geom_rug(alpha = 0.5)
   })
   #   renderPlot({
   #   plot(
@@ -656,4 +670,11 @@ get_returns <- function(stock.symbol,
 firstup <- function(x) {
   substr(x, 1, 1) <- toupper(substr(x, 1, 1))
   x
+}
+
+get_stock_prices <- function(symbole) {
+  stock <- symbole %>%
+    tq_get(get  = "stock.prices")
+  
+  xts(stock[-1], order.by = stock$date)
 }
