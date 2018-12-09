@@ -342,17 +342,90 @@ shinyServer(function(input, output, session) {
       theme_tq()
   })
   
-  output$daily_return_plot <- renderPlot({
+  daily_xts <- reactive({
     stock <- selected_stock() %>%
       tq_get(get  = "stock.prices")
     
-    xts(stock[-1], order.by = stock$date) %>%
+    xts(stock[-1], order.by = stock$date)
+  })
+  
+  output$daily_return_plot <- renderPlot({
+    daily_xts() %>%
       Ad() %>%
       dailyReturn(type = "log") %>%
       ggplot(aes(x = daily.returns)) +
       geom_histogram(bins = 100) +
       geom_density() +
       geom_rug(alpha = 0.5)
+  })
+  
+  output$simulation_plot <- renderPlot({
+    daily_log <- daily_xts() %>%
+      dailyReturn(type = "log")
+    mu <- mean(daily_log, na.rm = TRUE)
+    sigma <- sd(daily_log, na.rm = TRUE)
+    N <- input$days_num
+    M <- input$sim_num
+    
+    day <- 1:N
+    price_init <- daily_xts()$adjusted[[nrow(daily_xts()$adjusted)]]
+    # Simulate prices
+    set.seed(123)
+    monte_carlo_mat <- matrix(nrow = N, ncol = M)
+    for (j in 1:M) {
+      monte_carlo_mat[[1, j]] <- price_init
+      for (i in 2:N) {
+        monte_carlo_mat[[i, j]] <-
+          monte_carlo_mat[[i - 1, j]] * exp(rnorm(1, mu, sigma))
+      }
+    }
+    # Format and organize data frame
+    price_sim <- cbind(day, monte_carlo_mat) %>%
+      as_tibble()
+    nm <- str_c("Sim.", seq(1, M))
+    nm <- c("Day", nm)
+    names(price_sim) <- nm
+    price_sim <- price_sim %>%
+      gather(key = "Simulation", value = "Stock.Price",-(Day))
+    
+    end_stock_prices <- price_sim %>%
+      filter(Day == max(Day))
+    probs <- c(.005, .025, .25, .5, .75, .975, .995)
+    dist_end_stock_prices <-
+      quantile(end_stock_prices$Stock.Price, probs = probs)
+    dist_end_stock_prices %>% round(2)
+    # Visualize simulation
+    price_sim %>%
+      ggplot(aes(x = Day, y = Stock.Price, Group = Simulation)) +
+      geom_line(alpha = 0.1) +
+      ggtitle(
+        str_c(
+          selected_stock(),
+          "::",
+          M,
+          " Monte Carlo Simulations for Prices Over ",
+          N,
+          " Trading Days"
+        )
+      ) +
+      labs(
+        subtitle = paste(
+          "The 95% confidence interval is between ",
+          "$",
+          round(dist_end_stock_prices[2], 2),
+          " and $",
+          round(dist_end_stock_prices[6], 2),
+          " with a median (“most likely”) estimated",
+          " price of $",
+          round(dist_end_stock_prices[5], 2),
+          sep = ""
+        )
+      ) +
+      theme(
+        plot.title = element_text(hjust = 0, size = 18),
+        plot.subtitle = element_text(hjust = 0, size = 16)
+      )
+    
   })
   #   renderPlot({
   #   plot(
@@ -585,10 +658,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       IS <- p[[1]]
-      colnames(IS) <- paste(IS[1, ])
-      IS <- IS[-c(1, 5, 12, 20, 25), ]
+      colnames(IS) <- paste(IS[1,])
+      IS <- IS[-c(1, 5, 12, 20, 25),]
       names_row <- paste(IS[, 1])
-      IS <- IS[, -1]
+      IS <- IS[,-1]
       IS <- apply(IS, 2, function(x) {
         gsub(",", "", x)
       })
@@ -603,10 +676,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       BS <- p[[1]]
-      colnames(BS) <- BS[1, ]
-      BS <- BS[-c(1, 2, 17, 28), ]
+      colnames(BS) <- BS[1,]
+      BS <- BS[-c(1, 2, 17, 28),]
       names_row <- BS[, 1]
-      BS <- BS[, -1]
+      BS <- BS[,-1]
       BS <- apply(BS, 2, function(x) {
         gsub(",", "", x)
       })
@@ -620,10 +693,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       CF <- p[[1]]
-      colnames(CF) <- CF[1, ]
-      CF <- CF[-c(1, 3, 11, 16), ]
+      colnames(CF) <- CF[1,]
+      CF <- CF[-c(1, 3, 11, 16),]
       names_row <- CF[, 1]
-      CF <- CF[, -1]
+      CF <- CF[,-1]
       CF <- apply(CF, 2, function(x) {
         gsub(",", "", x)
       })

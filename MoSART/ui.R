@@ -183,7 +183,7 @@ shinyUI(
           value = "simulation",
           sidebarLayout(
             sidebarPanel(
-              numericInput("days_num","Number of Stock Price Simulations", value = 252),
+              numericInput("days_num", "Number of Stock Price Simulations", value = 252),
               numericInput("sim_num", "Number of Monte Carlo Simulations", value = 250)
             ),
             mainPanel(
