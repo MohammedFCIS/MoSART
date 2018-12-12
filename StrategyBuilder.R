@@ -129,3 +129,39 @@ add.signal(strategy.st, name = "sigThreshold",
            # Label it longthreshold
            label = "longthreshold")
 # add rest of signals the same way
+
+##############################################################
+# rules 
+##############################################################
+# Fill in the rule's type as exit
+add.rule(strategy.st, name = "ruleSignal", 
+         arguments = list(sigcol = "filterexit", sigval = TRUE, orderqty = "all", 
+                          ordertype = "market", orderside = "long", 
+                          replace = FALSE, prefer = "Open"), 
+         type = "exit")
+# Create an entry rule of 1 share when all conditions line up to enter into a position
+add.rule(strategy.st, name = "ruleSignal", 
+         
+         # Use the longentry column as the sigcol
+         arguments=list(sigcol = "longentry", 
+                        
+                        # Set sigval to TRUE
+                        sigval = TRUE, 
+                        
+                        # Set orderqty to 1
+                        orderqty = 1,
+                        
+                        # Use a market type of order
+                        ordertype = "market",
+                        
+                        # Take the long orderside
+                        orderside = "long",
+                        
+                        # Do not replace other signals
+                        replace = FALSE, 
+                        
+                        # Buy at the next day's opening price
+                        prefer = "Open"),
+         
+         # This is an enter type rule, not an exit
+         type = "enter")
