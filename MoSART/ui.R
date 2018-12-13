@@ -195,16 +195,35 @@ shinyUI(
         tabPanel(
           title = "Strategy Builder",
           value = "strategy_builder",
+          fluidRow(
+            h3("Initialization"),
+            column(
+              width = 3,
+              textInput("strategy_name",
+                        label = "Strategy Name", placeholder = "Strategy Name")
+            ),
+            column(
+              width = 3,
+              numericInput("trade_size", label = "Teade Size", value = 1000)
+            ),
+            column(
+              width = 3,
+              numericInput("initial_equity", label = "Initial Equity", value = 1000)
+            ),
+            column(
+              width = 3,
+              dateRangeInput("trade_preiod", label = "Trade Period", 
+                             start = Sys.Date() - 365, end = Sys.Date())
+            )
+          ),
           fluidRow(column(width = 12,
-                          h2("Initialization"))),
+                          h3(
+                            "Indicators Builder"
+                          ))),
           fluidRow(column(width = 12,
-                          h2("Indicators Builder"))),
+                          h3("Signal Builder"))),
           fluidRow(column(width = 12,
-                          h2("Signal Builder"))),
-          fluidRow(column(width = 12,
-                          h2("Rules Builder"))),
-          fluidRow(column(width = 12,
-                          h2("Reports")))
+                          h3("Signal Builder")))
         )
       )
     ),
