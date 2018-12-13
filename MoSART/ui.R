@@ -191,6 +191,20 @@ shinyUI(
               plotOutput("simulation_plot")
             )
           )
+        ),
+        tabPanel(
+          title = "Strategy Builder",
+          value = "strategy_builder",
+          fluidRow(column(width = 12,
+                          h2("Initialization"))),
+          fluidRow(column(width = 12,
+                          h2("Indicators Builder"))),
+          fluidRow(column(width = 12,
+                          h2("Signal Builder"))),
+          fluidRow(column(width = 12,
+                          h2("Rules Builder"))),
+          fluidRow(column(width = 12,
+                          h2("Reports")))
         )
       )
     ),
