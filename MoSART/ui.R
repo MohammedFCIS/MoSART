@@ -37,6 +37,7 @@ prices_chart_themes <- c("White" = "white",
                          "Black" = "black")
 indicators <- c(
   "Volume" = "addVo",
+  "Moving Average" = "addSMA",
   "Welles Wilder's Directional Movement Indicator" = "addADX",
   "Average True Range" = "addATR",
   "Bollinger Bands" = "addBBands",
@@ -220,7 +221,7 @@ shinyUI(
             h3("Indicators Builder"),
             column(width = 3,
                    wellPanel(selectInput("strat_indicators", "Indicators",
-                               c('Select Indicator'='',indicators)),
+                               c('Select Indicator'='',indicators[-1])),
                              actionButton("add_indic", "Add"))),
             column(width = 9,
                    tags$div(id ="indicators_placeholder"))),

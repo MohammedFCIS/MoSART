@@ -391,7 +391,7 @@ shinyServer(function(input, output, session) {
     nm <- c("Day", nm)
     names(price_sim) <- nm
     price_sim <- price_sim %>%
-      gather(key = "Simulation", value = "Stock.Price", -(Day))
+      gather(key = "Simulation", value = "Stock.Price",-(Day))
     
     end_stock_prices <- price_sim %>%
       filter(Day == max(Day))
@@ -648,25 +648,40 @@ shinyServer(function(input, output, session) {
     req(input$strat_indicators)
     btn <- input$add_indic
     id <- paste0('ind', btn)
-    insertUI(selector = '#indicators_placeholder',
-             ui = tags$div(
-               id = paste0("ind_div", id),
-               textInput(
-                 inputId = paste0('ind_name_', id),
-                 label = "",
-                 placeholder = "Indicator Name"
-               ),
-               actionButton(
-                 paste0("ind_remove_btn_", id),
-                 label = 'Remove',
-                 class = "btn-danger"
-               )
-             ))
-    inserted_indicators <<- c(id, inserted_indicators)
-    observeEvent(input[[paste0("ind_remove_btn_", id)]],{
-      shiny::removeUI(
-        selector = paste0("#ind_div",id)
+    insertUI(
+      selector = '#indicators_placeholder',
+      ui = tags$div(
+        id = paste0("ind_div", id),
+        fluidRow(
+          column(
+            width = 4,
+            textInput(
+              inputId = paste0(input$strat_indicators, "_", id),
+              label = "Indicator Name",
+              placeholder = "Indicator Name"
+            )
+          ),
+          column(
+            width = 4,
+            numericInput(paste0("n_", id),
+                         label = "Calculations Period",
+                         value = 14)
+          ),
+          column(
+            width = 4,
+            br(),
+            actionButton(
+              paste0("ind_remove_btn_", id),
+              label = 'Remove',
+              class = "btn-danger"
+            )
+          )
+        )
       )
+    )
+    inserted_indicators <<- c(id, inserted_indicators)
+    observeEvent(input[[paste0("ind_remove_btn_", id)]], {
+      shiny::removeUI(selector = paste0("#ind_div", id))
     })
   })
   
@@ -691,10 +706,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       IS <- p[[1]]
-      colnames(IS) <- paste(IS[1, ])
-      IS <- IS[-c(1, 5, 12, 20, 25), ]
+      colnames(IS) <- paste(IS[1,])
+      IS <- IS[-c(1, 5, 12, 20, 25),]
       names_row <- paste(IS[, 1])
-      IS <- IS[, -1]
+      IS <- IS[,-1]
       IS <- apply(IS, 2, function(x) {
         gsub(",", "", x)
       })
@@ -709,10 +724,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       BS <- p[[1]]
-      colnames(BS) <- BS[1, ]
-      BS <- BS[-c(1, 2, 17, 28), ]
+      colnames(BS) <- BS[1,]
+      BS <- BS[-c(1, 2, 17, 28),]
       names_row <- BS[, 1]
-      BS <- BS[, -1]
+      BS <- BS[,-1]
       BS <- apply(BS, 2, function(x) {
         gsub(",", "", x)
       })
@@ -726,10 +741,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       CF <- p[[1]]
-      colnames(CF) <- CF[1, ]
-      CF <- CF[-c(1, 3, 11, 16), ]
+      colnames(CF) <- CF[1,]
+      CF <- CF[-c(1, 3, 11, 16),]
       names_row <- CF[, 1]
-      CF <- CF[, -1]
+      CF <- CF[,-1]
       CF <- apply(CF, 2, function(x) {
         gsub(",", "", x)
       })
