@@ -648,6 +648,7 @@ shinyServer(function(input, output, session) {
     req(input$strat_indicators)
     btn <- input$add_indic
     id <- paste0('ind', btn)
+    indic_id <- paste0(input$strat_indicators, "_", id)
     insertUI(
       selector = '#indicators_placeholder',
       ui = tags$div(
@@ -656,7 +657,7 @@ shinyServer(function(input, output, session) {
           column(
             width = 4,
             textInput(
-              inputId = paste0(input$strat_indicators, "_", id),
+              inputId = indic_id,
               label = "Indicator Name",
               placeholder = "Indicator Name"
             )
@@ -679,10 +680,10 @@ shinyServer(function(input, output, session) {
         )
       )
     )
-    inserted_indicators <<- c(id, inserted_indicators)
+    inserted_indicators <<- c(indic_id, inserted_indicators)
     observeEvent(input[[paste0("ind_remove_btn_", id)]], {
       shiny::removeUI(selector = paste0("#ind_div", id))
-      inserted_indicators <<- inserted_indicators[!inserted_indicators %in% c(id)]
+      inserted_indicators <<- inserted_indicators[!inserted_indicators %in% c(indic_id)]
     })
   })
   
