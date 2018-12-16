@@ -682,6 +682,7 @@ shinyServer(function(input, output, session) {
     inserted_indicators <<- c(id, inserted_indicators)
     observeEvent(input[[paste0("ind_remove_btn_", id)]], {
       shiny::removeUI(selector = paste0("#ind_div", id))
+      inserted_indicators <<- inserted_indicators[!inserted_indicators %in% c(id)]
     })
   })
   
