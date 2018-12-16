@@ -65,6 +65,8 @@ exchange_headers <-
     "IPO",
     "Sector",
     "Industry")
+## keep track of inserted indicators and not yet removed
+inserted_indicators <- c()
 
 shinyServer(function(input, output, session) {
   stock_choices <- reactive({
@@ -77,11 +79,14 @@ shinyServer(function(input, output, session) {
     if (is.null(input$stockType)) {
       return()
     }
-    switch(
-      input$stockType,
-      "index" = tq_index(input$stock),
-      "exchange" = tq_exchange("AMEX")
-    )
+    switch(input$stockType,
+           "index" = tq_index(input$stock),
+           "exchange" = {
+             print(input$stock)
+             ex <- tq_exchange(input$stock)
+             print(ex)
+             return(ex)
+           })
   })
   
   # return the correct table headers based on stock type
@@ -102,7 +107,7 @@ shinyServer(function(input, output, session) {
     if (is.null(input$stock))
       return()
     current_stocks <- stocks_df ()
-    current_stocks$sector <- as.factor(current_stocks$sector)
+    # current_stocks$sector <- as.factor(current_stocks$sector)
     if ("industry" %in% colnames(current_stocks)) {
       current_stocks$industry <- as.factor(current_stocks$industry)
     }
@@ -386,7 +391,7 @@ shinyServer(function(input, output, session) {
     nm <- c("Day", nm)
     names(price_sim) <- nm
     price_sim <- price_sim %>%
-      gather(key = "Simulation", value = "Stock.Price",-(Day))
+      gather(key = "Simulation", value = "Stock.Price", -(Day))
     
     end_stock_prices <- price_sim %>%
       filter(Day == max(Day))
@@ -639,7 +644,35 @@ shinyServer(function(input, output, session) {
     DT::datatable(data = stock_finance_statements()$CF, caption = "CF")
   })
   
+  observeEvent(input$add_indic, {
+    req(input$strat_indicators)
+    btn <- input$add_indic
+    id <- paste0('ind', btn)
+    insertUI(selector = '#indicators_placeholder',
+             ui = tags$div(
+               id = paste0("ind_div", id),
+               textInput(
+                 inputId = paste0('ind_name_', id),
+                 label = "",
+                 placeholder = "Indicator Name"
+               ),
+               actionButton(
+                 paste0("ind_remove_btn_", id),
+                 label = 'Remove',
+                 class = "btn-danger"
+               )
+             ))
+    inserted_indicators <<- c(id, inserted_indicators)
+    observeEvent(input[[paste0("ind_remove_btn_", id)]],{
+      shiny::removeUI(
+        selector = paste0("#ind_div",id)
+      )
+    })
+  })
+  
+  
 })
+
 
 getFin <- function(stock) {
   if ("rvest" %in% installed.packages()) {
@@ -658,10 +691,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       IS <- p[[1]]
-      colnames(IS) <- paste(IS[1,])
-      IS <- IS[-c(1, 5, 12, 20, 25),]
+      colnames(IS) <- paste(IS[1, ])
+      IS <- IS[-c(1, 5, 12, 20, 25), ]
       names_row <- paste(IS[, 1])
-      IS <- IS[,-1]
+      IS <- IS[, -1]
       IS <- apply(IS, 2, function(x) {
         gsub(",", "", x)
       })
@@ -676,10 +709,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       BS <- p[[1]]
-      colnames(BS) <- BS[1,]
-      BS <- BS[-c(1, 2, 17, 28),]
+      colnames(BS) <- BS[1, ]
+      BS <- BS[-c(1, 2, 17, 28), ]
       names_row <- BS[, 1]
-      BS <- BS[,-1]
+      BS <- BS[, -1]
       BS <- apply(BS, 2, function(x) {
         gsub(",", "", x)
       })
@@ -693,10 +726,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       CF <- p[[1]]
-      colnames(CF) <- CF[1,]
-      CF <- CF[-c(1, 3, 11, 16),]
+      colnames(CF) <- CF[1, ]
+      CF <- CF[-c(1, 3, 11, 16), ]
       names_row <- CF[, 1]
-      CF <- CF[,-1]
+      CF <- CF[, -1]
       CF <- apply(CF, 2, function(x) {
         gsub(",", "", x)
       })

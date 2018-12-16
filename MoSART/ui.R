@@ -216,10 +216,14 @@ shinyUI(
                              start = Sys.Date() - 365, end = Sys.Date())
             )
           ),
-          fluidRow(column(width = 12,
-                          h3(
-                            "Indicators Builder"
-                          ))),
+          fluidRow(
+            h3("Indicators Builder"),
+            column(width = 3,
+                   wellPanel(selectInput("strat_indicators", "Indicators",
+                               c('Select Indicator'='',indicators)),
+                             actionButton("add_indic", "Add"))),
+            column(width = 9,
+                   tags$div(id ="indicators_placeholder"))),
           fluidRow(column(width = 12,
                           h3("Signal Builder"))),
           fluidRow(column(width = 12,
