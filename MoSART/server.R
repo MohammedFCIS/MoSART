@@ -684,6 +684,21 @@ shinyServer(function(input, output, session) {
     observeEvent(input[[paste0("ind_remove_btn_", id)]], {
       shiny::removeUI(selector = paste0("#ind_div", id))
       inserted_indicators <<- inserted_indicators[!inserted_indicators %in% c(indic_id)]
+      indicators_names <- c()
+      for(ind in inserted_indicators){
+        indicators_names <- c(input[[ind]], indicators_names)
+      }
+      updateSelectInput(session, inputId = "first_indic", choices = indicators_names)
+      updateSelectInput(session, inputId = "second_indic", choices = indicators_names)
+    })
+    
+    observeEvent(input[[indic_id]], {
+      indicators_names <- c()
+      for(ind in inserted_indicators){
+        indicators_names <- c(input[[ind]], indicators_names)
+      }
+      updateSelectInput(session, inputId = "first_indic", choices = indicators_names)
+      updateSelectInput(session, inputId = "second_indic", choices = indicators_names)
     })
   })
   

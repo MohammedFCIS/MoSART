@@ -80,6 +80,9 @@ return_period_options <- c(
   "Weekly" = "weekly",
   "Daily" = "daily"
 )
+signals <- c("Comparison" = "sigComparison",
+             "Crossover" = "sigCrossover")
+relations <- c("Less than" = "lt", "Greater Than" = "gt")
 
 shinyUI(
   navbarPage(
@@ -225,8 +228,27 @@ shinyUI(
                              actionButton("add_indic", "Add"))),
             column(width = 9,
                    tags$div(id ="indicators_placeholder"))),
-          fluidRow(column(width = 12,
-                          h3("Signal Builder"))),
+          fluidRow(h3("Signal Builder"),
+                   column(width = 3,
+                          textInput("sig_name",
+                                    "Name",
+                                    placeholder = "Signal Name")),
+                   column(width = 3, 
+                          selectInput("sig_type",
+                                      label = "Type",
+                                      choices = signals)),
+                   column(width = 3,
+                          selectInput("first_indic",
+                                      label = "First Indicator",
+                                      choices = c("Select Indicator"))),
+                   column(width = 3,
+                          selectInput("indic_compare",
+                                      label = "Relation",
+                                      choices = relations))),
+          fluidRow(column(width = 3,
+                          selectInput("second_indic",
+                                      label = "Second Indicator",
+                                      choices = c("Select Indicator")))),
           fluidRow(column(width = 12,
                           h3("Signal Builder")))
         )
