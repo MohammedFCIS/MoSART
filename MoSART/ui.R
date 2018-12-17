@@ -220,6 +220,7 @@ shinyUI(
                              start = Sys.Date() - 365, end = Sys.Date())
             )
           ),
+          hr(),
           fluidRow(
             h3("Indicators Builder"),
             column(width = 3,
@@ -228,6 +229,7 @@ shinyUI(
                              actionButton("add_indic", "Add"))),
             column(width = 9,
                    tags$div(id ="indicators_placeholder"))),
+          hr(),
           fluidRow(h3("Signal Builder"),
                    column(width = 3,
                           textInput("sig_name",
@@ -249,8 +251,10 @@ shinyUI(
                           selectInput("second_indic",
                                       label = "Second Indicator",
                                       choices = c("Select Indicator")))),
-          fluidRow(column(width = 12,
-                          h3("Signal Builder")))
+          hr(),
+          fluidRow(h3("Signal Builder"),
+                   column(width = 3
+                          ))
         )
       )
     ),
