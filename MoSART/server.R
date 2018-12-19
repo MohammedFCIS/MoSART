@@ -86,6 +86,7 @@ shinyServer(function(input, output, session) {
                return(tq_exchange("AMEX"))
              }
              ex <- tq_exchange(input$stock)
+             glimpse(ex)
              return(ex)
            })
   })
@@ -152,7 +153,8 @@ shinyServer(function(input, output, session) {
   
   selected_stock <-
     reactive(if (!is.null(input$stocks_rows_selected)) {
-      stocks_df()[input$stocks_rows_selected, "symbol"]
+      stocks_df()[["symbol"]][input$stocks_rows_selected]
+      
     })
   
   output$stock_actions <- renderUI({
@@ -196,8 +198,7 @@ shinyServer(function(input, output, session) {
     switch(
       input$pricesSource,
       "yahoo" = {
-        stock_df <- tq_get(selected_stock(), get = "stock.prices")
-        return(xts(stock_df[-1], order.by = stock_df$date))
+        getSymbols(selected_stock(), auto.assign = FALSE)
       },
       "qundl" = {
         stock_df <- tq_get(paste("WIKI", "/", selected_stock(), sep = ""),
@@ -218,6 +219,7 @@ shinyServer(function(input, output, session) {
   
   output$prices_plot <-
     renderPlot({
+      #print(stock_pricess_df())
       print(
         chartSeries(
           stock_pricess_df(),
