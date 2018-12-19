@@ -201,9 +201,8 @@ shinyServer(function(input, output, session) {
         getSymbols(selected_stock(), auto.assign = FALSE)
       },
       "qundl" = {
-        stock_df <- tq_get(paste("WIKI", "/", selected_stock(), sep = ""),
-                           get = "quandl")
-        return(xts(stock_df[-1], order.by = stock_df$date))
+        Quandl(paste("WIKI", "/", selected_stock(), sep = ""),
+                           type="xts")
       },
       "alphavantage" = {
         stock_df <- tq_get(
