@@ -165,3 +165,8 @@ add.rule(strategy.st, name = "ruleSignal",
          
          # This is an enter type rule, not an exit
          type = "enter")
+
+##############################################################
+# Running our strategy
+##############################################################
+out <- applyStrategy(strategy = strategy.st, portfolios = portfolio.st)

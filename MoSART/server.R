@@ -82,9 +82,10 @@ shinyServer(function(input, output, session) {
     switch(input$stockType,
            "index" = tq_index(input$stock),
            "exchange" = {
-             print(input$stock)
+             if (!input$stock %in% tq_exchange_options()) {
+               return(tq_exchange("AMEX"))
+             }
              ex <- tq_exchange(input$stock)
-             print(ex)
              return(ex)
            })
   })
