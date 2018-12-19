@@ -215,19 +215,6 @@ shinyServer(function(input, output, session) {
     )
   })
   
-  output$stock_prices <- DT::renderDataTable({
-    stocks_Dt <- DT::datatable(
-      data = stock_pricess_df(),
-      caption = paste(
-        selected_stock(),
-        "Prices from",
-        min(index(stock_pricess_df())),
-        "to",
-        max(index(stock_pricess_df()))
-      )
-    )
-  })
-  
   output$prices_plot <-
     renderPlot({
       print(
