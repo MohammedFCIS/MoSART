@@ -68,3 +68,22 @@ varImpPlot(rf@fitted.model, type = 1) # Type 2 shows ranking based on decrease i
 
 imp <- importance(rf@fitted.model, type = 1) 
 rownames(imp)[which(imp > 30)] 
+
+# Regression
+Tdata.train <- as.data.frame(modelData(data.model,
+                                       data.window=c('2007-01-03','2017-01-03'))) # convert to data frame
+Tdata.eval <- na.omit(as.data.frame(modelData(data.model, data.window=c('2017-01-04','2018-12-19 ')))) 
+Tform <- as.formula('T.ind.stock ~ .') # the formula to be used in models
+
+# Classification
+buy.thr <- 0.1 
+sell.thr <- -0.1 
+Tdata.trainC <- cbind(Signal=trading.signals(Tdata.train[["T.ind.stock"]], 
+                                             buy.thr,sell.thr), 
+                      Tdata.train[,-1]) 
+Tdata.evalC <- cbind(Signal=trading.signals(Tdata.eval[["T.ind.stock"]], 
+                                            buy.thr,sell.thr), 
+                     Tdata.eval[,-1]) 
+TformC <- as.formula("Signal ~ .")
+
+head(Tdata.train)
