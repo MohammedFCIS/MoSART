@@ -8,6 +8,7 @@ library(e1071)
 library(kernlab)
 library(earth)
 library(randomForest)
+library(PerformanceAnalytics)
 
 stock <- getSymbols("AAPL", auto.assign = FALSE)
 
@@ -293,3 +294,14 @@ t2 <- trading.simulator(market,sig,'policy.2',list(exp.prof=0.05,bet=0.3))
 summary(t2)
 tradingEvaluation(t2)
 plot(t2,market,theme='white',name='SP500')
+
+#----------------------------------------------------
+# Report
+equityWF <- as.xts(t1@trading$Equity)
+rets <- Return.calculate(equityWF)
+chart.CumReturns(rets, main="Cumulative returns of the strategy", ylab="returns")
+yearlyReturn(equityWF)
+plot(100*yearlyReturn(equityWF), 
+           main='Yearly percentage returns of the trading system')
+table.DownsideRisk(rets)
+plot(rets)
