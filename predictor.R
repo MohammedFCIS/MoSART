@@ -288,3 +288,8 @@ t1
 summary(t1)
 tradingEvaluation(t1)
 plot(t1,market,theme='white',name='SP500')
+
+t2 <- trading.simulator(market,sig,'policy.2',list(exp.prof=0.05,bet=0.3))
+summary(t2)
+tradingEvaluation(t2)
+plot(t2,market,theme='white',name='SP500')
