@@ -141,3 +141,11 @@ ks.preds <- predict(ksv, Tdata.trainC[1001:2000, ])
 sigs.PR(ks.preds, Tdata.trainC[1001:2000, 1])
 
 #-----------------------------------------------------
+# Multivariate Adaptive Regression Splines
+## Regression Task
+e <- earth(Tform, Tdata.train[1:1000, ]) 
+e.preds <- predict(e, Tdata.train[1001:2000, ]) 
+sigs.e <- trading.signals(e.preds, 0.1, -0.1) 
+true.sigs <- trading.signals(Tdata.train[1001:2000, "T.ind.stock"], 0.1, -0.1) 
+sigs.PR(sigs.e, true.sigs)
+plot(e)
