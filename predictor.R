@@ -125,6 +125,7 @@ nn <- nnet(Signal ~ ., norm.data[1:1000, ], size = 10, decay = 0.01,
 preds <- predict(nn, norm.data[1001:2000, ], type = "class") 
 sigs.PR(preds, norm.data[1001:2000, 1])
 
+#-----------------------------------------------------
 # Support Vector Machines
 ## Regression Task
 set.seed(1234)
@@ -133,3 +134,10 @@ s.preds <- predict(sv, Tdata.train[1001:2000, ])
 sigs.svm <- trading.signals(s.preds, 0.1, -0.1) 
 true.sigs <- trading.signals(Tdata.train[1001:2000, "T.ind.stock"], 0.1, -0.1)
 sigs.PR(sigs.svm, true.sigs)
+
+## Classification Task
+ksv <- ksvm(Signal ~ ., Tdata.trainC[1:1000, ], C = 10) 
+ks.preds <- predict(ksv, Tdata.trainC[1001:2000, ]) 
+sigs.PR(ks.preds, Tdata.trainC[1001:2000, 1])
+
+#-----------------------------------------------------
