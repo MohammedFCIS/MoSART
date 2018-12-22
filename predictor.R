@@ -166,13 +166,13 @@ policy.1 <- function(signals,market,opened.pos,money,
   # First lets check if we can open new positions
   # i) long positions
   if (signals[d] == 'b' && !nOs) {
-    quant <- round(bet*money/market[d,'Close'],0)
+    quant <- round(bet*money/Cl(market)[d],0)
     if (quant > 0) 
       orders <- rbind(orders,
                       data.frame(order=c(1,-1,-1),order.type=c(1,2,3), 
                                  val = c(quant,
-                                         market[d,'Close']*(1+exp.prof),
-                                         market[d,'Close']*(1-max.loss)
+                                         Cl(market)[d]*(1+exp.prof),
+                                         Cl(market)[d]*(1-max.loss)
                                  ),
                                  action = c('open','close','close'),
                                  posID = c(NA,NA,NA)
@@ -184,14 +184,14 @@ policy.1 <- function(signals,market,opened.pos,money,
     # this is the nr of stocks we already need to buy 
     # because of currently opened short positions
     need2buy <- sum(opened.pos[opened.pos[,'pos.type']==-1,
-                               "N.stocks"])*market[d,'Close']
-    quant <- round(bet*(money-need2buy)/market[d,'Close'],0)
+                               "N.stocks"])*Cl(market)[d]
+    quant <- round(bet*(money-need2buy)/Cl(market)[d],0)
     if (quant > 0)
       orders <- rbind(orders,
                       data.frame(order=c(-1,1,1),order.type=c(1,2,3), 
                                  val = c(quant,
-                                         market[d,'Close']*(1-exp.prof),
-                                         market[d,'Close']*(1+max.loss)
+                                         Cl(market)[d]*(1-exp.prof),
+                                         Cl(market)[d]*(1+max.loss)
                                  ),
                                  action = c('open','close','close'),
                                  posID = c(NA,NA,NA)
@@ -230,13 +230,13 @@ policy.2 <- function(signals,market,opened.pos,money,
   # First lets check if we can open new positions
   # i) long positions
   if (signals[d] == 'b') {
-    quant <- round(bet*money/market[d,'Close'],0)
+    quant <- round(bet*money/Cl(market)[d],0)
     if (quant > 0) 
       orders <- rbind(orders,
                       data.frame(order=c(1,-1,-1),order.type=c(1,2,3), 
                                  val = c(quant,
-                                         market[d,'Close']*(1+exp.prof),
-                                         market[d,'Close']*(1-max.loss)
+                                         Cl(market)[d]*(1+exp.prof),
+                                         Cl(market)[d]*(1-max.loss)
                                  ),
                                  action = c('open','close','close'),
                                  posID = c(NA,NA,NA)
@@ -248,14 +248,14 @@ policy.2 <- function(signals,market,opened.pos,money,
     # this is the money already committed to buy stocks
     # because of currently opened short positions
     need2buy <- sum(opened.pos[opened.pos[,'pos.type']==-1,
-                               "N.stocks"])*market[d,'Close']
-    quant <- round(bet*(money-need2buy)/market[d,'Close'],0)
+                               "N.stocks"])*Cl(market)[d]
+    quant <- round(bet*(money-need2buy)/Cl(market)[d],0)
     if (quant > 0)
       orders <- rbind(orders,
                       data.frame(order=c(-1,1,1),order.type=c(1,2,3), 
                                  val = c(quant,
-                                         market[d,'Close']*(1-exp.prof),
-                                         market[d,'Close']*(1+max.loss)
+                                         Cl(market)[d]*(1-exp.prof),
+                                         Cl(market)[d]*(1+max.loss)
                                  ),
                                  action = c('open','close','close'),
                                  posID = c(NA,NA,NA)
@@ -265,3 +265,26 @@ policy.2 <- function(signals,market,opened.pos,money,
   
   orders
 }
+#-------------------------------------------------
+# A Trading Simulator
+start <- 1
+len.tr <- 1000 # first 1000 for training models 
+len.ts <- 500 # next 500 for testing them 
+tr <- start:(start+len.tr-1)
+ts <- (start+len.tr):(start+len.tr+len.ts-1) 
+# The market quotes during this "testing period" 
+# This will be used by the simulator 
+# Note: you need the training data created previously! 
+date <- rownames(Tdata.train[start+len.tr,]) 
+market <- stock[paste(date,'/',sep='')][1:len.ts]
+
+s <- svm(Tform,Tdata.train[tr,],cost=10,gamma=0.01) 
+p <- predict(s,Tdata.train[ts,]) 
+sig <- trading.signals(p,0.1,-0.1) # predictions to signals 
+## now using the simulated trader 
+t1 <- trading.simulator(market,sig, 'policy.1', # the policy function name
+                        list(exp.prof=0.05,bet=0.2,hold.time=30)) 
+t1
+summary(t1)
+tradingEvaluation(t1)
+plot(t1,market,theme='white',name='SP500')
