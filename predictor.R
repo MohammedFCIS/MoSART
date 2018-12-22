@@ -87,3 +87,20 @@ Tdata.evalC <- cbind(Signal=trading.signals(Tdata.eval[["T.ind.stock"]],
 TformC <- as.formula("Signal ~ .")
 
 head(Tdata.train)
+
+exp <- performanceEstimation( 
+  PredTask(Tform, Tdata.train[1:2000,], 'SP500'), 
+  c(Workflow('standardWF', wfID="standSVM", # fixed window
+             learner='svm',learner.pars=list(cost=10,gamma=0.01)), 
+    Workflow('timeseriesWF', wfID="slideSVM", # time series workflow
+             type="slide", relearn.step=90, # sliding window, slide every 90 rows 
+             learner='svm',learner.pars=list(cost=10,gamma=0.01)) 
+  ), 
+  EstimationTask(metrics="theil",  
+                 method=MonteCarlo(nReps=10,szTrain=0.5,szTest=0.25)))
+# the "theil" metric is typically used in time series tasks and the used baseline is
+# the last observed value of the target variable. It is calculated as: 
+# sum( (t_i - p_i)^2 ) / sum( (t_i - t_{i-1})^2 ), where t_{i-1} is
+# the last observed value of the target variable
+summary(exp)
+plot(exp)
