@@ -124,3 +124,12 @@ nn <- nnet(Signal ~ ., norm.data[1:1000, ], size = 10, decay = 0.01,
            maxit = 1000, trace = FALSE)
 preds <- predict(nn, norm.data[1001:2000, ], type = "class") 
 sigs.PR(preds, norm.data[1001:2000, 1])
+
+# Support Vector Machines
+## Regression Task
+set.seed(1234)
+sv <- svm(Tform, Tdata.train[1:1000, ], gamma = 0.001, cost = 100) # default gamma is 1/ncol
+s.preds <- predict(sv, Tdata.train[1001:2000, ])
+sigs.svm <- trading.signals(s.preds, 0.1, -0.1) 
+true.sigs <- trading.signals(Tdata.train[1001:2000, "T.ind.stock"], 0.1, -0.1)
+sigs.PR(sigs.svm, true.sigs)
