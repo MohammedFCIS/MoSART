@@ -104,3 +104,15 @@ exp <- performanceEstimation(
 # the last observed value of the target variable
 summary(exp)
 plot(exp)
+
+# Artificial Neural Networks
+## Regression Task
+set.seed(1234)
+norm.data <- data.frame(T.ind.stock=Tdata.train[[1]],scale(Tdata.train[,-1]))
+nn <- nnet(Tform, norm.data[1:1000, ], size = 5, decay = 0.01, 
+           maxit = 1000, linout = TRUE, trace = FALSE)
+preds <- predict(nn, norm.data[1001:2000, ])
+
+sigs.nn <- trading.signals(preds,0.1,-0.1) 
+true.sigs <- trading.signals(Tdata.train[1001:2000, "T.ind.stock"], 0.1, -0.1) 
+sigs.PR(sigs.nn,true.sigs)
