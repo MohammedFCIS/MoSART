@@ -694,19 +694,43 @@ shinyServer(function(input, output, session) {
   observeEvent(input$predict_btn, {
     req(input$indicators)
     # build formula
-    print("build formula")
-    ## get stock
-    print("get stock") 
-    stock <- selected_stock()
-    print(paste("The stock is:", stock))
+    ## get stock 
     stock <- stock_pricess_df()
     stock_formula <- "Cl(stock) ~ Delt(Cl(stock),k=1:10)"
+    for (ind in input$indicators) {
+      stock_formula <- switch (
+        ind,
+        "addADX" = paste(stock_formula, "myADX(stock)", sep = "+"),
+        "addATR" =  paste(stock_formula, "myATR(stock)", sep = "+"),
+        "addBBands" =  paste(stock_formula, "myBB(stock)", sep = "+"),
+        "addBBands2" =  paste(stock_formula, "myBB(stock)", sep = "+"),
+        "addBBands3" =  paste(stock_formula, "myBB(stock)", sep = "+"),
+        "addCCI" =  paste(stock_formula, "myCCI(stock)", sep = "+"),
+        "addCMF" =  paste(stock_formula, "myCMF(stock)", sep = "+"),
+        "addCMO" =  paste(stock_formula, "myCMO(stock)", sep = "+"),
+        "addDEMA" =  paste(stock_formula, "myDEMA(stock)", sep = "+"),
+        "addDPO" =  paste(stock_formula, "myDPO(stock)", sep = "+"),
+        "addEMA" =  paste(stock_formula, "myEMA(stock)", sep = "+"),
+        "addEVWMA" =  paste(stock_formula, "myEVWMA(stock)", sep = "+"),
+        "addMACD" =  paste(stock_formula, "myMACD(stock)", sep = "+"),
+        "addROC" =  paste(stock_formula, "myROC(stock)", sep = "+"),
+        "addRSI" =  paste(stock_formula, "myRSI(stock)", sep = "+"),
+        "addSAR" =  paste(stock_formula, "mySAR(stock)", sep = "+"),
+        "addSMA" =  paste(stock_formula, "mySMA(stock)", sep = "+"),
+        "addSMI" =  paste(stock_formula, "mySMI(stock)", sep = "+"),
+        "addTRIX" = paste(stock_formula, "myTRIX(stock)", sep = "+"),
+        "addWMA" =  paste(stock_formula, "myWMA(stock)", sep = "+"),
+        "addWPR" =  paste(stock_formula, "myWPR(stock)", sep = "+"),
+        "addZLEMA" =  paste(stock_formula, "myZLEMA(stock)", sep = "+")
+      )}
+    print(stock_formula)
     data.model <- specifyModel(formula = stock_formula)
     Tdata.train <- as.data.frame(modelData(data.model,
                                            data.window=c('2007-01-03','2017-01-03')))
+    
     print(head(Tdata.train))
     Tdata.eval <- na.omit(as.data.frame(modelData(data.model, data.window=c('2017-01-04','2018-12-19')))) 
-    print(head(Tdata.eval))
+    #print(head(Tdata.eval))
   })
   
 })
