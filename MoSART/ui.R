@@ -147,7 +147,9 @@ shinyUI(
                 label = "Date range",
                 start = Sys.Date() - 365,
                 end = Sys.Date()
-              )
+              ),
+              actionButton("predict_btn",
+                           "Predict")
             ),
             # returned stocks
             mainPanel(

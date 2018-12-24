@@ -691,6 +691,23 @@ shinyServer(function(input, output, session) {
     })
   })
   
+  observeEvent(input$predict_btn, {
+    req(input$indicators)
+    # build formula
+    print("build formula")
+    ## get stock
+    print("get stock") 
+    stock <- selected_stock()
+    print(paste("The stock is:", stock))
+    stock <- stock_pricess_df()
+    stock_formula <- "Cl(stock) ~ Delt(Cl(stock),k=1:10)"
+    data.model <- specifyModel(formula = stock_formula)
+    Tdata.train <- as.data.frame(modelData(data.model,
+                                           data.window=c('2007-01-03','2017-01-03')))
+    print(head(Tdata.train))
+    Tdata.eval <- na.omit(as.data.frame(modelData(data.model, data.window=c('2017-01-04','2018-12-19')))) 
+    print(head(Tdata.eval))
+  })
   
 })
 
