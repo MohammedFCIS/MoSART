@@ -695,7 +695,7 @@ shinyServer(function(input, output, session) {
     req(input$indicators)
     # build formula
     ## get stock 
-    stock <- stock_pricess_df()
+    stock <<- stock_pricess_df()
     stock_formula <- "Cl(stock) ~ Delt(Cl(stock),k=1:10)"
     for (ind in input$indicators) {
       stock_formula <- switch (
@@ -725,11 +725,26 @@ shinyServer(function(input, output, session) {
       )}
     print(stock_formula)
     data.model <- specifyModel(formula = stock_formula)
+    set.seed(1234) #Sys.Date() - 3650
     Tdata.train <- as.data.frame(modelData(data.model,
-                                           data.window=c('2007-01-03','2017-01-03')))
+                                           data.window=c(Sys.Date() - 3650, Sys.Date() - 365)))
     
     print(head(Tdata.train))
-    Tdata.eval <- na.omit(as.data.frame(modelData(data.model, data.window=c('2017-01-04','2018-12-19')))) 
+    Tdata.eval <- na.omit(as.data.frame(modelData(data.model,
+                                                  data.window=c(Sys.Date() - 365, Sys.Date()))))
+    # Multivariate Adaptive Regression Splines
+    ## 75% of the sample size
+    # smp_size <- floor(0.75 * nrow(Tdata.train))
+    # train_ind <- sample(seq_len(nrow(Tdata.train)), size = smp_size)
+    # 
+    # e <- earth(stock_formula, Tdata.train[train_ind, ]) 
+    # e.preds <- predict(e, Tdata.train[-train_ind,]) 
+    # 
+    # sigs.e <- trading.signals(e.preds, 0.1, -0.1) 
+    # true.sigs <- trading.signals(Tdata.train[-train_ind,"Cl(stock)"], 0.1, -0.1) 
+    # sigs.PR(sigs.e, true.sigs)
+    # print(e)
+    # plot(e)
     #print(head(Tdata.eval))
   })
   
@@ -848,29 +863,29 @@ get_stock_prices <- function(symbole) {
 }
 
 # Indicator functions
-mySMA <- function(x) SMA(Cl(x))[,'SMA'] # Moving Average 
-myEMA <- function(x) EMA(Cl(x))[,'EMA'] # Exponential Moving Average 
-myDEMA <- function(x) DEMA(Cl(x))[,'DEMA'] # Double Exponential Moving Average 
-myWMA <- function(x) WMA(Cl(x))[,1] # Weigthed Moving Average
-myEVWMA <- function(x) EVWMA(Cl(x), Vo(x))[,1] # Exponential Volume Weigthed Moving Average
-myZLEMA <- function(x) ZLEMA(Cl(x))[,1] # Zero lag exponential Moving Averages
-myMACD <- function(x) MACD(Cl(x))[,2] # Moving Average Convergence Divergence
-myCCI <- function(x) CCI(HLC(x))[,'cci'] # Commodity Channel Index 
-myCMF <- function(x) CMF(HLC(stock), volume = Vo(stock))[,1] # Chaikin Money Flow
-myCMO <- function(x) CMO(Cl(stock))[,'cmo'] # Chaikin Money Oscillator
-myDPO <- function(x) DPO(Cl(x))[,1] # Detrended Price Oscillator 
-myROC <- function(x) ROC(Cl(x))[,1] # Calculate the (rate of) change of a series over n periods. 
-myRSI <- function(x) RSI(Cl(x))[,"rsi"] # Relative Strength Indicator 
-myTRIX <- function(x) TRIX(Cl(x))[,"TRIX"] # Relative Strength Indicator
-myWPR <- function(x) WPR(HLC(x))[,1] # William's %R
-myATR <- function(x) ATR(HLC(x))[,'atr'] # Average True Range, measures volatility of series  
-mySMI <- function(x) SMI(HLC(x))[, "SMI"] #  Stochastic Momentum Index 
-myADX <- function(x) ADX(HLC(x))[,'ADX'] # Welles Wilder's Directional Movement Index 
-myAroon <- function(x) aroon(cbind(Hi(x),Lo(x)))$oscillator # Identify starting trends
-myBB <- function(x) BBands(HLC(x))[, "pctB"] # Bollinger Bands
-myChaikinVol <- function(x) Delt(chaikinVolatility(cbind(Hi(x),Lo(x))))[, 1] # Chaikin Volatility
-myCLV <- function(x) EMA(CLV(HLC(x)))[, 1] # Close Location Value 
-myEMV <- function(x) EMV(cbind(Hi(x),Lo(x)),Vo(x))[,2] # Arms' Ease of Movement Value 
-myMFI <- function(x) MFI(HLC(x), Vo(x)) # Money Flow Index
-mySAR <- function(x) SAR(cbind(Hi(x),Cl(x))) [,1] # Parabolic Stop-and-Reverse
-myVolat <- function(x) volatility(OHLC(x),calc="garman")[,1] # volatility
+mySMA <<- function(x) SMA(Cl(x))[,'SMA'] # Moving Average 
+myEMA <<- function(x) EMA(Cl(x))[,'EMA'] # Exponential Moving Average 
+myDEMA <<- function(x) DEMA(Cl(x))[,'DEMA'] # Double Exponential Moving Average 
+myWMA <<- function(x) WMA(Cl(x))[,1] # Weigthed Moving Average
+myEVWMA <<- function(x) EVWMA(Cl(x), Vo(x))[,1] # Exponential Volume Weigthed Moving Average
+myZLEMA <<- function(x) ZLEMA(Cl(x))[,1] # Zero lag exponential Moving Averages
+myMACD <<- function(x) MACD(Cl(x))[,2] # Moving Average Convergence Divergence
+myCCI <<- function(x) CCI(HLC(x))[,'cci'] # Commodity Channel Index 
+myCMF <<- function(x) CMF(HLC(stock), volume = Vo(stock))[,1] # Chaikin Money Flow
+myCMO <<- function(x) CMO(Cl(stock))[,'cmo'] # Chaikin Money Oscillator
+myDPO <<- function(x) DPO(Cl(x))[,1] # Detrended Price Oscillator 
+myROC <<- function(x) ROC(Cl(x))[,1] # Calculate the (rate of) change of a series over n periods. 
+myRSI <<- function(x) RSI(Cl(x))[,"rsi"] # Relative Strength Indicator 
+myTRIX <<- function(x) TRIX(Cl(x))[,"TRIX"] # Relative Strength Indicator
+myWPR <<- function(x) WPR(HLC(x))[,1] # William's %R
+myATR <<- function(x) ATR(HLC(x))[,'atr'] # Average True Range, measures volatility of series  
+mySMI <<- function(x) SMI(HLC(x))[, "SMI"] #  Stochastic Momentum Index 
+myADX <<- function(x) ADX(HLC(x))[,'ADX'] # Welles Wilder's Directional Movement Index 
+myAroon <<- function(x) aroon(cbind(Hi(x),Lo(x)))$oscillator # Identify starting trends
+myBB <<- function(x) BBands(HLC(x))[, "pctB"] # Bollinger Bands
+myChaikinVol <<- function(x) Delt(chaikinVolatility(cbind(Hi(x),Lo(x))))[, 1] # Chaikin Volatility
+myCLV <<- function(x) EMA(CLV(HLC(x)))[, 1] # Close Location Value 
+myEMV <<- function(x) EMV(cbind(Hi(x),Lo(x)),Vo(x))[,2] # Arms' Ease of Movement Value 
+myMFI <<- function(x) MFI(HLC(x), Vo(x)) # Money Flow Index
+mySAR <<- function(x) SAR(cbind(Hi(x),Cl(x))) [,1] # Parabolic Stop-and-Reverse
+myVolat <<- function(x) volatility(OHLC(x),calc="garman")[,1] # volatility
