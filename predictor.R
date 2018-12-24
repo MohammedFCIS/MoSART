@@ -12,6 +12,7 @@ library(PerformanceAnalytics)
 
 stock <- getSymbols("AAPL", auto.assign = FALSE)
 
+# Define the Predictive Task
 T.ind <- function(quotes,tgt.margin=0.025,n.days=10) {
   v <- apply(HLC(quotes),1,mean) # function HLC() extracts the High, Low, and Close quotes
   v[1] <- Cl(quotes)[1]           
@@ -27,8 +28,12 @@ T.ind <- function(quotes,tgt.margin=0.025,n.days=10) {
 avgPrice <- function(p) apply(HLC(p), 1, mean)
 addAvgPrice <- newTA(FUN=avgPrice, col=1, legend='AvgPrice')
 addT.ind <- newTA(FUN=T.ind, col='red', legend='tgtRet')
-candleChart(xts::last(stock,'3 months'), theme='white', TA=c(addAvgPrice(on=1), addT.ind()))
+candleChart(xts::last(stock,'3 months'), theme='white', 
+            TA=c(
+              addAvgPrice(on=1), 
+              addT.ind()))
 
+mySMA <- function(x) SMA(Cl(x))[,'SMA'] # Moving Average 
 myATR <- function(x) ATR(HLC(x))[,'atr'] # Average True Range, measures volatility of series  
 mySMI <- function(x) SMI(HLC(x))[, "SMI"] #  Stochastic Momentum Index 
 myADX <- function(x) ADX(HLC(x))[,'ADX'] # Welles Wilder's Directional Movement Index 
@@ -73,7 +78,7 @@ rownames(imp)[which(imp > 30)]
 # Regression
 Tdata.train <- as.data.frame(modelData(data.model,
                                        data.window=c('2007-01-03','2017-01-03'))) # convert to data frame
-Tdata.eval <- na.omit(as.data.frame(modelData(data.model, data.window=c('2017-01-04','2018-12-19 ')))) 
+Tdata.eval <- na.omit(as.data.frame(modelData(data.model, data.window=c('2017-01-04','2018-12-19')))) 
 Tform <- as.formula('T.ind.stock ~ .') # the formula to be used in models
 
 # Classification
