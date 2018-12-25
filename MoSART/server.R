@@ -14,6 +14,7 @@ library(alphavantager)
 library(Quandl)
 library(XML)
 library(earth)
+library(DMwR2)
 # add chart series setup (its different parameters and options)
 ## https://www.quantmod.com/examples/charting/ (done)
 ## https://shiny.rstudio.com/tutorial/written-tutorial/lesson6/
@@ -742,14 +743,14 @@ shinyServer(function(input, output, session) {
     sigs.e <- trading.signals(e.preds, 0.1, -0.1)
     print(sigs.e)
     true.sigs <- trading.signals(Tdata.train[-train_ind,"T.ind.stock"], 0.1, -0.1) 
-    sigs.PR(sigs.e, true.sigs)
+    print(sigs.PR(sigs.e, true.sigs))
     print(e)
     plot(e)
     t1 <- trading.simulator(market = stock[1:1000,], signals=na.omit(sigs.e), policy.func='policy.1',
                             policy.pars=list(exp.prof=0.05,bet=0.2,hold.time=30))
     t1 
     summary(t1)
-    tradingEvaluation(t1)  
+    print(tradingEvaluation(t1))
     plot(t1, stock[1:1000,],  theme = "white",  name = "SP500")
   })
   
