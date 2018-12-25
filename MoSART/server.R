@@ -696,7 +696,7 @@ shinyServer(function(input, output, session) {
     # build formula
     ## get stock 
     stock <<- stock_pricess_df()
-    stock_formula <- "Cl(stock) ~ Delt(Cl(stock),k=1:10)"
+    stock_formula <- "T.ind(stock) ~ Delt(Cl(stock),k=1:10)"
     for (ind in input$indicators) {
       stock_formula <- switch (
         ind,
@@ -725,11 +725,11 @@ shinyServer(function(input, output, session) {
       )}
     print(stock_formula)
     data.model <- specifyModel(formula = stock_formula)
-    set.seed(1234) #Sys.Date() - 3650
+    set.seed(1234)
     Tdata.train <- as.data.frame(modelData(data.model,
                                            data.window=c(Sys.Date() - 3650, Sys.Date() - 365)))
     
-    print(head(Tdata.train))
+    
     Tdata.eval <- na.omit(as.data.frame(modelData(data.model,
                                                   data.window=c(Sys.Date() - 365, Sys.Date()))))
     # Multivariate Adaptive Regression Splines
@@ -737,15 +737,14 @@ shinyServer(function(input, output, session) {
     smp_size <- floor(0.75 * nrow(Tdata.train))
     train_ind <- sample(seq_len(nrow(Tdata.train)), size = smp_size)
 
-    e <- earth(as.formula("Cl.stock ~ ."), Tdata.train[train_ind, ])
-    # print(head(Tdata.train[-train_ind,]))
-    # e.preds <- predict(e, Tdata.train[-train_ind,])
-
-    # sigs.e <- trading.signals(e.preds, 0.1, -0.1) 
-    # true.sigs <- trading.signals(Tdata.train[-train_ind,"Cl(stock)"], 0.1, -0.1) 
-    # sigs.PR(sigs.e, true.sigs)
-    # print(e)
-    # plot(e)
+    e <- earth(as.formula("T.ind.stock ~ ."), Tdata.train[train_ind, ])
+    e.preds <- predict(e, Tdata.train[-train_ind,])
+    sigs.e <- trading.signals(e.preds, 0.1, -0.1)
+    print(sigs.e)
+    true.sigs <- trading.signals(Tdata.train[-train_ind,"T.ind.stock"], 0.1, -0.1) 
+    sigs.PR(sigs.e, true.sigs)
+    print(e)
+    plot(e)
     #print(head(Tdata.eval))
   })
   
@@ -890,3 +889,15 @@ myEMV <<- function(x) EMV(cbind(Hi(x),Lo(x)),Vo(x))[,2] # Arms' Ease of Movement
 myMFI <<- function(x) MFI(HLC(x), Vo(x)) # Money Flow Index
 mySAR <<- function(x) SAR(cbind(Hi(x),Cl(x))) [,1] # Parabolic Stop-and-Reverse
 myVolat <<- function(x) volatility(OHLC(x),calc="garman")[,1] # volatility
+# Define the Predictive Task
+T.ind <- function(quotes,tgt.margin=0.025,n.days=10) {
+  v <- apply(HLC(quotes),1,mean) # function HLC() extracts the High, Low, and Close quotes
+  v[1] <- Cl(quotes)[1]           
+  
+  r <- matrix(NA,ncol=n.days,nrow=NROW(quotes))
+  for(x in 1:n.days) r[,x] <- Next(Delt(v,k=x),x)
+  
+  x <- apply(r,1,function(x) 
+    sum(x[x > tgt.margin | x < -tgt.margin]))
+  if (is.xts(quotes)) xts(x,time(quotes)) else x
+}
