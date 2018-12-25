@@ -13,7 +13,7 @@ library(tidyquant)
 library(alphavantager)
 library(Quandl)
 library(XML)
-
+library(earth)
 # add chart series setup (its different parameters and options)
 ## https://www.quantmod.com/examples/charting/ (done)
 ## https://shiny.rstudio.com/tutorial/written-tutorial/lesson6/
@@ -734,12 +734,13 @@ shinyServer(function(input, output, session) {
                                                   data.window=c(Sys.Date() - 365, Sys.Date()))))
     # Multivariate Adaptive Regression Splines
     ## 75% of the sample size
-    # smp_size <- floor(0.75 * nrow(Tdata.train))
-    # train_ind <- sample(seq_len(nrow(Tdata.train)), size = smp_size)
-    # 
-    # e <- earth(stock_formula, Tdata.train[train_ind, ]) 
-    # e.preds <- predict(e, Tdata.train[-train_ind,]) 
-    # 
+    smp_size <- floor(0.75 * nrow(Tdata.train))
+    train_ind <- sample(seq_len(nrow(Tdata.train)), size = smp_size)
+
+    e <- earth(as.formula("Cl.stock ~ ."), Tdata.train[train_ind, ])
+    # print(head(Tdata.train[-train_ind,]))
+    # e.preds <- predict(e, Tdata.train[-train_ind,])
+
     # sigs.e <- trading.signals(e.preds, 0.1, -0.1) 
     # true.sigs <- trading.signals(Tdata.train[-train_ind,"Cl(stock)"], 0.1, -0.1) 
     # sigs.PR(sigs.e, true.sigs)
