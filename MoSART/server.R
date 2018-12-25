@@ -745,7 +745,12 @@ shinyServer(function(input, output, session) {
     sigs.PR(sigs.e, true.sigs)
     print(e)
     plot(e)
-    #print(head(Tdata.eval))
+    t1 <- trading.simulator(market = stock[1:1000,], signals=na.omit(sigs.e), policy.func='policy.1',
+                            policy.pars=list(exp.prof=0.05,bet=0.2,hold.time=30))
+    t1 
+    summary(t1)
+    tradingEvaluation(t1)  
+    plot(t1, stock[1:1000,],  theme = "white",  name = "SP500")
   })
   
 })
@@ -890,7 +895,7 @@ myMFI <<- function(x) MFI(HLC(x), Vo(x)) # Money Flow Index
 mySAR <<- function(x) SAR(cbind(Hi(x),Cl(x))) [,1] # Parabolic Stop-and-Reverse
 myVolat <<- function(x) volatility(OHLC(x),calc="garman")[,1] # volatility
 # Define the Predictive Task
-T.ind <- function(quotes,tgt.margin=0.025,n.days=10) {
+T.ind <<- function(quotes,tgt.margin=0.025,n.days=10) {
   v <- apply(HLC(quotes),1,mean) # function HLC() extracts the High, Low, and Close quotes
   v[1] <- Cl(quotes)[1]           
   
@@ -904,7 +909,7 @@ T.ind <- function(quotes,tgt.margin=0.025,n.days=10) {
 
 #----------------------------------------------------
 # The Trading Set up
-policy.1 <- function(signals,market,opened.pos,money,
+policy.1 <<- function(signals,market,opened.pos,money,
                      bet=0.2,hold.time=10,
                      exp.prof=0.025, max.loss= 0.05
 )
@@ -913,11 +918,12 @@ policy.1 <- function(signals,market,opened.pos,money,
   orders <- NULL
   nOs <- NROW(opened.pos)
   # nothing to do!
-  if (!nOs && signals[d] == 'h') return(orders)
+  if (!nOs && !is.na(signals[d]) && signals[d] == 'h') return(orders)
   
   # First lets check if we can open new positions
   # i) long positions
-  if (signals[d] == 'b' && !nOs) {
+  if (!is.na(signals[d])) {
+  if (signals[d] == 'b' && !is.na(nOs) && !nOs) {
     quant <- round(bet*money/Cl(market)[d],0)
     if (quant > 0) 
       orders <- rbind(orders,
@@ -950,6 +956,7 @@ policy.1 <- function(signals,market,opened.pos,money,
                       )
       )
   }
+}
   
   # Now lets check if we need to close positions
   # because their holding time is over
@@ -969,7 +976,7 @@ policy.1 <- function(signals,market,opened.pos,money,
   orders
 }
 
-policy.2 <- function(signals,market,opened.pos,money,
+policy.2 <<- function(signals,market,opened.pos,money,
                      bet=0.2,exp.prof=0.025, max.loss= 0.05
 )
 {
