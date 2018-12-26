@@ -15,6 +15,7 @@ library(Quandl)
 library(XML)
 library(earth)
 library(DMwR2)
+library(PerformanceAnalytics)
 # add chart series setup (its different parameters and options)
 ## https://www.quantmod.com/examples/charting/ (done)
 ## https://shiny.rstudio.com/tutorial/written-tutorial/lesson6/
@@ -731,16 +732,7 @@ shinyServer(function(input, output, session) {
     set.seed(1234)
     Tdata.train <- as.data.frame(modelData(data.model,
                                            data.window=c(max(index(stock)) - 1825, max(index(stock)))))
-    print("Tdata.train")
-    print(tail(Tdata.train))
-    # Tdata.eval <- na.omit(as.data.frame(modelData(data.model,
-    #                                               data.window=c(Sys.Date() - 365, Sys.Date()))))
-    # print("Tdata.eval")
-    # print(nrow(Tdata.eval))
-    # Multivariate Adaptive Regression Splines
-    ## 75% of the sample size
-    # smp_size <- floor(0.75 * nrow(Tdata.train))
-    # train_ind <- sample(seq_len(nrow(Tdata.train)), size = smp_size)
+
     # A Trading Simulator
     start <- 1
     len.tr <- 1000 # first 1000 for training models 
@@ -748,26 +740,29 @@ shinyServer(function(input, output, session) {
     tr <- start:(start+len.tr-1)
     ts <- (start+len.tr):(start+len.tr+len.ts-1) 
     market <- xts::last(stock, len.ts)
-    print("market")
-    print(tail(Tdata.train, (start+len.tr-1)))
     e <- earth(as.formula("T.ind.stock ~ ."), na.omit(tail(Tdata.train, (start+len.tr-1))))
-    #print(head(xts::last(Tdata.train, len.ts)))
     e.preds <- predict(e, tail(Tdata.train, (start+len.tr+len.ts-1)))
     sigs.e <- trading.signals(e.preds, 0.1, -0.1)
-    #print("sigs.e")
-    #print(length(sigs.e))
-    # print("stock")
-    # print(nrow(stock))
-    # true.sigs <- trading.signals(Tdata.eval[,"T.ind.stock"], 0.1, -0.1) 
-    # print(sigs.PR(sigs.e, true.sigs))
     print(e)
     plot(e)
     t1 <- trading.simulator(market = market, signals=na.omit(sigs.e), policy.func='policy.1',
                             policy.pars=list(exp.prof=0.05,bet=0.2,hold.time=30))
     t1 
-    summary(t1)
+    print(summary(t1))
     print(tradingEvaluation(t1))
     plot(t1, market,  theme = "white",  name = "SP500")
+    
+    # Report
+    equityWF <- as.xts(t1@trading$Equity)
+    rets <- Return.calculate(equityWF)
+    print(chart.CumReturns(rets, main="Cumulative returns of the strategy", ylab="returns"))
+    yearlyReturn(equityWF)
+    print(plot(100*yearlyReturn(equityWF), 
+         main='Yearly percentage returns of the trading system'))
+    print(table.DownsideRisk(rets))
+    print(plot(rets))
+    
+    
   })
   
 })
