@@ -697,6 +697,8 @@ shinyServer(function(input, output, session) {
     # build formula
     ## get stock 
     stock <<- stock_pricess_df()
+    print("stock_1")
+    print(nrow(stock))
     stock_formula <- "T.ind(stock) ~ Delt(Cl(stock),k=1:10)"
     for (ind in input$indicators) {
       stock_formula <- switch (
@@ -728,30 +730,44 @@ shinyServer(function(input, output, session) {
     data.model <- specifyModel(formula = stock_formula)
     set.seed(1234)
     Tdata.train <- as.data.frame(modelData(data.model,
-                                           data.window=c(Sys.Date() - 3650, Sys.Date() - 365)))
-    
-    
-    Tdata.eval <- na.omit(as.data.frame(modelData(data.model,
-                                                  data.window=c(Sys.Date() - 365, Sys.Date()))))
+                                           data.window=c(max(index(stock)) - 1825, max(index(stock)))))
+    print("Tdata.train")
+    print(tail(Tdata.train))
+    # Tdata.eval <- na.omit(as.data.frame(modelData(data.model,
+    #                                               data.window=c(Sys.Date() - 365, Sys.Date()))))
+    # print("Tdata.eval")
+    # print(nrow(Tdata.eval))
     # Multivariate Adaptive Regression Splines
     ## 75% of the sample size
-    smp_size <- floor(0.75 * nrow(Tdata.train))
-    train_ind <- sample(seq_len(nrow(Tdata.train)), size = smp_size)
-
-    e <- earth(as.formula("T.ind.stock ~ ."), Tdata.train[train_ind, ])
-    e.preds <- predict(e, Tdata.train[-train_ind,])
+    # smp_size <- floor(0.75 * nrow(Tdata.train))
+    # train_ind <- sample(seq_len(nrow(Tdata.train)), size = smp_size)
+    # A Trading Simulator
+    start <- 1
+    len.tr <- 1000 # first 1000 for training models 
+    len.ts <- 500 # next 500 for testing them 
+    tr <- start:(start+len.tr-1)
+    ts <- (start+len.tr):(start+len.tr+len.ts-1) 
+    market <- xts::last(stock, len.ts)
+    print("market")
+    print(tail(Tdata.train, (start+len.tr-1)))
+    e <- earth(as.formula("T.ind.stock ~ ."), na.omit(tail(Tdata.train, (start+len.tr-1))))
+    #print(head(xts::last(Tdata.train, len.ts)))
+    e.preds <- predict(e, tail(Tdata.train, (start+len.tr+len.ts-1)))
     sigs.e <- trading.signals(e.preds, 0.1, -0.1)
-    print(sigs.e)
-    true.sigs <- trading.signals(Tdata.train[-train_ind,"T.ind.stock"], 0.1, -0.1) 
-    print(sigs.PR(sigs.e, true.sigs))
+    #print("sigs.e")
+    #print(length(sigs.e))
+    # print("stock")
+    # print(nrow(stock))
+    # true.sigs <- trading.signals(Tdata.eval[,"T.ind.stock"], 0.1, -0.1) 
+    # print(sigs.PR(sigs.e, true.sigs))
     print(e)
     plot(e)
-    t1 <- trading.simulator(market = stock[1:1000,], signals=na.omit(sigs.e), policy.func='policy.1',
+    t1 <- trading.simulator(market = market, signals=na.omit(sigs.e), policy.func='policy.1',
                             policy.pars=list(exp.prof=0.05,bet=0.2,hold.time=30))
     t1 
     summary(t1)
     print(tradingEvaluation(t1))
-    plot(t1, stock[1:1000,],  theme = "white",  name = "SP500")
+    plot(t1, market,  theme = "white",  name = "SP500")
   })
   
 })
