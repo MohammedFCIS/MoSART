@@ -455,7 +455,10 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_ratios_financials <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[1, 2]])
+    DT::datatable(data = stock_key_ratios()[[1, 2]], extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$ratios_financials_plot <- renderPlot({
@@ -466,7 +469,10 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_ratios_profitability <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[2, 2]])
+    DT::datatable(data = stock_key_ratios()[[2, 2]], extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$ratios_profitability_plot <- renderPlot({
@@ -477,7 +483,10 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_ratios_growth <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[3, 2]])
+    DT::datatable(data = stock_key_ratios()[[3, 2]], extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$ratios_growth_plot <- renderPlot({
@@ -488,7 +497,10 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_ratios_cash_flow <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[4, 2]])
+    DT::datatable(data = stock_key_ratios()[[4, 2]], extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$ratios_cash_flow_plot <- renderPlot({
@@ -502,7 +514,10 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_ratios_financial_health <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[5, 2]])
+    DT::datatable(data = stock_key_ratios()[[5, 2]], extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$ratios_financial_health_plot <- renderPlot({
@@ -513,7 +528,10 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_ratios_efficiency <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[6, 2]])
+    DT::datatable(data = stock_key_ratios()[[6, 2]], extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$ratios_efficiency_plot <- renderPlot({
@@ -527,7 +545,10 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_ratios_value_ratios <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[7, 2]])
+    DT::datatable(data = stock_key_ratios()[[7, 2]], extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$ratios_value_ratios_plot <- renderPlot({
@@ -590,31 +611,58 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_key_stats_finviz <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_finviz_df())
+    DT::datatable(data = stock_key_stats_finviz_df(), extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$stock_key_stats_earning_estimates <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_yahoo_df()[[1]], caption = "Earning Estimates")
+    DT::datatable(data = stock_key_stats_yahoo_df()[[1]], 
+                  caption = "Earning Estimates", extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$stock_key_stats_earning_history <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_yahoo_df()[[3]], caption = "Earning History")
+    DT::datatable(data = stock_key_stats_yahoo_df()[[3]],
+                  caption = "Earning History", extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$stock_key_stats_revenue_estimates <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_yahoo_df()[[2]], caption = "Revenue Estimates")
+    DT::datatable(data = stock_key_stats_yahoo_df()[[2]], 
+                  caption = "Revenue Estimates", extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$stock_key_stats_eps_trend <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_yahoo_df()[[4]], caption = "EPS Trend")
+    DT::datatable(data = stock_key_stats_yahoo_df()[[4]],
+                  caption = "EPS Trend", extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$stock_key_stats_eps_revisions <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_yahoo_df()[[5]], caption = "EPS Revisions")
+    DT::datatable(data = stock_key_stats_yahoo_df()[[5]],
+                  caption = "EPS Revisions", extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$stock_key_stats_growth_est <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_yahoo_df()[[6]], caption = "Growth Estimates")
+    DT::datatable(data = stock_key_stats_yahoo_df()[[6]],
+                  caption = "Growth Estimates", extensions = 'Buttons', options = list(
+                    dom = 'Bfrtip',
+                    buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+                  ))
   })
   
   # return stock finance statments
@@ -623,15 +671,24 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_finance_statement_is <- DT::renderDataTable({
-    DT::datatable(data = stock_finance_statements()$IS, caption = "IS")
+    DT::datatable(data = stock_finance_statements()$IS, caption = "IS", extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$stock_finance_statement_bs <- DT::renderDataTable({
-    DT::datatable(data = stock_finance_statements()$BS, caption = "BS")
+    DT::datatable(data = stock_finance_statements()$BS, caption = "BS", extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   output$stock_finance_statement_cf <- DT::renderDataTable({
-    DT::datatable(data = stock_finance_statements()$CF, caption = "CF")
+    DT::datatable(data = stock_finance_statements()$CF, caption = "CF", extensions = 'Buttons', options = list(
+      dom = 'Bfrtip',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   })
   
   observeEvent(input$add_indic, {
