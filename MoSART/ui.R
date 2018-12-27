@@ -112,34 +112,47 @@ shinyUI(
       tabsetPanel(
         type = "tabs",
         tabPanel(
-          title = "Indicators & Signals",
+          title = "Buy & Sell Simulator",
           value = "indi_sig",
-          sidebarLayout(
-            sidebarPanel(
+          wellPanel(
+          fluidRow(
+            column(
+              width = 2,
               radioButtons(
                 "pricesSource",
-                label = h3("Select Price Source"),
+                label = h3("Price Source"),
                 choices = prices_choices
-              ),
-              hr(),
-              h3("Chart Setup"),
+              )
+            ),
+            column(
+              width = 2,
               radioButtons(
                 "pricesChartType",
-                label = h5("Chart Type"),
+                label = h3("Chart Type"),
                 choices = prices_chart_types
-              ),
-              br(),
+              )
+            ),
+            column(
+              width = 2,
               radioButtons(
                 "pricesChartTheme",
-                label = h5("Chart Theme"),
+                label = h3("Chart Theme"),
                 choices = prices_chart_themes
-              ),
+              )
+            ),
+            column(
+              width = 2,
+              h3("Miscellaneous"),
               checkboxInput("priceChartGrid",
                             "Show Grid",
                             value = TRUE),
               checkboxInput("priceLogScale",
                             "Log Scale",
-                            value = FALSE),
+                            value = FALSE)
+            ),
+            column(
+              width = 4,
+              h3("Simulation Setup"),
               selectInput("indicators", "Indicators",
                           indicators , multiple = TRUE),
               dateRangeInput(
@@ -149,13 +162,13 @@ shinyUI(
                 end = Sys.Date()
               ),
               actionButton("predict_btn",
-                           "Predict")
-            ),
-            # returned stocks
-            mainPanel(
-              plotOutput("prices_plot")
+                           "Simulate")
             )
-          )
+          )),
+          fluidRow(# returned stocks
+            column(width = 12,
+                   plotOutput("prices_plot")))
+          
         ),
         tabPanel(
           title = "Periodic Returns",
@@ -216,7 +229,7 @@ shinyUI(
         #     ),
         #     column(
         #       width = 3,
-        #       dateRangeInput("trade_preiod", label = "Trade Period", 
+        #       dateRangeInput("trade_preiod", label = "Trade Period",
         #                      start = Sys.Date() - 365, end = Sys.Date())
         #     )
         #   ),
@@ -235,7 +248,7 @@ shinyUI(
         #                   textInput("sig_name",
         #                             "Name",
         #                             placeholder = "Signal Name")),
-        #            column(width = 3, 
+        #            column(width = 3,
         #                   selectInput("sig_type",
         #                               label = "Type",
         #                               choices = signals)),
@@ -257,7 +270,7 @@ shinyUI(
         #                   textInput("rule_name",
         #                             label = "Name",
         #                             placeholder = "Rule Name")),
-        #            column(width = 4, 
+        #            column(width = 4,
         #                   selectInput("sig_sel",
         #                               label = "Signal",
         #                               choices = c("Select Signal" = ""))),
@@ -292,7 +305,7 @@ shinyUI(
         #                               choices = c("Exit" = "exit",
         #                                           "Enter" = "enter"))))
         # )
-       )
+      )
     ),
     tabPanel(
       title = "Stock key Ratios",
