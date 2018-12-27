@@ -165,9 +165,11 @@ shinyUI(
                            "Simulate")
             )
           )),
-          fluidRow(# returned stocks
-            column(width = 12,
-                   plotOutput("prices_plot")))
+          fluidRow(column(width = 12,
+                          plotOutput("prices_plot"))),
+          hr(),
+          fluidRow(column(width = 12,
+                          plotOutput("buy_sell_plot")))
           
         ),
         tabPanel(

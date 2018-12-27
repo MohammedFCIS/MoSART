@@ -220,7 +220,6 @@ shinyServer(function(input, output, session) {
   
   output$prices_plot <-
     renderPlot({
-      #print(stock_pricess_df())
       print(
         chartSeries(
           stock_pricess_df(),
@@ -727,7 +726,6 @@ shinyServer(function(input, output, session) {
         "addWPR" =  paste(stock_formula, "myWPR(stock)", sep = "+"),
         "addZLEMA" =  paste(stock_formula, "myZLEMA(stock)", sep = "+")
       )}
-    print(stock_formula)
     data.model <- specifyModel(formula = stock_formula)
     set.seed(1234)
     Tdata.train <- as.data.frame(modelData(data.model,
@@ -743,14 +741,14 @@ shinyServer(function(input, output, session) {
     e <- earth(as.formula("T.ind.stock ~ ."), na.omit(tail(Tdata.train, (start+len.tr-1))))
     e.preds <- predict(e, tail(Tdata.train, (start+len.tr+len.ts-1)))
     sigs.e <- trading.signals(e.preds, 0.1, -0.1)
-    print(e)
-    plot(e)
+    # print(e)
+    # plot(e)
     t1 <- trading.simulator(market = market, signals=na.omit(sigs.e), policy.func='policy.1',
                             policy.pars=list(exp.prof=0.05,bet=0.2,hold.time=30))
     t1 
     print(summary(t1))
     print(tradingEvaluation(t1))
-    plot(t1, market,  theme = "white",  name = "SP500")
+    output$buy_sell_plot <- renderPlot(plot(t1, market,  theme = "white",  name = "SP500"))
     
     # Report
     equityWF <- as.xts(t1@trading$Equity)
