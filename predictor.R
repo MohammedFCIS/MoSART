@@ -281,10 +281,13 @@ ts <- (start+len.tr):(start+len.tr+len.ts-1)
 # The market quotes during this "testing period" 
 # This will be used by the simulator 
 # Note: you need the training data created previously! 
+# 1001
 date <- rownames(Tdata.train[start+len.tr,]) 
+# 1:500
 market <- stock[paste(date,'/',sep='')][1:len.ts]
-
+# 1:1000
 s <- svm(Tform,Tdata.train[tr,],cost=10,gamma=0.01) 
+# 1001:1500
 p <- predict(s,Tdata.train[ts,]) 
 sig <- trading.signals(p,0.1,-0.1) # predictions to signals 
 ## now using the simulated trader 
