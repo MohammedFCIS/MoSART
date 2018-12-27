@@ -693,12 +693,9 @@ shinyServer(function(input, output, session) {
   })
   
   observeEvent(input$predict_btn, {
-    req(input$indicators)
     # build formula
     ## get stock 
     stock <<- stock_pricess_df()
-    print("stock_1")
-    print(nrow(stock))
     stock_formula <- "T.ind(stock) ~ Delt(Cl(stock),k=1:10)"
     for (ind in input$indicators) {
       stock_formula <- switch (
@@ -741,13 +738,12 @@ shinyServer(function(input, output, session) {
     e <- earth(as.formula("T.ind.stock ~ ."), na.omit(tail(Tdata.train, (start+len.tr-1))))
     e.preds <- predict(e, tail(Tdata.train, (start+len.tr+len.ts-1)))
     sigs.e <- trading.signals(e.preds, 0.1, -0.1)
-    # print(e)
-    # plot(e)
+    
     t1 <- trading.simulator(market = market, signals=na.omit(sigs.e), policy.func='policy.1',
                             policy.pars=list(exp.prof=0.05,bet=0.2,hold.time=30))
-    t1 
-    print(summary(t1))
-    print(tradingEvaluation(t1))
+    #t1 
+    output$simulator_summary <- renderPrint(summary(t1))
+    output$trading_evaluation <- renderPrint(tradingEvaluation(t1))
     output$buy_sell_plot <- renderPlot(plot(t1, market,  theme = "white",  name = "SP500"))
     
     # Report
@@ -759,7 +755,7 @@ shinyServer(function(input, output, session) {
     # yearlyReturn(equityWF)
     output$yearlyReturn <- renderPlot(plot(100*yearlyReturn(equityWF), 
          main='Yearly percentage returns of the trading system'))
-    print(table.DownsideRisk(rets))
+    output$downside_risk <- renderPrint(table.DownsideRisk(rets))
     output$rets <- renderPlot(plot(rets))
     
   })

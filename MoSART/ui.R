@@ -167,6 +167,19 @@ shinyUI(
           )),
           fluidRow(column(width = 12,
                           plotOutput("prices_plot"))),
+          conditionalPanel("input.predict_btn",
+          hr(),
+          fluidRow(column(width = 12,
+                          verbatimTextOutput("simulator_summary"))),
+          hr(),
+          fluidRow(column(width = 12,
+                          h4("Trading Evaluation"),
+                          verbatimTextOutput("trading_evaluation"))),
+          hr(),
+          
+          fluidRow(column(width = 12,
+                          h4("Downside Risk"),
+                          verbatimTextOutput("downside_risk"))),
           hr(),
           fluidRow(column(width = 12,
                           plotOutput("buy_sell_plot"))),
@@ -178,7 +191,7 @@ shinyUI(
                           plotOutput("yearlyReturn"))),
           hr(),
           fluidRow(column(width = 12,
-                          plotOutput("rets")))
+                          plotOutput("rets"))))
         ),
         tabPanel(
           title = "Periodic Returns",
