@@ -229,14 +229,14 @@ shinyServer(function(input, output, session) {
           name = paste(selected_stock(), "chart"),
           show.grid = input$priceChartGrid,
           log.scale = input$priceLogScale,
-          TA = NULL,
-          subset    = paste(input$daterange, collapse = "::")
+          subset    = paste(input$daterange, collapse = "::"),
+          TA = NULL
         )
       )
+      print(addVo())
       for (ind in input$indicators) {
         switch (
           ind,
-          "addVo" = print(addVo()),
           "addADX" = print(addADX()),
           "addATR" = print(addATR()),
           "addBBands" = print(addBBands()),

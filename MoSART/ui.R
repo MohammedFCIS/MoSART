@@ -36,7 +36,6 @@ prices_chart_types <- c(
 prices_chart_themes <- c("White" = "white",
                          "Black" = "black")
 indicators <- c(
-  "Volume" = "addVo",
   "Moving Average" = "addSMA",
   "Welles Wilder's Directional Movement Indicator" = "addADX",
   "Average True Range" = "addATR",
