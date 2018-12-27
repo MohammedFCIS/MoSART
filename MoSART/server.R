@@ -753,13 +753,14 @@ shinyServer(function(input, output, session) {
     # Report
     equityWF <- as.xts(t1@trading$Equity)
     rets <- Return.calculate(equityWF)
-    print(chart.CumReturns(rets, main="Cumulative returns of the strategy", ylab="returns"))
-    yearlyReturn(equityWF)
-    print(plot(100*yearlyReturn(equityWF), 
+    output$CumReturns <- renderPlot(chart.CumReturns(rets, 
+                                                     main="Cumulative returns of the strategy",
+                                                     ylab="returns"))
+    # yearlyReturn(equityWF)
+    output$yearlyReturn <- renderPlot(plot(100*yearlyReturn(equityWF), 
          main='Yearly percentage returns of the trading system'))
     print(table.DownsideRisk(rets))
-    print(plot(rets))
-    
+    output$rets <- renderPlot(plot(rets))
     
   })
   

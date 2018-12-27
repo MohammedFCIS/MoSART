@@ -169,8 +169,16 @@ shinyUI(
                           plotOutput("prices_plot"))),
           hr(),
           fluidRow(column(width = 12,
-                          plotOutput("buy_sell_plot")))
-          
+                          plotOutput("buy_sell_plot"))),
+          hr(),
+          fluidRow(column(width = 12,
+                          plotOutput("CumReturns"))),
+          hr(),
+          fluidRow(column(width = 12,
+                          plotOutput("yearlyReturn"))),
+          hr(),
+          fluidRow(column(width = 12,
+                          plotOutput("rets")))
         ),
         tabPanel(
           title = "Periodic Returns",
