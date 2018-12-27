@@ -128,7 +128,8 @@ shinyUI(
               radioButtons(
                 "pricesChartType",
                 label = h3("Chart Type"),
-                choices = prices_chart_types
+                choices = prices_chart_types,
+                selected = "candlesticks"
               )
             ),
             column(
