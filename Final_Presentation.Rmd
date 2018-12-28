@@ -81,3 +81,70 @@ Trader can change visualization appeareance
 ![](demo/2.buy_sell_sim_11.png){width=100%}
 ![](demo/2.buy_sell_sim_12.png){width=100%}
 
+## Periodic Return
+- Calculates the return from the given stock in given period.
+- Provide simple prediction on how the return is behaving in future using liner regression
+![](demo/3.Periodic_Return.png){width=100%}
+
+## Simulation
+Using Monte Carlo simulation and based on the stock daily return in previous period, the tool predict the price in the future.
+
+![](demo/4.Simulation.png){width=100%}
+
+
+
+## Stock Key Ratios
+- Using different online tools to get the recent stock key ratios like:
+  - Financials
+![](demo/5.key_ratios_1.png){width=100%}
+## Stock Key Ratios
+  - Profitability
+![](demo/5.key_ratios_2.png){width=100%}
+
+## Stock Key Ratios  
+  - Cash Flow Ratios
+![](demo/5.key_ratios_3.png){width=100%}
+
+## Stock Key Ratios
+  - Financial Health
+![](demo/5.key_ratios_4.png){width=100%}
+
+## Stock Key Ratios  
+  - Efficiency Ratios
+![](demo/5.key_ratios_5.png){width=100%}
+## Stock Key Ratios  
+  - Growth
+![](demo/5.key_ratios_6.png){width=100%}  
+## Stock Key Ratios
+  - Valuation Ratios
+![](demo/5.key_ratios_7.png){width=100%}  
+## Stock Key Stats
+- Using different online tools to get the recent stock statistics like:
+  - Yahoo
+![](demo/6.key_stats_1.png){width=100%}
+![](demo/6.key_stats_2.png){width=100%}
+## Stock Key Stats
+- Using different online tools to get the recent stock statistics like:
+  - Yahoo
+![](demo/6.key_stats_3.png){width=100%}
+![](demo/6.key_stats_4.png){width=100%}
+
+## Stock Key Stats
+- Using different online tools to get the recent stock statistics like:
+  - FinViz
+![](demo/6.key_stats_4.png){width=100%}
+
+## Stock Finance Statement
+- Using different online tools to get the recent stock Finance Statements like:
+  - IS
+![](demo/7.finance_statement_1.png){width=100%}
+
+## Stock Finance Statement
+- Using different online tools to get the recent stock Finance Statements like:
+  - BS
+![](demo/7.finance_statement_2.png){width=100%}
+
+## Stock Finance Statement
+- Using different online tools to get the recent stock Finance Statements like:
+  - CF
+![](demo/7.finance_statement_3.png){width=100%}
