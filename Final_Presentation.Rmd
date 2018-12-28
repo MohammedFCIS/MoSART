@@ -1,26 +1,30 @@
 ---
 title: "MoSART"
-subtitle: "Know your Instruments"
+subtitle: "Mo Stocks Analysis and Recommendation  Tool"
 author: "Mohammed Ali"
 date: "December 24, 2018"
-output: ioslides_presentation
+output: slidy_presentation
+background-image: url('./MoSART/music_money.png');}
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## R Markdown
+## Mo Stocks Analysis and Recommendation  Tool (MoSART)
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+- A collection of stock analysis tools so trader can make a decision about certain stock.
+- The tools included in MoSART are:
+    + Stocks List Retrieval
+    + Stock Prices Analysis
+    + Stock Key Ratios
+    + Stock Key Stats
+    + Stock Finance Statement
 
 ## Slide with Bullets
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+- One bullet point
+    + One indented bullet
 
 ## Slide with R Output
 
