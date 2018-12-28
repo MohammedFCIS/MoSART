@@ -30,3 +30,54 @@ Retrieves list of index/exchange stocks and provides:
 - Perform other MoSART tools analysis on the selected stock
 
 ![](demo/1.stocks list.png){width=90%}
+
+## Stock Prices Analysis
+- This tool is concerning to analyze how the stock is behaving, prices wise, in the market.
+- To achieve that purpose it has 3 sub tools:
+   + Buy & Sell Simulator
+   + Periodic Return
+   + Prices Simulation
+   
+![](demo/2.buy_sell_sim_1.png){width=100%}
+
+## Buy & Sell Simulator
+- Trader can observe how the stock is behaving in the market based on his/her indicators and signals selections
+- Indicators and Signals can be added/removed at run time.
+- Selected indicators and signals are key part in the buy/sell simulation process
+- Trader can visualize the market and compare between those indicators
+
+![](demo/2.buy_sell_sim_2.png){width=100%}
+
+## Buy & Sell Simulator (Cont.)
+- Trader can select the price source among *Yahoo*, *Qundl* and *Alpha Vantage*
+- Trader can zoom the market chart in to include shorter period and out to include longer period.
+![](demo/2.buy_sell_sim_3.png){width=100%}
+
+
+## Buy & Sell Simulator (Cont.)
+Trader can switch between visualization differet types
+
+![](demo/2.buy_sell_sim_4.png){width=100%}
+![](demo/2.buy_sell_sim_5.png){width=100%}
+
+## Buy & Sell Simulator (Cont.)
+Trader can change visualization appeareance
+![](demo/2.buy_sell_sim_6.png){width=100%}
+
+
+## Buy & Sell Simulator (Cont.)
+
+- After Trader finished his/her initial setup he/she can simulate buy/sell prices by clicking the *Simulate*   button to display simulation detailed report
+- Simulation is done via Multivariate Adaptive Regression Splines (MARS) algorithm
+
+![](demo/2.buy_sell_sim_7.png){width=100%}
+![](demo/2.buy_sell_sim_8.png){width=100%}
+
+## Buy & Sell Simulator (Cont.)
+![](demo/2.buy_sell_sim_9.png){width=100%}
+![](demo/2.buy_sell_sim_10.png){width=100%}
+
+## Buy & Sell Simulator (Cont.)
+![](demo/2.buy_sell_sim_11.png){width=100%}
+![](demo/2.buy_sell_sim_12.png){width=100%}
+
