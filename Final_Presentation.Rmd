@@ -21,20 +21,12 @@ knitr::opts_chunk$set(echo = FALSE)
     + Stock Key Stats
     + Stock Finance Statement
 
-## Slide with Bullets
+## Stocks List Retrieval
+Retrieves list of index/exchange stocks and provides:
 
-- One bullet point
-    + One indented bullet
+- Nearly 10,000 stock in different sectors and industries to work with.
+- Ability to print this list or download it in different formats.
+- Filter Stocks with different certaria with the ability to sort the resutls
+- Perform other MoSART tools analysis on the selected stock
 
-## Slide with R Output
-
-```{r cars, echo = TRUE}
-summary(cars)
-```
-
-## Slide with Plot
-
-```{r pressure}
-plot(pressure)
-```
-
+![](demo/1.stocks list.png){width=90%}
