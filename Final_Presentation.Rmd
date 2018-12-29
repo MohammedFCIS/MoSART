@@ -91,60 +91,82 @@ Using Monte Carlo simulation and based on the stock daily return in previous per
 
 ![](demo/4.Simulation.png){width=100%}
 
-
+## Stock Key Ratios
+- Using different online tools to get the recent stock key ratios like:
+    + Financials
+![](demo/5.key_ratios_1.png){width=100%}
 
 ## Stock Key Ratios
 - Using different online tools to get the recent stock key ratios like:
-  - Financials
-![](demo/5.key_ratios_1.png){width=100%}
-## Stock Key Ratios
-  - Profitability
+    + Profitability
 ![](demo/5.key_ratios_2.png){width=100%}
 
 ## Stock Key Ratios  
-  - Cash Flow Ratios
+- Using different online tools to get the recent stock key ratios like:
+    + Cash Flow Ratios
 ![](demo/5.key_ratios_3.png){width=100%}
 
 ## Stock Key Ratios
-  - Financial Health
+- Using different online tools to get the recent stock key ratios like:
+    + Financial Health
 ![](demo/5.key_ratios_4.png){width=100%}
 
-## Stock Key Ratios  
-  - Efficiency Ratios
-![](demo/5.key_ratios_5.png){width=100%}
-## Stock Key Ratios  
-  - Growth
-![](demo/5.key_ratios_6.png){width=100%}  
 ## Stock Key Ratios
-  - Valuation Ratios
+- Using different online tools to get the recent stock key ratios like:
+    + Efficiency Ratios
+![](demo/5.key_ratios_5.png){width=100%}
+
+## Stock Key Ratios  
+- Using different online tools to get the recent stock key ratios like:
+    + Growth
+![](demo/5.key_ratios_6.png){width=100%}  
+
+## Stock Key Ratios
+- Using different online tools to get the recent stock key ratios like:  
+    + Valuation Ratios
 ![](demo/5.key_ratios_7.png){width=100%}  
+
 ## Stock Key Stats
 - Using different online tools to get the recent stock statistics like:
-  - Yahoo
+    + Yahoo
 ![](demo/6.key_stats_1.png){width=100%}
 ![](demo/6.key_stats_2.png){width=100%}
+
 ## Stock Key Stats
 - Using different online tools to get the recent stock statistics like:
-  - Yahoo
+    + Yahoo
 ![](demo/6.key_stats_3.png){width=100%}
 ![](demo/6.key_stats_4.png){width=100%}
 
 ## Stock Key Stats
 - Using different online tools to get the recent stock statistics like:
-  - FinViz
+    + FinViz
 ![](demo/6.key_stats_4.png){width=100%}
 
 ## Stock Finance Statement
 - Using different online tools to get the recent stock Finance Statements like:
-  - IS
+    + IS
 ![](demo/7.finance_statement_1.png){width=100%}
 
 ## Stock Finance Statement
 - Using different online tools to get the recent stock Finance Statements like:
-  - BS
+    + BS
 ![](demo/7.finance_statement_2.png){width=100%}
 
 ## Stock Finance Statement
 - Using different online tools to get the recent stock Finance Statements like:
-  - CF
+    + CF
 ![](demo/7.finance_statement_3.png){width=100%}
+
+## Future Releases 
+- Buy & Sell Prediction
+    + Add more simulation and prediction algorithms like deep learning and support vector machine (SVM)
+    + Add more strategies to provide trader more simulation freedom
+    + Allow trader to control strategy paramters
+
+- Expected stock outcome
+    + Enhance next stock outcome predication
+
+- Stock Portofolio Builder
+    + Allow trader to select mutiple stockts to compare between them
+    + Allow trader to save his/her set of stock selections and analysis
