@@ -170,3 +170,8 @@ Using Monte Carlo simulation and based on the stock daily return in previous per
 - Stock Portofolio Builder
     + Allow trader to select mutiple stockts to compare between them
     + Allow trader to save his/her set of stock selections and analysis
+    
+## Tools and Techniques
+- R (tidyverse, tidyquant, alphavantager, Quandl, earth, DMwR2 and PerformanceAnalytics)
+- Shiny R
+- Web Scrapping for online finace tools like **Yahoo** and **FinViz**
