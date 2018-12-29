@@ -1,6 +1,6 @@
 ---
 title: "MoSART"
-subtitle: "Mo Stocks Analysis and Recommendation  Tool"
+subtitle: "Mo Stocks Analysis and Recommendation Tool"
 author: "Mohammed Ali"
 date: "December 24, 2018"
 output: slidy_presentation
