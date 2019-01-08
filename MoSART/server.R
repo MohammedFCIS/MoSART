@@ -6,7 +6,7 @@
 #
 #    http://shiny.rstudio.com/
 #
-library("XLConnect")
+require(XLConnect)
 library(tidyverse)
 library(shiny)
 library(tidyquant)

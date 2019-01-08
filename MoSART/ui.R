@@ -8,7 +8,7 @@
 #
 
 library(shiny)
-library(DT)
+require(DT)
 
 
 # Determine what infromation to be retrieved and associated apis/input and output
