@@ -874,7 +874,9 @@ shinyServer(function(input, output, session) {
   })
   
   observeEvent(input$update_stock_db, {
-    update_stocks_list(stock_indexes, stock_exchanges)
+    withProgress(message = 'Updating stocks database', {
+      update_stocks_list(stock_indexes, stock_exchanges)
+    })
     createAlert(session, "alert", "db_update_alert", title = "Stock List Update",
                 content = "All stocks lists are updated.")
   })
