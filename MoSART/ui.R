@@ -11,16 +11,6 @@ library(shiny)
 require(DT)
 
 
-# Determine what infromation to be retrieved and associated apis/input and output
-# Determine the best layour
-# implement them
-## Refs:
-# https://cran.r-project.org/web/packages/tidyquant/vignettes/TQ01-core-functions-in-tidyquant.html
-#https://github.com/MohammedFCIS/shinyapps-tutorials/blob/master/Movie-Rating/app.R
-#http://shiny.rstudio.com/gallery/dynamic-ui.html
-#https://gallery.shinyapps.io/076-widget-select/
-
-# Define UI for application that draws a histogram
 stock_choices <-
   c("Stock Indexes" = "index", "Stock Exchanges" = "exchange")
 prices_choices <-

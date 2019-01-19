@@ -1,11 +1,3 @@
-#
-# This is the server logic of a Shiny web application. You can run the
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
 require(XLConnect)
 library(tidyverse)
 library(shiny)
@@ -16,28 +8,8 @@ library(XML)
 library(earth)
 library(DMwR2)
 library(PerformanceAnalytics)
-# add chart series setup (its different parameters and options)
-## https://www.quantmod.com/examples/charting/ (done)
-## https://shiny.rstudio.com/tutorial/written-tutorial/lesson6/
-## https://rpubs.com/Felix/6653
 
-# add zooming feature
-## https://www.quantmod.com/documentation/zoomChart.html
-## https://stackoverflow.com/questions/9137350/using-rechart-in-quantmod
-## https://stackoverflow.com/questions/42131839/r-zoomchart-shiny
-## https://rdrr.io/rforge/quantmod/src/R/zoomChart.R
-## https://stackoverflow.com/questions/42270664/r-shiny-quantmod-zoomchart-and-fixed-coloring-of-points
-## https://stackoverflow.com/questions/53150221/quanstrat-with-shiny
-## https://groups.google.com/forum/#!topic/shiny-discuss/vR7Jx8OfwSg
-## https://github.com/timelyportfolio/shiny-websockets/blob/master/shiny-chartseries.r
-
-# add indicators
-## https://www.quantmod.com/examples/charting/
-## https://stackoverflow.com/questions/45984122/r-addta-function-in-shiny-app
-
-# add the rest of analysis
-## https://www.business-science.io/investments/2016/10/23/SP500_Analysis.html
-
+# Register keys to be able to use the services
 Quandl.api_key("2AxuBQTEuzWdH_rFH-y9")
 av_api_key("JEMUK6SHIYMEVJKW")
 
@@ -88,7 +60,6 @@ shinyServer(function(input, output, session) {
                return(tq_exchange("AMEX"))
              }
              ex <- tq_exchange(input$stock)
-             glimpse(ex)
              return(ex)
            })
   })
