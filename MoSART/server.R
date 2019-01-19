@@ -8,7 +8,7 @@ library(XML)
 library(earth)
 library(DMwR2)
 library(PerformanceAnalytics)
-
+source("helper_functions.R")
 # Register keys to be able to use the services
 Quandl.api_key("2AxuBQTEuzWdH_rFH-y9")
 av_api_key("JEMUK6SHIYMEVJKW")
@@ -39,6 +39,7 @@ exchange_headers <-
     "IPO",
     "Sector",
     "Industry")
+walk(stock_indexes, load_stock_df)
 ## keep track of inserted indicators and not yet removed
 inserted_indicators <- c()
 
@@ -54,7 +55,7 @@ shinyServer(function(input, output, session) {
       return()
     }
     switch(input$stockType,
-           "index" = tq_index(input$stock),
+           "index" = load_stock_df(input$stock),
            "exchange" = {
              if (!input$stock %in% tq_exchange_options()) {
                return(tq_exchange("AMEX"))
@@ -175,7 +176,7 @@ shinyServer(function(input, output, session) {
       },
       "qundl" = {
         Quandl(paste("WIKI", "/", selected_stock(), sep = ""),
-                           type="xts")
+               type = "xts")
       },
       "alphavantage" = {
         stock_df <- tq_get(
@@ -352,7 +353,7 @@ shinyServer(function(input, output, session) {
     nm <- c("Day", nm)
     names(price_sim) <- nm
     price_sim <- price_sim %>%
-      gather(key = "Simulation", value = "Stock.Price",-(Day))
+      gather(key = "Simulation", value = "Stock.Price", -(Day))
     
     end_stock_prices <- price_sim %>%
       filter(Day == max(Day))
@@ -426,10 +427,14 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_ratios_financials <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[1, 2]], extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_key_ratios()[[1, 2]],
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$ratios_financials_plot <- renderPlot({
@@ -440,10 +445,14 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_ratios_profitability <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[2, 2]], extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_key_ratios()[[2, 2]],
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$ratios_profitability_plot <- renderPlot({
@@ -454,10 +463,14 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_ratios_growth <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[3, 2]], extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_key_ratios()[[3, 2]],
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$ratios_growth_plot <- renderPlot({
@@ -468,10 +481,14 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_ratios_cash_flow <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[4, 2]], extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_key_ratios()[[4, 2]],
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$ratios_cash_flow_plot <- renderPlot({
@@ -485,10 +502,14 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_ratios_financial_health <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[5, 2]], extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_key_ratios()[[5, 2]],
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$ratios_financial_health_plot <- renderPlot({
@@ -499,10 +520,14 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_ratios_efficiency <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[6, 2]], extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_key_ratios()[[6, 2]],
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$ratios_efficiency_plot <- renderPlot({
@@ -516,10 +541,14 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_ratios_value_ratios <- DT::renderDataTable({
-    DT::datatable(data = stock_key_ratios()[[7, 2]], extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_key_ratios()[[7, 2]],
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$ratios_value_ratios_plot <- renderPlot({
@@ -582,58 +611,86 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_key_stats_finviz <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_finviz_df(), extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_key_stats_finviz_df(),
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$stock_key_stats_earning_estimates <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_yahoo_df()[[1]], 
-                  caption = "Earning Estimates", extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_key_stats_yahoo_df()[[1]],
+      caption = "Earning Estimates",
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$stock_key_stats_earning_history <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_yahoo_df()[[3]],
-                  caption = "Earning History", extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_key_stats_yahoo_df()[[3]],
+      caption = "Earning History",
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$stock_key_stats_revenue_estimates <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_yahoo_df()[[2]], 
-                  caption = "Revenue Estimates", extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_key_stats_yahoo_df()[[2]],
+      caption = "Revenue Estimates",
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$stock_key_stats_eps_trend <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_yahoo_df()[[4]],
-                  caption = "EPS Trend", extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_key_stats_yahoo_df()[[4]],
+      caption = "EPS Trend",
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$stock_key_stats_eps_revisions <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_yahoo_df()[[5]],
-                  caption = "EPS Revisions", extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_key_stats_yahoo_df()[[5]],
+      caption = "EPS Revisions",
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$stock_key_stats_growth_est <- DT::renderDataTable({
-    DT::datatable(data = stock_key_stats_yahoo_df()[[6]],
-                  caption = "Growth Estimates", extensions = 'Buttons', options = list(
-                    dom = 'Bfrtip',
-                    buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-                  ))
+    DT::datatable(
+      data = stock_key_stats_yahoo_df()[[6]],
+      caption = "Growth Estimates",
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   # return stock finance statments
@@ -642,24 +699,39 @@ shinyServer(function(input, output, session) {
   })
   
   output$stock_finance_statement_is <- DT::renderDataTable({
-    DT::datatable(data = stock_finance_statements()$IS, caption = "IS", extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_finance_statements()$IS,
+      caption = "IS",
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$stock_finance_statement_bs <- DT::renderDataTable({
-    DT::datatable(data = stock_finance_statements()$BS, caption = "BS", extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_finance_statements()$BS,
+      caption = "BS",
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   output$stock_finance_statement_cf <- DT::renderDataTable({
-    DT::datatable(data = stock_finance_statements()$CF, caption = "CF", extensions = 'Buttons', options = list(
-      dom = 'Bfrtip',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    ))
+    DT::datatable(
+      data = stock_finance_statements()$CF,
+      caption = "CF",
+      extensions = 'Buttons',
+      options = list(
+        dom = 'Bfrtip',
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      )
+    )
   })
   
   observeEvent(input$add_indic, {
@@ -667,43 +739,40 @@ shinyServer(function(input, output, session) {
     btn <- input$add_indic
     id <- paste0('ind', btn)
     indic_id <- paste0(input$strat_indicators, "_", id)
-    insertUI(
-      selector = '#indicators_placeholder',
-      ui = tags$div(
-        id = paste0("ind_div", id),
-        fluidRow(
-          column(
-            width = 4,
-            textInput(
-              inputId = indic_id,
-              label = "Indicator Name",
-              placeholder = "Indicator Name"
-            )
-          ),
-          column(
-            width = 4,
-            numericInput(paste0("n_", id),
-                         label = "Calculations Period",
-                         value = 14)
-          ),
-          column(
-            width = 4,
-            br(),
-            actionButton(
-              paste0("ind_remove_btn_", id),
-              label = 'Remove',
-              class = "btn-danger"
-            )
-          )
-        )
-      )
-    )
+    insertUI(selector = '#indicators_placeholder',
+             ui = tags$div(id = paste0("ind_div", id),
+                           fluidRow(
+                             column(
+                               width = 4,
+                               textInput(
+                                 inputId = indic_id,
+                                 label = "Indicator Name",
+                                 placeholder = "Indicator Name"
+                               )
+                             ),
+                             column(
+                               width = 4,
+                               numericInput(paste0("n_", id),
+                                            label = "Calculations Period",
+                                            value = 14)
+                             ),
+                             column(
+                               width = 4,
+                               br(),
+                               actionButton(
+                                 paste0("ind_remove_btn_", id),
+                                 label = 'Remove',
+                                 class = "btn-danger"
+                               )
+                             )
+                           )))
     inserted_indicators <<- c(indic_id, inserted_indicators)
     observeEvent(input[[paste0("ind_remove_btn_", id)]], {
       shiny::removeUI(selector = paste0("#ind_div", id))
-      inserted_indicators <<- inserted_indicators[!inserted_indicators %in% c(indic_id)]
+      inserted_indicators <<-
+        inserted_indicators[!inserted_indicators %in% c(indic_id)]
       indicators_names <- c()
-      for(ind in inserted_indicators){
+      for (ind in inserted_indicators) {
         indicators_names <- c(input[[ind]], indicators_names)
       }
       updateSelectInput(session, inputId = "first_indic", choices = indicators_names)
@@ -712,7 +781,7 @@ shinyServer(function(input, output, session) {
     
     observeEvent(input[[indic_id]], {
       indicators_names <- c()
-      for(ind in inserted_indicators){
+      for (ind in inserted_indicators) {
         indicators_names <- c(input[[ind]], indicators_names)
       }
       updateSelectInput(session, inputId = "first_indic", choices = indicators_names)
@@ -722,7 +791,7 @@ shinyServer(function(input, output, session) {
   
   observeEvent(input$predict_btn, {
     # build formula
-    ## get stock 
+    ## get stock
     stock <<- stock_pricess_df()
     stock_formula <- "T.ind(stock) ~ Delt(Cl(stock),k=1:10)"
     for (ind in input$indicators) {
@@ -750,39 +819,60 @@ shinyServer(function(input, output, session) {
         "addWMA" =  paste(stock_formula, "myWMA(stock)", sep = "+"),
         "addWPR" =  paste(stock_formula, "myWPR(stock)", sep = "+"),
         "addZLEMA" =  paste(stock_formula, "myZLEMA(stock)", sep = "+")
-      )}
+      )
+    }
     data.model <- specifyModel(formula = stock_formula)
     set.seed(1234)
     Tdata.train <- as.data.frame(modelData(data.model,
-                                           data.window=c(max(index(stock)) - 1825, max(index(stock)))))
-
+                                           data.window = c(max(index(
+                                             stock
+                                           )) - 1825, max(index(
+                                             stock
+                                           )))))
+    
     # A Trading Simulator
     start <- 1
-    len.tr <- 1000 # first 1000 for training models 
-    len.ts <- 500 # next 500 for testing them 
-    tr <- start:(start+len.tr-1)
-    ts <- (start+len.tr):(start+len.tr+len.ts-1) 
+    len.tr <- 1000 # first 1000 for training models
+    len.ts <- 500 # next 500 for testing them
+    tr <- start:(start + len.tr - 1)
+    ts <- (start + len.tr):(start + len.tr + len.ts - 1)
     market <- xts::last(stock, len.ts)
-    e <- earth(as.formula("T.ind.stock ~ ."), na.omit(tail(Tdata.train, (start+len.tr-1))))
-    e.preds <- predict(e, tail(Tdata.train, (start+len.tr+len.ts-1)))
-    sigs.e <- trading.signals(e.preds, 0.1, -0.1)
+    e <-
+      earth(as.formula("T.ind.stock ~ ."), na.omit(tail(Tdata.train, (start +
+                                                                        len.tr - 1))))
+    e.preds <-
+      predict(e, tail(Tdata.train, (start + len.tr + len.ts - 1)))
+    sigs.e <- trading.signals(e.preds, 0.1,-0.1)
     
-    t1 <- trading.simulator(market = market, signals=na.omit(sigs.e), policy.func='policy.1',
-                            policy.pars=list(exp.prof=0.05,bet=0.2,hold.time=30))
-    #t1 
+    t1 <-
+      trading.simulator(
+        market = market,
+        signals = na.omit(sigs.e),
+        policy.func = 'policy.1',
+        policy.pars = list(
+          exp.prof = 0.05,
+          bet = 0.2,
+          hold.time = 30
+        )
+      )
+    #t1
     output$simulator_summary <- renderPrint(summary(t1))
     output$trading_evaluation <- renderPrint(tradingEvaluation(t1))
-    output$buy_sell_plot <- renderPlot(plot(t1, market,  theme = "white",  name = "SP500"))
+    output$buy_sell_plot <-
+      renderPlot(plot(t1, market,  theme = "white",  name = "SP500"))
     
     # Report
     equityWF <- as.xts(t1@trading$Equity)
     rets <- Return.calculate(equityWF)
-    output$CumReturns <- renderPlot(chart.CumReturns(rets, 
-                                                     main="Cumulative returns of the strategy",
-                                                     ylab="returns"))
+    output$CumReturns <- renderPlot(
+      chart.CumReturns(rets,
+                       main = "Cumulative returns of the strategy",
+                       ylab = "returns")
+    )
     # yearlyReturn(equityWF)
-    output$yearlyReturn <- renderPlot(plot(100*yearlyReturn(equityWF), 
-         main='Yearly percentage returns of the trading system'))
+    output$yearlyReturn <-
+      renderPlot(plot(100 * yearlyReturn(equityWF),
+                      main = 'Yearly percentage returns of the trading system'))
     output$downside_risk <- renderPrint(table.DownsideRisk(rets))
     output$rets <- renderPlot(plot(rets))
     
@@ -808,10 +898,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       IS <- p[[1]]
-      colnames(IS) <- paste(IS[1,])
-      IS <- IS[-c(1, 5, 12, 20, 25),]
+      colnames(IS) <- paste(IS[1, ])
+      IS <- IS[-c(1, 5, 12, 20, 25), ]
       names_row <- paste(IS[, 1])
-      IS <- IS[,-1]
+      IS <- IS[, -1]
       IS <- apply(IS, 2, function(x) {
         gsub(",", "", x)
       })
@@ -826,10 +916,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       BS <- p[[1]]
-      colnames(BS) <- BS[1,]
-      BS <- BS[-c(1, 2, 17, 28),]
+      colnames(BS) <- BS[1, ]
+      BS <- BS[-c(1, 2, 17, 28), ]
       names_row <- BS[, 1]
-      BS <- BS[,-1]
+      BS <- BS[, -1]
       BS <- apply(BS, 2, function(x) {
         gsub(",", "", x)
       })
@@ -843,10 +933,10 @@ getFin <- function(stock) {
         html_nodes(xpath = '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/table') %>%
         html_table(fill = TRUE)
       CF <- p[[1]]
-      colnames(CF) <- CF[1,]
-      CF <- CF[-c(1, 3, 11, 16),]
+      colnames(CF) <- CF[1, ]
+      CF <- CF[-c(1, 3, 11, 16), ]
       names_row <- CF[, 1]
-      CF <- CF[,-1]
+      CF <- CF[, -1]
       CF <- apply(CF, 2, function(x) {
         gsub(",", "", x)
       })
@@ -903,183 +993,231 @@ get_stock_prices <- function(symbole) {
 }
 
 # Indicator functions
-mySMA <<- function(x) SMA(Cl(x))[,'SMA'] # Moving Average 
-myEMA <<- function(x) EMA(Cl(x))[,'EMA'] # Exponential Moving Average 
-myDEMA <<- function(x) DEMA(Cl(x))[,'DEMA'] # Double Exponential Moving Average 
-myWMA <<- function(x) WMA(Cl(x))[,1] # Weigthed Moving Average
-myEVWMA <<- function(x) EVWMA(Cl(x), Vo(x))[,1] # Exponential Volume Weigthed Moving Average
-myZLEMA <<- function(x) ZLEMA(Cl(x))[,1] # Zero lag exponential Moving Averages
-myMACD <<- function(x) MACD(Cl(x))[,2] # Moving Average Convergence Divergence
-myCCI <<- function(x) CCI(HLC(x))[,'cci'] # Commodity Channel Index 
-myCMF <<- function(x) CMF(HLC(stock), volume = Vo(stock))[,1] # Chaikin Money Flow
-myCMO <<- function(x) CMO(Cl(stock))[,'cmo'] # Chaikin Money Oscillator
-myDPO <<- function(x) DPO(Cl(x))[,1] # Detrended Price Oscillator 
-myROC <<- function(x) ROC(Cl(x))[,1] # Calculate the (rate of) change of a series over n periods. 
-myRSI <<- function(x) RSI(Cl(x))[,"rsi"] # Relative Strength Indicator 
-myTRIX <<- function(x) TRIX(Cl(x))[,"TRIX"] # Relative Strength Indicator
-myWPR <<- function(x) WPR(HLC(x))[,1] # William's %R
-myATR <<- function(x) ATR(HLC(x))[,'atr'] # Average True Range, measures volatility of series  
-mySMI <<- function(x) SMI(HLC(x))[, "SMI"] #  Stochastic Momentum Index 
-myADX <<- function(x) ADX(HLC(x))[,'ADX'] # Welles Wilder's Directional Movement Index 
-myAroon <<- function(x) aroon(cbind(Hi(x),Lo(x)))$oscillator # Identify starting trends
-myBB <<- function(x) BBands(HLC(x))[, "pctB"] # Bollinger Bands
-myChaikinVol <<- function(x) Delt(chaikinVolatility(cbind(Hi(x),Lo(x))))[, 1] # Chaikin Volatility
-myCLV <<- function(x) EMA(CLV(HLC(x)))[, 1] # Close Location Value 
-myEMV <<- function(x) EMV(cbind(Hi(x),Lo(x)),Vo(x))[,2] # Arms' Ease of Movement Value 
-myMFI <<- function(x) MFI(HLC(x), Vo(x)) # Money Flow Index
-mySAR <<- function(x) SAR(cbind(Hi(x),Cl(x))) [,1] # Parabolic Stop-and-Reverse
-myVolat <<- function(x) volatility(OHLC(x),calc="garman")[,1] # volatility
+mySMA <<- function(x)
+  SMA(Cl(x))[, 'SMA'] # Moving Average
+myEMA <<-
+  function(x)
+    EMA(Cl(x))[, 'EMA'] # Exponential Moving Average
+myDEMA <<-
+  function(x)
+    DEMA(Cl(x))[, 'DEMA'] # Double Exponential Moving Average
+myWMA <<- function(x)
+  WMA(Cl(x))[, 1] # Weigthed Moving Average
+myEVWMA <<-
+  function(x)
+    EVWMA(Cl(x), Vo(x))[, 1] # Exponential Volume Weigthed Moving Average
+myZLEMA <<-
+  function(x)
+    ZLEMA(Cl(x))[, 1] # Zero lag exponential Moving Averages
+myMACD <<-
+  function(x)
+    MACD(Cl(x))[, 2] # Moving Average Convergence Divergence
+myCCI <<- function(x)
+  CCI(HLC(x))[, 'cci'] # Commodity Channel Index
+myCMF <<-
+  function(x)
+    CMF(HLC(stock), volume = Vo(stock))[, 1] # Chaikin Money Flow
+myCMO <<-
+  function(x)
+    CMO(Cl(stock))[, 'cmo'] # Chaikin Money Oscillator
+myDPO <<- function(x)
+  DPO(Cl(x))[, 1] # Detrended Price Oscillator
+myROC <<-
+  function(x)
+    ROC(Cl(x))[, 1] # Calculate the (rate of) change of a series over n periods.
+myRSI <<-
+  function(x)
+    RSI(Cl(x))[, "rsi"] # Relative Strength Indicator
+myTRIX <<-
+  function(x)
+    TRIX(Cl(x))[, "TRIX"] # Relative Strength Indicator
+myWPR <<- function(x)
+  WPR(HLC(x))[, 1] # William's %R
+myATR <<-
+  function(x)
+    ATR(HLC(x))[, 'atr'] # Average True Range, measures volatility of series
+mySMI <<-
+  function(x)
+    SMI(HLC(x))[, "SMI"] #  Stochastic Momentum Index
+myADX <<-
+  function(x)
+    ADX(HLC(x))[, 'ADX'] # Welles Wilder's Directional Movement Index
+myAroon <<-
+  function(x)
+    aroon(cbind(Hi(x), Lo(x)))$oscillator # Identify starting trends
+myBB <<- function(x)
+  BBands(HLC(x))[, "pctB"] # Bollinger Bands
+myChaikinVol <<-
+  function(x)
+    Delt(chaikinVolatility(cbind(Hi(x), Lo(x))))[, 1] # Chaikin Volatility
+myCLV <<- function(x)
+  EMA(CLV(HLC(x)))[, 1] # Close Location Value
+myEMV <<-
+  function(x)
+    EMV(cbind(Hi(x), Lo(x)), Vo(x))[, 2] # Arms' Ease of Movement Value
+myMFI <<- function(x)
+  MFI(HLC(x), Vo(x)) # Money Flow Index
+mySAR <<-
+  function(x)
+    SAR(cbind(Hi(x), Cl(x))) [, 1] # Parabolic Stop-and-Reverse
+myVolat <<-
+  function(x)
+    volatility(OHLC(x), calc = "garman")[, 1] # volatility
 # Define the Predictive Task
-T.ind <<- function(quotes,tgt.margin=0.025,n.days=10) {
-  v <- apply(HLC(quotes),1,mean) # function HLC() extracts the High, Low, and Close quotes
-  v[1] <- Cl(quotes)[1]           
+T.ind <<- function(quotes,
+                   tgt.margin = 0.025,
+                   n.days = 10) {
+  v <-
+    apply(HLC(quotes), 1, mean) # function HLC() extracts the High, Low, and Close quotes
+  v[1] <- Cl(quotes)[1]
   
-  r <- matrix(NA,ncol=n.days,nrow=NROW(quotes))
-  for(x in 1:n.days) r[,x] <- Next(Delt(v,k=x),x)
+  r <- matrix(NA, ncol = n.days, nrow = NROW(quotes))
+  for (x in 1:n.days)
+    r[, x] <- Next(Delt(v, k = x), x)
   
-  x <- apply(r,1,function(x) 
+  x <- apply(r, 1, function(x)
     sum(x[x > tgt.margin | x < -tgt.margin]))
-  if (is.xts(quotes)) xts(x,time(quotes)) else x
+  if (is.xts(quotes))
+    xts(x, time(quotes))
+  else
+    x
 }
 
 #----------------------------------------------------
 # The Trading Set up
-policy.1 <<- function(signals,market,opened.pos,money,
-                     bet=0.2,hold.time=10,
-                     exp.prof=0.025, max.loss= 0.05
-)
+policy.1 <<- function(signals,
+                      market,
+                      opened.pos,
+                      money,
+                      bet = 0.2,
+                      hold.time = 10,
+                      exp.prof = 0.025,
+                      max.loss = 0.05)
 {
   d <- NROW(market) # this is the ID of today
   orders <- NULL
   nOs <- NROW(opened.pos)
   # nothing to do!
-  if (!nOs && !is.na(signals[d]) && signals[d] == 'h') return(orders)
+  if (!nOs &&
+      !is.na(signals[d]) && signals[d] == 'h')
+    return(orders)
   
   # First lets check if we can open new positions
   # i) long positions
   if (!is.na(signals[d])) {
-  if (signals[d] == 'b' && !is.na(nOs) && !nOs) {
-    quant <- round(bet*money/Cl(market)[d],0)
-    if (quant > 0) 
-      orders <- rbind(orders,
-                      data.frame(order=c(1,-1,-1),order.type=c(1,2,3), 
-                                 val = c(quant,
-                                         Cl(market)[d]*(1+exp.prof),
-                                         Cl(market)[d]*(1-max.loss)
-                                 ),
-                                 action = c('open','close','close'),
-                                 posID = c(NA,NA,NA)
-                      )
-      )
-    
-    # ii) short positions  
-  } else if (signals[d] == 's' && !nOs) {
-    # this is the nr of stocks we already need to buy 
-    # because of currently opened short positions
-    need2buy <- sum(opened.pos[opened.pos[,'pos.type']==-1,
-                               "N.stocks"])*Cl(market)[d]
-    quant <- round(bet*(money-need2buy)/Cl(market)[d],0)
-    if (quant > 0)
-      orders <- rbind(orders,
-                      data.frame(order=c(-1,1,1),order.type=c(1,2,3), 
-                                 val = c(quant,
-                                         Cl(market)[d]*(1-exp.prof),
-                                         Cl(market)[d]*(1+max.loss)
-                                 ),
-                                 action = c('open','close','close'),
-                                 posID = c(NA,NA,NA)
-                      )
-      )
+    if (signals[d] == 'b' && !is.na(nOs) && !nOs) {
+      quant <- round(bet * money / Cl(market)[d], 0)
+      if (quant > 0)
+        orders <- rbind(orders,
+                        data.frame(
+                          order = c(1, -1, -1),
+                          order.type = c(1, 2, 3),
+                          val = c(
+                            quant,
+                            Cl(market)[d] * (1 + exp.prof),
+                            Cl(market)[d] * (1 - max.loss)
+                          ),
+                          action = c('open', 'close', 'close'),
+                          posID = c(NA, NA, NA)
+                        ))
+      
+      # ii) short positions
+    } else if (signals[d] == 's' && !nOs) {
+      # this is the nr of stocks we already need to buy
+      # because of currently opened short positions
+      need2buy <- sum(opened.pos[opened.pos[, 'pos.type'] == -1,
+                                 "N.stocks"]) * Cl(market)[d]
+      quant <- round(bet * (money - need2buy) / Cl(market)[d], 0)
+      if (quant > 0)
+        orders <- rbind(orders,
+                        data.frame(
+                          order = c(-1, 1, 1),
+                          order.type = c(1, 2, 3),
+                          val = c(
+                            quant,
+                            Cl(market)[d] * (1 - exp.prof),
+                            Cl(market)[d] * (1 + max.loss)
+                          ),
+                          action = c('open', 'close', 'close'),
+                          posID = c(NA, NA, NA)
+                        ))
+    }
   }
-}
   
   # Now lets check if we need to close positions
   # because their holding time is over
-  if (nOs) 
-    for(i in 1:nOs) {
-      if (d - opened.pos[i,'Odate'] >= hold.time)
-        orders <- rbind(orders,
-                        data.frame(order=-opened.pos[i,'pos.type'],
-                                   order.type=1,
-                                   val = NA,
-                                   action = 'close',
-                                   posID = rownames(opened.pos)[i]
-                        )
+  if (nOs)
+    for (i in 1:nOs) {
+      if (d - opened.pos[i, 'Odate'] >= hold.time)
+        orders <- rbind(
+          orders,
+          data.frame(
+            order = -opened.pos[i, 'pos.type'],
+            order.type = 1,
+            val = NA,
+            action = 'close',
+            posID = rownames(opened.pos)[i]
+          )
         )
     }
   
   orders
 }
 
-policy.2 <<- function(signals,market,opened.pos,money,
-                     bet=0.2,exp.prof=0.025, max.loss= 0.05
-)
+policy.2 <<- function(signals,
+                      market,
+                      opened.pos,
+                      money,
+                      bet = 0.2,
+                      exp.prof = 0.025,
+                      max.loss = 0.05)
 {
   d <- NROW(market) # this is the ID of today
   orders <- NULL
   nOs <- NROW(opened.pos)
   # nothing to do!
-  if (!nOs && signals[d] == 'h') return(orders)
+  if (!nOs && signals[d] == 'h')
+    return(orders)
   
   # First lets check if we can open new positions
   # i) long positions
   if (signals[d] == 'b') {
-    quant <- round(bet*money/Cl(market)[d],0)
-    if (quant > 0) 
+    quant <- round(bet * money / Cl(market)[d], 0)
+    if (quant > 0)
       orders <- rbind(orders,
-                      data.frame(order=c(1,-1,-1),order.type=c(1,2,3), 
-                                 val = c(quant,
-                                         Cl(market)[d]*(1+exp.prof),
-                                         Cl(market)[d]*(1-max.loss)
-                                 ),
-                                 action = c('open','close','close'),
-                                 posID = c(NA,NA,NA)
-                      )
-      )
+                      data.frame(
+                        order = c(1, -1, -1),
+                        order.type = c(1, 2, 3),
+                        val = c(
+                          quant,
+                          Cl(market)[d] * (1 + exp.prof),
+                          Cl(market)[d] * (1 - max.loss)
+                        ),
+                        action = c('open', 'close', 'close'),
+                        posID = c(NA, NA, NA)
+                      ))
     
-    # ii) short positions  
+    # ii) short positions
   } else if (signals[d] == 's') {
     # this is the money already committed to buy stocks
     # because of currently opened short positions
-    need2buy <- sum(opened.pos[opened.pos[,'pos.type']==-1,
-                               "N.stocks"])*Cl(market)[d]
-    quant <- round(bet*(money-need2buy)/Cl(market)[d],0)
+    need2buy <- sum(opened.pos[opened.pos[, 'pos.type'] == -1,
+                               "N.stocks"]) * Cl(market)[d]
+    quant <- round(bet * (money - need2buy) / Cl(market)[d], 0)
     if (quant > 0)
       orders <- rbind(orders,
-                      data.frame(order=c(-1,1,1),order.type=c(1,2,3), 
-                                 val = c(quant,
-                                         Cl(market)[d]*(1-exp.prof),
-                                         Cl(market)[d]*(1+max.loss)
-                                 ),
-                                 action = c('open','close','close'),
-                                 posID = c(NA,NA,NA)
-                      )
-      )
+                      data.frame(
+                        order = c(-1, 1, 1),
+                        order.type = c(1, 2, 3),
+                        val = c(
+                          quant,
+                          Cl(market)[d] * (1 - exp.prof),
+                          Cl(market)[d] * (1 + max.loss)
+                        ),
+                        action = c('open', 'close', 'close'),
+                        posID = c(NA, NA, NA)
+                      ))
   }
   
   orders
-}
-
-# This function will be called
-# when user wants to referesh stocks list
-update_stocks_list <- function() {
-  tryCatch({
-    walk(stock_indexes, write_stock_df)
-  },
-  error = function(err){
-    message("Could not update stocks")
-    message(err)
-  },
-  warning = function(warn){
-    message(warn)
-  })
-}
-
-# Helper function to retrieve and
-# write stock data fram into csv file
-write_stock_df <- function(stock){
-  stock_df <- tq_index(stock)
-  if (nrow(stock_df) > 0) {
-    write_csv(stock_df, paste0("MoSART/data/", stock, ".csv"))
-  }
 }
