@@ -1,0 +1,157 @@
+symbol,company,weight,sector,shares_held
+PBR.A,Petroleo Brasileiro SA Sponsored ADR Pfd,0.010504712582203283,Energy,67753
+MTN-ZA,MTN Group Limited,0.009425605984716659,Communication Services,132723
+SBUX,Starbucks Corporation,0.008497228073467204,Consumer Discretionary,11476
+VWS-DK,Vestas Wind Systems A/S,0.008450420789852439,Industrials,9485
+AAL-GB,Anglo American plc,0.008149003560846036,Materials,30616
+MCD,McDonald's Corporation,0.008077708761789586,Consumer Discretionary,3872
+TEF-ES,Telefonica SA,0.007949691242537882,Communication Services,80148
+PG,Procter & Gamble Company,0.007881698243719263,Consumer Staples,7549
+MRK,Merck & Co. Inc.,0.007837450106185494,Health Care,9e3
+FOXA,Twenty-First Century Fox Inc. Class A,0.007802475109745216,Communication Services,13998
+DE,Deere & Company,0.007771735249172311,Industrials,4215
+ENGI-FR,ENGIE SA,0.007699918585032677,Utilities,43193
+INTC,Intel Corporation,0.007691980214248098,Information Technology,13777
+RIO-GB,Rio Tinto plc,0.007676284118284656,Materials,13247
+DUK,Duke Energy Corporation,0.0076175843322934976,Utilities,7722
+ROG-CH,Roche Holding Ltd Genusssch.,0.00759989109880018,Health Care,2552
+5108-JP,Bridgestone Corporation,0.007595575675996932,Consumer Discretionary,17027
+VZ,Verizon Communications Inc.,0.0075385920232600885,Communication Services,11516
+941-HK,China Mobile Limited,0.0075263884090071825,Communication Services,63543
+NPN-ZA,Naspers Limited Class N,0.007481598334656261,Communication Services,2942
+ABT,Abbott Laboratories,0.00747489437551075,Health Care,9202
+NOVN-CH,Novartis AG,0.007451420482634478,Health Care,7310
+WMT,Walmart Inc.,0.007448229076933471,Consumer Staples,6684
+OGZD-GB,Public Joint-Stock Company Gazprom Sponsored ADR,0.007447406135840759,Energy,138445
+1398-HK,Industrial and Commercial Bank of China Limited Class H,0.007425176690470539,Financials,890110
+7267-JP,Honda Motor Co. Ltd.,0.007420128649377438,Consumer Discretionary,21905
+DIS,Walt Disney Company,0.007416525773130075,Communication Services,5800
+INFY,Infosys Limited Sponsored ADR,0.0074154117918948164,Information Technology,60847
+KO,Coca-Cola Company,0.0073950389819166925,Consumer Staples,13642
+BHP-AU,BHP Group Ltd,0.007389539326809297,Materials,27258
+7203-JP,Toyota Motor Corp.,0.007385856163626059,Consumer Discretionary,10295
+NG-GB,National Grid plc,0.007278903929174398,Utilities,61566
+NEE,NextEra Energy Inc.,0.0072489167586253156,Utilities,3586
+AMGN,Amgen Inc.,0.007221900204703586,Health Care,3105
+NESN-CH,Nestle S.A.,0.007220736044133408,Consumer Staples,7428
+BK,Bank of New York Mellon Corporation,0.007217203418954935,Financials,12159
+700-HK,Tencent Holdings Ltd.,0.007201828470734991,Communication Services,14806
+BA,Boeing Company,0.007159968869543484,Industrials,1731
+EOAN-DE,E.ON SE,0.007154569573105932,Utilities,60345
+PFE,Pfizer Inc.,0.007141452694957455,Health Care,14598
+939-HK,China Construction Bank Corporation Class H,0.007122494942224116,Financials,739288
+MDLZ,Mondelez International Inc. Class A,0.0070989708700129215,Consumer Staples,14319
+GSK-GB,GlaxoSmithKline plc,0.007094715662411579,Health Care,32199
+3382-JP,Seven & I Holdings Co. Ltd.,0.007058666828203981,Consumer Staples,14118
+G-IT,Assicurazioni Generali S.p.A.,0.007048751391623496,Financials,35239
+UNP,Union Pacific Corporation,0.007048530602549841,Industrials,3957
+UNH,UnitedHealth Group Incorporated,0.0070228387830700385,Health Care,2347
+8058-JP,Mitsubishi Corporation,0.006988104647437383,Industrials,21411
+ERIC.B-SE,Telefonaktiebolaget LM Ericsson Class B,0.006978028636985148,Information Technology,72103
+SAN-ES,Banco Santander S.A.,0.006960546156698502,Financials,124740
+NFLX,Netflix Inc.,0.006948754012991952,Communication Services,1708
+AZN-GB,AstraZeneca PLC,0.006935566883774584,Health Care,8465
+BAC,Bank of America Corp,0.006915073643392648,Financials,20708
+HSBA-GB,HSBC Holdings Plc,0.006904224871182622,Financials,72674
+NKE,NIKE Inc. Class B,0.006890867132226522,Consumer Discretionary,7560
+CA-FR,Carrefour SA,0.006889110855504269,Consumer Staples,32807
+TRV,Travelers Companies Inc.,0.006859745908708214,Financials,4844
+SPG,Simon Property Group Inc.,0.006849850543861696,Real Estate,3432
+AI-FR,Air Liquide SA,0.006848264876878177,Materials,5026
+2-HK,CLP Holdings Limited,0.006844571677827956,Utilities,51327
+CVX,Chevron Corporation,0.006842905723908563,Energy,5306
+MSFT,Microsoft Corporation,0.0067989084830494,Information Technology,5562
+AMXL-MX,America Movil SAB de CV Class L,0.006796329265234436,Communication Services,748728
+GILD,Gilead Sciences Inc.,0.006791150757870538,Health Care,8588
+ALV-DE,Allianz SE,0.006785309883285677,Financials,2872
+4502-JP,Takeda Pharmaceutical Co. Ltd.,0.006785309883285677,Health Care,15001
+8031-JP,Mitsui & Co.Ltd,0.006780924209413538,Industrials,36673
+CSCO,Cisco Systems Inc.,0.006741964973780495,Information Technology,13239
+WMB,Williams Companies Inc.,0.0067411420326877825,Energy,22371
+RY-CA,Royal Bank of Canada,0.0067181297896927875,Financials,7877
+5401-JP,Nippon Steel & Sumitomo Metal Corp.,0.006717045916058483,Materials,32361
+8411-JP,Mizuho Financial Group Inc.,0.006697917553586412,Financials,361621
+BABA,Alibaba Group Holding Ltd. Sponsored ADR,0.00669593045192352,Consumer Discretionary,3727
+CAT,Caterpillar Inc.,0.006662380548595013,Industrials,4299
+V,Visa Inc. Class A,0.0066620694367184995,Information Technology,4213
+PM,Philip Morris International Inc.,0.006642700213438805,Consumer Staples,7952
+JNJ,Johnson & Johnson,0.006639338197999064,Health Care,4465
+FB,Facebook Inc. Class A,0.0066365582628444145,Communication Services,3885
+AXP,American Express Company,0.006629693729827154,Financials,5785
+JPM,JPMorgan Chase & Co.,0.006624705903935959,Financials,5588
+COP,ConocoPhillips,0.00662304998588355,Energy,8574
+MMM,3M Company,0.006616024878994541,Industrials,2996
+CL,Colgate-Palmolive Company,0.006613224872105921,Consumer Staples,9260
+T,AT&T Inc.,0.006612311608210351,Communication Services,18735
+BP-GB,BP p.l.c.,0.006596505117710082,Energy,86814
+BRK.B,Berkshire Hathaway Inc. Class B,0.006592119443837943,Financials,2879
+MDT,Medtronic plc,0.006579042709157404,Health Care,6520
+NAB-AU,National Australia Bank Limited,0.006574887860225904,Financials,32132
+TSCO-GB,Tesco PLC,0.006572870650962061,Consumer Staples,201748
+7751-JP,Canon Inc.,0.006534132204402671,Information Technology,20383
+NTR-CA,Nutrien Ltd.,0.0065245479514326665,Materials,11123
+DG-FR,VINCI SA,0.006513759394424546,Industrials,6681
+WFC,Wells Fargo & Company,0.0065100260519063875,Financials,11480
+HON,Honeywell International Inc.,0.006462777190144313,Industrials,4011
+BAX,Baxter International Inc.,0.006461843854514773,Health Care,8116
+EBAY,eBay Inc.,0.006461362132899527,Consumer Discretionary,18464
+BKNG,Booking Holdings Inc.,0.006455942764728007,Consumer Discretionary,325
+ARNC,Arconic Inc.,0.006449820885867585,Industrials,27747
+BBVA-ES,Banco Bilbao Vizcaya Argentaria S.A.,0.006420235149997874,Financials,97240
+SAMPO-FI,Sampo Oyj Class A,0.006402381342632809,Financials,12090
+6301-JP,Komatsu Ltd.,0.006339596958779041,Industrials,22447
+XOM,Exxon Mobil Corporation,0.006323660002007977,Energy,7611
+ACN,Accenture Plc Class A,0.006233517844755013,Information Technology,3629
+GS,Goldman Sachs Group Inc.,0.006230888447605127,Financials,2717
+VOD-GB,Vodafone Group Plc,0.006226623204136801,Communication Services,282325
+SIE-DE,Siemens AG,0.006218704905086189,Industrials,4846
+8306-JP,Mitsubishi UFJ Financial Group Inc.,0.006183880446650676,Financials,102589
+AMZN,Amazon.com Inc.,0.0061632667758649284,Consumer Discretionary,316
+HPQ,HP Inc.,0.006131744117667249,Information Technology,25074
+FP-FR,Total SA,0.006123755567547748,Energy,9958
+DAI-DE,Daimler AG,0.0061192996426067195,Consumer Discretionary,9540
+UBSG-CH,UBS Group AG,0.00608226729343466,Financials,39578
+HD,Home Depot Inc.,0.006077169073006637,Consumer Discretionary,3017
+CCL.U,Carnival Corporation,0.006068538227400141,Consumer Discretionary,9840
+DWDP,DowDuPont Inc.,0.006032920935472868,Materials,9182
+SAP-DE,SAP SE,0.006029649242835986,Information Technology,5084
+6752-JP,Panasonic Corporation,0.006018067852336106,Consumer Discretionary,54505
+UPS,United Parcel Service Inc. Class B,0.006009396863261673,Industrials,5239
+857-HK,PetroChina Company Limited Class H,0.005999120135469752,Energy,818601
+CVS,CVS Health Corporation,0.005984146621929181,Health Care,8198
+6758-JP,Sony Corporation,0.005969564507200996,Consumer Discretionary,10529
+SMSN-GB,Samsung Electronics Co. Ltd. Sponsored GDR,0.0059657910212148986,Information Technology,556
+IBM,International Business Machines Corporation,0.005910061851851094,Information Technology,4199
+AIG,American International Group Inc.,0.005882111962299824,Financials,11796
+LUV,Southwest Airlines Co.,0.005871694732370123,Industrials,10076
+UTX,United Technologies Corporation,0.005871413728094563,Industrials,4520
+386-HK,China Petroleum & Chemical Corporation Class H,0.0058636560029157,Energy,648147
+MC-FR,LVMH Moet Hennessy Louis Vuitton SE,0.0058591800062407036,Consumer Discretionary,1813
+CSGN-CH,Credit Suisse Group AG,0.0057264355936393965,Financials,41275
+TSM,Taiwan Semiconductor Manufacturing Co. Ltd. Sponsored ADR,0.005703473529979322,Information Technology,13644
+ABI-BE,Anheuser-Busch InBev SA/NV,0.00568343190361168,Consumer Staples,6923
+BA-GB,BAE Systems plc,0.005650704941375884,Industrials,76354
+SGO-FR,Compagnie de Saint-Gobain SA,0.005633232496956222,Industrials,14670
+BAS-DE,BASF SE,0.005618740705030895,Materials,6804
+ABBN-CH,ABB Ltd.,0.005607048919994189,Industrials,25692
+BNP-FR,BNP Paribas SA Class A,0.0055824108665477375,Financials,10282
+GLE-FR,Societe Generale S.A. Class A,0.005528177041364593,Financials,14798
+DBK-DE,Deutsche Bank AG,0.00552606950929789,Financials,54174
+UCG-IT,UniCredit S.p.A.,0.005493111722121455,Financials,39587
+MT-NL,ArcelorMittal SA,0.005349006708093923,Materials,21100
+QCOM,QUALCOMM Incorporated,0.005295686146806348,Information Technology,8394
+9984-JP,SoftBank Group Corp.,0.005236123276254541,Communication Services,6378
+GE,General Electric Company,0.0052338150268481515,Industrials,49712
+AAPL,Apple Inc.,0.004994620173144397,Information Technology,2782
+SLB,Schlumberger NV,0.004894502364109042,Energy,10271
+FDX,FedEx Corporation,0.0048659503225387144,Industrials,2438
+RLI-DE,Reliance Industries Limited Sponsored GDR 144A,0.00365883624166737,Energy,9969
+RDSA-NL,Royal Dutch Shell Plc Class A,0.0036125106796678513,Energy,10523
+GOOG,Alphabet Inc. Class C,0.003414804100077184,Communication Services,272
+GOOGL,Alphabet Inc. Class A,0.0033803911121880266,Communication Services,267
+RDSB-GB,Royal Dutch Shell Plc Class B,0.0029248229663028104,Energy,8471
+500325-IN,Reliance Industries Limited,0.0029001146617874687,Energy,15768
+005930-KR,Samsung Electronics Co. Ltd.,5.403009708336429e-4,Information Technology,1255
+PETR4-BR,Petroleo Brasileiro SA Pfd,2.464407496664178e-4,Energy,3200
+CI,Cigna Corporation,1.7923054847257517e-4,Health Care,80
+2330-TW,Taiwan Semiconductor Manufacturing Co. Ltd.,1.6470864894629618e-4,Information Technology,2e3

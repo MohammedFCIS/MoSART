@@ -1,0 +1,31 @@
+symbol,company,weight,sector,shares_held
+BA,Boeing Company,0.09991040772561183,Industrials,5728284
+UNH,UnitedHealth Group Incorporated,0.07227638214862975,Health Care,5728284
+GS,Goldman Sachs Group Inc.,0.055393249356930595,Financials,5728284
+MMM,3M Company,0.05333989874978135,Industrials,5728284
+MCD,McDonald's Corporation,0.05039063540660023,Consumer Discretionary,5728284
+HD,Home Depot Inc.,0.048654463588149274,Consumer Discretionary,5728284
+AAPL,Apple Inc.,0.04336527485429021,Information Technology,5728284
+V,Visa Inc. Class A,0.0381957199588213,Information Technology,5728284
+CAT,Caterpillar Inc.,0.037433361980470245,Industrials,5728284
+JNJ,Johnson & Johnson,0.03591699257063256,Health Care,5728284
+TRV,Travelers Companies Inc.,0.034205870400624845,Financials,5728284
+IBM,International Business Machines Corporation,0.03399719672116415,Information Technology,5728284
+UTX,United Technologies Corporation,0.03137625090368383,Industrials,5728284
+CVX,Chevron Corporation,0.03115088413049428,Energy,5728284
+DIS,Walt Disney Company,0.030886556797420764,Communication Services,5728284
+MSFT,Microsoft Corporation,0.02952599960356905,Information Technology,5728284
+JPM,JPMorgan Chase & Co.,0.028635661239963407,Financials,5728284
+AXP,American Express Company,0.02768132267588051,Financials,5728284
+WMT,Walmart Inc.,0.026916182515241305,Consumer Staples,5728284
+PG,Procter & Gamble Company,0.02521897125667431,Consumer Staples,5728284
+NKE,NIKE Inc. Class B,0.0220165193174222,Consumer Discretionary,5728284
+MRK,Merck & Co. Inc.,0.021034358930457877,Health Care,5728284
+XOM,Exxon Mobil Corporation,0.020068891637222405,Energy,5728284
+WBA,Walgreens Boots Alliance Inc,0.0200299410851884,Consumer Staples,5728284
+DWDP,DowDuPont Inc.,0.01587036839956525,Materials,5728284
+VZ,Verizon Communications Inc.,0.015811942571514245,Communication Services,5728284
+INTC,Intel Corporation,0.013485918084427064,Information Technology,5728284
+KO,Coca-Cola Company,0.013093610366098962,Consumer Staples,5728284
+CSCO,Cisco Systems Inc.,0.012300648382578327,Information Technology,5728284
+PFE,Pfizer Inc.,0.011816518640891543,Health Care,5728284

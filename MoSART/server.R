@@ -1059,3 +1059,27 @@ policy.2 <<- function(signals,market,opened.pos,money,
   
   orders
 }
+
+# This function will be called
+# when user wants to referesh stocks list
+update_stocks_list <- function() {
+  tryCatch({
+    walk(stock_indexes, write_stock_df)
+  },
+  error = function(err){
+    message("Could not update stocks")
+    message(err)
+  },
+  warning = function(warn){
+    message(warn)
+  })
+}
+
+# Helper function to retrieve and
+# write stock data fram into csv file
+write_stock_df <- function(stock){
+  stock_df <- tq_index(stock)
+  if (nrow(stock_df) > 0) {
+    write_csv(stock_df, paste0("MoSART/data/", stock, ".csv"))
+  }
+}

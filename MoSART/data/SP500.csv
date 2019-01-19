@@ -1,0 +1,506 @@
+symbol,company,weight,sector,shares_held
+MSFT,Microsoft Corporation,0.03707352694086951,Information Technology,85257330
+AAPL,Apple Inc.,0.031785307894171846,Information Technology,49768770
+AMZN,Amazon.com Inc.,0.03144071949081859,Consumer Discretionary,4531523
+BRK.B,Berkshire Hathaway Inc. Class B,0.017484829108240698,Financials,21466130
+FB,Facebook Inc. Class A,0.016110068293294328,Communication Services,26510704
+JNJ,Johnson & Johnson,0.015653392584017614,Health Care,29592454
+JPM,JPMorgan Chase & Co.,0.015478976729764579,Financials,36703510
+GOOG,Alphabet Inc. Class C,0.01516005832102683,Communication Services,3394527
+GOOGL,Alphabet Inc. Class A,0.01485588139457705,Communication Services,3298515
+XOM,Exxon Mobil Corporation,0.013807194561916222,Energy,46714800
+BAC,Bank of America Corp,0.011969633267048037,Financials,100762220
+UNH,UnitedHealth Group Incorporated,0.011298780733300975,Health Care,10614702
+PFE,Pfizer Inc.,0.011104359296499637,Health Care,63808150
+V,Visa Inc. Class A,0.01091018805457759,Information Technology,19395020
+VZ,Verizon Communications Inc.,0.010616829554708457,Communication Services,45591332
+PG,Procter & Gamble Company,0.01020939219767669,Consumer Staples,27488134
+T,AT&T Inc.,0.010081512590972234,Communication Services,80297496
+INTC,Intel Corporation,0.010005013004679474,Information Technology,50374400
+CVX,Chevron Corporation,0.009673014407652263,Energy,21084540
+WFC,Wells Fargo & Company,0.009436350067431022,Financials,46777724
+CSCO,Cisco Systems Inc.,0.008991333439529384,Information Technology,49632770
+HD,Home Depot Inc.,0.008933968757604984,Consumer Discretionary,12467928
+MRK,Merck & Co. Inc.,0.008894568068013857,Health Care,28712316
+BA,Boeing Company,0.008577431046816675,Industrials,5829336
+MA,Mastercard Incorporated Class A,0.008163758833392917,Information Technology,9995999
+KO,Coca-Cola Company,0.008150658629513113,Consumer Staples,42267424
+DIS,Walt Disney Company,0.007471299469870076,Communication Services,16424769
+CMCSA,Comcast Corporation Class A,0.007378737372326679,Communication Services,50145476
+PEP,PepsiCo Inc.,0.006970789617741155,Consumer Staples,15575609
+NFLX,Netflix Inc.,0.00696322372459132,Communication Services,4811348
+C,Citigroup Inc.,0.006904107678511869,Financials,26971240
+MCD,McDonald's Corporation,0.006318271364748716,Consumer Discretionary,8513747
+WMT,Walmart Inc.,0.0062439634855985665,Consumer Staples,15751416
+ABBV,AbbVie Inc.,0.005938125265150278,Health Care,16618748
+DWDP,DowDuPont Inc.,0.005918479963228158,Materials,25321860
+AMGN,Amgen Inc.,0.005820093328894809,Health Care,7034217
+ABT,Abbott Laboratories,0.005599581570080751,Health Care,19377966
+ORCL,Oracle Corporation,0.005589093400740771,Information Technology,28076894
+ADBE,Adobe Inc.,0.005380540957156938,Information Technology,5372668
+MDT,Medtronic plc,0.005319833671645181,Health Care,14820356
+CRM,salesforce.com inc.,0.005180264960180134,Information Technology,8438150
+UNP,Union Pacific Corporation,0.005141264582395874,Industrials,8113598
+PM,Philip Morris International Inc.,0.005096910034194734,Consumer Staples,17151992
+LLY,Eli Lilly and Company,0.0050816281309674916,Health Care,10407288
+MMM,3M Company,0.005051724838994341,Industrials,6430722
+IBM,International Business Machines Corporation,0.005014926176147864,Information Technology,10015988
+PYPL,PayPal Holdings Inc,0.004811427669125758,Information Technology,12988851
+AVGO,Broadcom Inc.,0.004778982397178986,Information Technology,4567707
+HON,Honeywell International Inc.,0.00467035778838495,Industrials,8148166
+NKE,NIKE Inc. Class B,0.0045512850414316216,Consumer Discretionary,14036469
+TMO,Thermo Fisher Scientific Inc.,0.00433524676705933,Health Care,4442139
+ACN,Accenture Plc Class A,0.004296156319118525,Information Technology,7030867
+TXN,Texas Instruments Incorporated,0.00423760070956869,Information Technology,10602360
+COST,Costco Wholesale Corporation,0.004189863526599503,Consumer Staples,4835446
+NVDA,NVIDIA Corporation,0.004183958927448179,Information Technology,6729915
+UTX,United Technologies Corporation,0.004137572796827176,Industrials,8954001
+GILD,Gilead Sciences Inc.,0.004001096494070196,Health Care,14223417
+MO,Altria Group Inc,0.003984153296844445,Consumer Staples,20660904
+LIN,Linde plc,0.003918081833120635,Materials,6080238
+NEE,NextEra Energy Inc.,0.003790692608379593,Utilities,5271460
+CVS,CVS Health Corporation,0.0036990111968113084,Health Care,14245168
+BMY,Bristol-Myers Squibb Company,0.0036602610139063415,Health Care,18009220
+BKNG,Booking Holdings Inc.,0.003611463004648951,Consumer Discretionary,511072
+SBUX,Starbucks Corporation,0.0036054983587265957,Consumer Discretionary,13688456
+GE,General Electric Company,0.00359428962813425,Industrials,95969190
+CAT,Caterpillar Inc.,0.0035920979209916395,Industrials,6515717
+COP,ConocoPhillips,0.003505060126383041,Energy,12755498
+USB,U.S. Bancorp,0.0034268792305014294,Financials,16810112
+LOW,Lowe's Companies Inc.,0.0033586961219963843,Consumer Discretionary,8904561
+CI,Cigna Corporation,0.003284688476701387,Health Care,4121346
+AMT,American Tower Corporation,0.003273409691542839,Real Estate,4859777
+AXP,American Express Company,0.0031603416216925526,Financials,7752104
+UPS,United Parcel Service Inc. Class B,0.003129857877599441,Industrials,7670381
+GS,Goldman Sachs Group Inc.,0.0031152064654680176,Financials,3818588
+LMT,Lockheed Martin Corporation,0.0031052587170673105,Industrials,2718127
+BIIB,Biogen Inc.,0.0030816503282571827,Health Care,2222771
+ANTM,Anthem Inc.,0.003062615501840538,Health Care,2853895
+QCOM,QUALCOMM Incorporated,0.0030016480136543155,Information Technology,13374657
+DHR,Danaher Corporation,0.0029439630822844223,Health Care,6805459
+CME,CME Group Inc. Class A,0.0029310730421032243,Financials,3946299
+BDX,Becton Dickinson and Company,0.00286376061177812,Health Care,2959975
+MDLZ,Mondelez International Inc. Class A,0.0028411229790996505,Consumer Staples,16109535
+CB,Chubb Limited,0.0027685064173335254,Financials,5085303
+DUK,Duke Energy Corporation,0.00276023997852167,Utilities,7865662
+ISRG,Intuitive Surgical Inc.,0.0027576679751625337,Health Care,1259618
+CELG,Celgene Corporation,0.002739643936058235,Health Care,7721309
+TJX,TJX Companies Inc,0.0027054372921612372,Consumer Discretionary,13755048
+WBA,Walgreens Boots Alliance Inc,0.002620621228080764,Consumer Staples,8883780
+ADP,Automatic Data Processing Inc.,0.002619520370611873,Information Technology,4808732
+EOG,EOG Resources Inc.,0.002579969564093168,Energy,6356604
+SLB,Schlumberger NV,0.002575025713278329,Energy,15190106
+PNC,PNC Financial Services Group Inc.,0.002545802951376857,Financials,5097078
+SCHW,Charles Schwab Corporation,0.002537346364456739,Financials,13197338
+MS,Morgan Stanley,0.002514918895476876,Financials,14430909
+INTU,Intuit Inc.,0.002484435151383764,Information Technology,2863592
+CL,Colgate-Palmolive Company,0.0024160118557945967,Consumer Staples,9509817
+SPG,Simon Property Group Inc.,0.0024091765316923003,Real Estate,3393204
+CHTR,Charter Communications Inc. Class A,0.0023641114300339675,Communication Services,1959656
+CSX,CSX Corporation,0.0023620598320237616,Industrials,8856070
+D,Dominion Energy Inc,0.002341473797355498,Utilities,8288636
+FOXA,Twenty-First Century Fox Inc. Class A,0.0023122810588395407,Communication Services,11661399
+DE,Deere & Company,0.0023122710510443687,Industrials,3525282
+SYK,Stryker Corporation,0.002294297050915929,Health Care,3405542
+BSX,Boston Scientific Corporation,0.0022892931533300604,Health Care,15177510
+BLK,BlackRock Inc.,0.0022764031131488624,Financials,1346698
+OXY,Occidental Petroleum Corporation,0.0022647240161834453,Energy,8395710
+GM,General Motors Company,0.0022582389649121594,Consumer Discretionary,14404208
+AGN,Allergan plc,0.0022465098289708835,Health Care,3501813
+VRTX,Vertex Pharmaceuticals Incorporated,0.0021895354510581837,Health Care,2804633
+SO,Southern Company,0.0021886647728782426,Utilities,11347517
+BK,Bank of New York Mellon Corporation,0.002131450207881421,Financials,10094377
+SPGI,S&P Global Inc.,0.0020944113579508213,Financials,2758068
+RTN,Raytheon Company,0.0020859647788258754,Industrials,3126155
+GD,General Dynamics Corporation,0.0020762572175092903,Industrials,3057529
+NOC,Northrop Grumman Corporation,0.0020675204123243632,Industrials,1910646
+MPC,Marathon Petroleum Corporation,0.00205309917948189,Energy,7615790
+ILMN,Illumina Inc.,0.0020492361705455996,Health Care,1612964
+NSC,Norfolk Southern Corporation,0.002034134407631448,Industrials,3007111
+MET,MetLife Inc.,0.002016080345141634,Financials,10921393
+CCI,Crown Castle International Corp,0.0020070132827160404,Real Estate,4551164
+EXC,Exelon Corporation,0.0019981263606035377,Utilities,10595978
+ICE,Intercontinental Exchange Inc.,0.0019308239380736048,Financials,6295289
+FDX,FedEx Corporation,0.0018918936148555469,Industrials,2664644
+MMC,Marsh & McLennan Companies Inc.,0.0018667039944082844,Financials,5529922
+ITW,Illinois Tool Works Inc.,0.0018422449430085587,Industrials,3388744
+ZTS,Zoetis Inc. Class A,0.001821668916135467,Health Care,5276730
+PLD,Prologis Inc.,0.0018125818381195297,Real Estate,6906256
+HUM,Humana Inc.,0.0018026841286946816,Health Care,1511688
+COF,Capital One Financial Corporation,0.0018006525462748188,Financials,5253274
+PSX,Phillips 66,0.0017953984538096569,Energy,4690134
+KMB,Kimberly-Clark Corporation,0.001784119668651109,Consumer Staples,3806954
+EMR,Emerson Electric Co.,0.0017475611928887528,Industrials,6878693
+ECL,Ecolab Inc.,0.0017434479890731688,Materials,2789634
+CTSH,Cognizant Technology Solutions Corporation Class A,0.0017326595858780363,Information Technology,6353761
+AIG,American International Group Inc.,0.001726004402088831,Financials,9730132
+MU,Micron Technology Inc.,0.0017176478931204304,Information Technology,12372417
+PRU,Prudential Financial Inc.,0.0017137948919793116,Financials,4587467
+AEP,American Electric Power Company Inc.,0.0016839916779578781,Utilities,5407437
+BBT,BB&T Corporation,0.00167789693069829,Financials,8481332
+AON,Aon plc,0.001662324801411067,Financials,2660181
+PGR,Progressive Corporation,0.0016579313793306744,Financials,6396926
+WM,Waste Management Inc.,0.0016519066866372883,Industrials,4319909
+TGT,Target Corporation,0.0016389666074802323,Consumer Discretionary,5765842
+AFL,Aflac Incorporated,0.0016323614626668858,Financials,8418556
+HCA,HCA Healthcare Inc,0.0016272975183099867,Health Care,2962333
+ATVI,Activision Blizzard Inc.,0.0016244853278667285,Communication Services,8367320
+VLO,Valero Energy Corporation,0.0015453336758534588,Energy,4685397
+BAX,Baxter International Inc.,0.0015441627638183655,Health Care,5451979
+FIS,Fidelity National Information Services Inc.,0.001539088811666295,Information Technology,3604297
+ROST,Ross Stores Inc.,0.0015383782582091014,Consumer Discretionary,4134678
+APD,Air Products and Chemicals Inc.,0.0015378678606553428,Materials,2406106
+AMAT,Applied Materials Inc.,0.0015265290287257648,Information Technology,10785694
+KMI,Kinder Morgan Inc Class P,0.0015118075620281393,Energy,20820872
+HPQ,HP Inc.,0.0015102763693668633,Information Technology,17360880
+EW,Edwards Lifesciences Corporation,0.0015004086833275306,Health Care,2301325
+ADI,Analog Devices Inc.,0.0014842260785348314,Information Technology,4078521
+TRV,Travelers Companies Inc.,0.0014774908323842522,Financials,2932905
+F,Ford Motor Company,0.0014714261085101794,Consumer Discretionary,42953416
+SHW,Sherwin-Williams Company,0.0014699349470295908,Materials,909252
+REGN,Regeneron Pharmaceuticals Inc.,0.0014539825215258415,Health Care,850144
+WMB,Williams Companies Inc.,0.0014229883798789716,Energy,13274789
+MAR,Marriott International Inc. Class A,0.001405905073520816,Consumer Discretionary,3163078
+RHT,Red Hat Inc.,0.0014001405835018955,Information Technology,1944317
+EQIX,Equinix Inc.,0.0013869002704896872,Real Estate,886423
+SRE,Sempra Energy,0.0013819664274700204,Utilities,3001582
+ETN,Eaton Corp. Plc,0.0013809056011818163,Industrials,4748472
+PSA,Public Storage,0.0013807955154349274,Real Estate,1644250
+DAL,Delta Air Lines Inc.,0.0013644728015098238,Industrials,6905645
+FISV,Fiserv Inc.,0.001354575092084976,Information Technology,4437238
+DG,Dollar General Corporation,0.0013421253948913347,Consumer Discretionary,2917386
+JCI,Johnson Controls International plc,0.001341354794663111,Industrials,10147142
+SYY,Sysco Corporation,0.0013383624639067614,Consumer Staples,5247707
+ADSK,Autodesk Inc.,0.0013374617623413054,Information Technology,2391195
+KHC,Kraft Heinz Company,0.0013170258446006178,Consumer Staples,6826889
+ALL,Allstate Corporation,0.001314083552820127,Financials,3792038
+YUM,Yum! Brands Inc.,0.0012925167542250332,Consumer Discretionary,3477728
+ROP,Roper Technologies Inc.,0.0012799569712845032,Industrials,1134174
+EL,Estee Lauder Companies Inc. Class A,0.0012649652941172408,Consumer Staples,2461174
+ORLY,O'Reilly Automotive Inc.,0.001259440991182442,Consumer Discretionary,882649
+TEL,TE Connectivity Ltd.,0.0012481822216142374,Information Technology,3820509
+EBAY,eBay Inc.,0.0012441991191358861,Consumer Discretionary,9994641
+WELL,Welltower Inc.,0.0012345916357710182,Real Estate,4143748
+LYB,LyondellBasell Industries NV,0.0012341112616027748,Materials,3508168
+EA,Electronic Arts Inc.,0.0012264052593205373,Communication Services,3351178
+HAL,Halliburton Company,0.0012230926791186923,Energy,9659739
+STT,State Street Corporation,0.0012127246033207726,Financials,4165473
+STZ,Constellation Brands Inc. Class A,0.0012053788816647174,Consumer Staples,1834395
+STI,SunTrust Banks Inc.,0.0012013957791863659,Financials,5051523
+PEG,Public Service Enterprise Group Inc,0.0011860037902122341,Utilities,5543668
+MCO,Moody's Corporation,0.0011850430418757474,Financials,1832002
+XEL,Xcel Energy Inc.,0.0011778074059665814,Utilities,5670433
+LUV,Southwest Airlines Co.,0.0011741045217530386,Industrials,5663770
+PPG,PPG Industries Inc.,0.001168800390312018,Materials,2656817
+EQR,Equity Residential,0.0011573915038162374,Real Estate,4040217
+CNC,Centene Corporation,0.001155770240998416,Health Care,2251594
+GIS,General Mills Inc.,0.001151196678604932,Consumer Staples,6538073
+ALXN,Alexion Pharmaceuticals Inc.,0.0011484045037520175,Health Care,2445126
+OKE,ONEOK Inc.,0.001144421401273666,Energy,4511912
+AVB,AvalonBay Communities Inc.,0.0011392974101457364,Real Estate,1516512
+CXO,Concho Resources Inc.,0.0011282187808906235,Energy,2198786
+MCK,McKesson Corporation,0.0011172902685630864,Health Care,2192018
+APC,Anadarko Petroleum Corporation,0.0011080330580292294,Energy,5627634
+GLW,Corning Inc,0.001103209300756452,Information Technology,8894267
+APH,Amphenol Corporation Class A,0.0011024086771427132,Information Technology,3287721
+ADM,Archer-Daniels-Midland Company,0.0010967142416899948,Consumer Staples,6165487
+PXD,Pioneer Natural Resources Company,0.0010921406792965109,Energy,1860320
+ED,Consolidated Edison Inc.,0.0010771890333099354,Utilities,3412691
+VFC,V.F. Corporation,0.001073015782723321,Consumer Discretionary,3574418
+TWTR,Twitter Inc.,0.001064288985333566,Communication Services,7906590
+MTB,M&T Bank Corporation,0.0010556022191244982,Financials,1578399
+FOX,Twenty-First Century Fox Inc. Class B,0.0010538008159935856,Communication Services,5351067
+XLNX,Xilinx Inc.,0.0010465651800844196,Information Technology,2768923
+KR,Kroger Co.,0.0010339753737583742,Consumer Staples,8722218
+TROW,T. Rowe Price Group,0.0010331847579398068,Financials,2661386
+IR,Ingersoll-Rand Plc,0.0010331447267591198,Industrials,2691694
+A,Agilent Technologies Inc.,0.0010109874682488937,Health Care,3483805
+DLTR,Dollar Tree Inc.,0.0010056232900368426,Consumer Discretionary,2595068
+LRCX,Lam Research Corporation,0.001005222978229973,Information Technology,1730512
+WEC,WEC Energy Group Inc,0.0010008595795350957,Utilities,3443557
+DFS,Discover Financial Services,9.953352766002967e-4,Financials,3763606
+PAYX,Paychex Inc.,9.894006540634565e-4,Information Technology,3512086
+DLR,Digital Realty Trust Inc.,9.87559219751857e-4,Real Estate,2260412
+CMI,Cummins Inc.,9.80964082733682e-4,Industrials,1649868
+PPL,PPL Corporation,9.726876361266553e-4,Utilities,7939046
+CCL.U,Carnival Corporation,9.725375191990793e-4,Consumer Discretionary,4432957
+ZBH,Zimmer Biomet Holdings Inc.,9.715567552722491e-4,Health Care,2232158
+MNST,Monster Beverage Corporation,9.705859991405905e-4,Consumer Staples,4364553
+HLT,Hilton Worldwide Holdings Inc,9.664327641443196e-4,Consumer Discretionary,3275702
+PCAR,PACCAR Inc,9.651817897478525e-4,Industrials,3839977
+VTR,Ventas Inc.,9.644612284954873e-4,Real Estate,3888467
+AZO,AutoZone Inc.,9.62419638280453e-4,Consumer Discretionary,278841
+ES,Eversource Energy,9.534426460114046e-4,Utilities,3458380
+FTV,Fortive Corp.,9.497397617978619e-4,Industrials,3247077
+PH,Parker-Hannifin Corporation,9.483186548834752e-4,Industrials,1450787
+DTE,DTE Energy Company,9.248703907960949e-4,Utilities,1994058
+WLTW,Willis Towers Watson Public Limited Company,9.212375611487543e-4,Financials,1432338
+HPE,Hewlett Packard Enterprise Co.,9.190558618013156e-4,Information Technology,15717441
+SWK,Stanley Black & Decker Inc.,9.160234998642793e-4,Industrials,1685247
+IQV,IQVIA Holdings Inc,8.991803805902455e-4,Health Care,1768372
+NTRS,Northern Trust Corporation,8.964482525083612e-4,Financials,2453150
+SBAC,SBA Communications Corp. Class A,8.945667870160746e-4,Real Estate,1258577
+UAL,United Continental Holdings Inc.,8.929655397885966e-4,Industrials,2512349
+ROK,Rockwell Automation Inc.,8.865305274931697e-4,Industrials,1350001
+CLX,Clorox Company,8.766228102731499e-4,Consumer Staples,1407643
+O,Realty Income Corporation,8.64313222211913e-4,Real Estate,3254584
+APTV,Aptiv PLC,8.480205316723249e-4,Consumer Discretionary,2909078
+FE,FirstEnergy Corp.,8.466294481434534e-4,Utilities,5337453
+MSI,Motorola Solutions Inc.,8.409149971003914e-4,Information Technology,1804111
+VRSK,Verisk Analytics Inc,8.38533141849518e-4,Industrials,1808398
+WY,Weyerhaeuser Company,8.345800627566817e-4,Real Estate,8265935
+BXP,Boston Properties Inc.,8.309772564948563e-4,Real Estate,1684051
+INFO,IHS Markit Ltd.,8.284753077019221e-4,Industrials,3933504
+IP,International Paper Company,8.266438811854942e-4,Materials,4483043
+RCL,Royal Caribbean Cruises Ltd.,8.244121428621969e-4,Consumer Discretionary,1879592
+NUE,Nucor Corporation,8.218801706837473e-4,Materials,3473716
+GPN,Global Payments Inc.,8.094104578997627e-4,Information Technology,1741439
+SYF,Synchrony Financial,8.084897407439628e-4,Financials,7487923
+AMD,Advanced Micro Devices Inc.,8.045967084221571e-4,Information Technology,9696615
+MCHP,Microchip Technology Incorporated,8.000731850045319e-4,Information Technology,2564046
+FITB,Fifth Third Bancorp,7.919468553250811e-4,Financials,7318005
+FCX,Freeport-McMoRan Inc.,7.909360680127359e-4,Materials,15912832
+TSN,Tyson Foods Inc. Class A,7.90775943289988e-4,Consumer Staples,3249416
+CERN,Cerner Corporation,7.902555379410577e-4,Health Care,3611538
+VRSN,VeriSign Inc.,7.897151170017838e-4,Information Technology,1179310
+DXC,DXC Technology Co.,7.822793251891831e-4,Information Technology,3082167
+EIX,Edison International,7.796973140348749e-4,Utilities,3555966
+KEY,KeyCorp,7.721013974995263e-4,Financials,11538640
+BLL,Ball Corporation,7.681683339970337e-4,Materials,3787163
+IDXX,IDEXX Laboratories Inc.,7.663869464564643e-4,Health Care,949880
+MKC,McCormick & Company Incorporated,7.659566112640798e-4,Consumer Staples,1330615
+FLT,FleetCor Technologies Inc.,7.639550522297322e-4,Information Technology,967947
+ESS,Essex Property Trust Inc.,7.627541168091238e-4,Real Estate,720984
+TDG,TransDigm Group Incorporated,7.591012715714397e-4,Industrials,530736
+AMP,Ameriprise Financial Inc.,7.555184808999578e-4,Financials,1554746
+NEM,Newmont Mining Corporation,7.544276312262385e-4,Materials,5822668
+AWK,American Water Works Company Inc.,7.511951133857673e-4,Utilities,1980600
+OMC,Omnicom Group Inc,7.491935543514198e-4,Communication Services,2459106
+RMD,ResMed Inc.,7.47472213581881e-4,Health Care,1553664
+CBS,CBS Corporation Class B,7.416176534064148e-4,Communication Services,3711036
+HIG,Hartford Financial Services Group Inc.,7.384051511562871e-4,Financials,3908100
+FAST,Fastenal Company,7.375444807715177e-4,Industrials,3139013
+AME,AMETEK Inc.,7.374844340004873e-4,Industrials,2526716
+CHD,Church & Dwight Co. Inc.,7.372342391211938e-4,Consumer Staples,2669770
+RSG,Republic Services Inc.,7.360633270861006e-4,Industrials,2392531
+HRS,Harris Corporation,7.350825631592704e-4,Industrials,1293839
+AEE,Ameren Corporation,7.305590397416451e-4,Utilities,2658606
+FANG,Diamondback Energy Inc.,7.299986032120278e-4,Energy,1686238
+RF,Regions Financial Corporation,7.29688361561704e-4,Financials,11407673
+FRC,First Republic Bank,7.26255687817798e-4,Financials,1852393
+CFG,Citizens Financial Group Inc.,7.261656176612525e-4,Financials,5227590
+ULTA,Ulta Beauty Inc,7.247445107468657e-4,Consumer Discretionary,622994
+NTAP,NetApp Inc.,7.228029984835487e-4,Information Technology,2848746
+WAT,Waters Corporation,7.00475607455403e-4,Health Care,844848
+ALGN,Align Technology Inc.,6.995348747092598e-4,Health Care,802731
+CTAS,Cintas Corporation,6.995048513237446e-4,Industrials,943616
+ETR,Entergy Corporation,6.954416864840191e-4,Utilities,1972771
+EVRG,Evergy Inc.,6.876856452259229e-4,Utilities,2965078
+MYL,Mylan N.V.,6.849335015536952e-4,Health Care,5656601
+HSY,Hershey Company,6.773475928135183e-4,Consumer Staples,1533688
+K,Kellogg Company,6.747755894543819e-4,Consumer Staples,2777899
+MXIM,Maxim Integrated Products Inc.,6.67880218581055e-4,Information Technology,3092224
+ABMD,ABIOMED Inc.,6.664591116666682e-4,Health Care,492381
+MTD,Mettler-Toledo International Inc.,6.649279190053925e-4,Health Care,276115
+CTL,CenturyLink Inc.,6.555305993391313e-4,Communication Services,10428754
+KLAC,KLA-Tencor Corporation,6.528284946427621e-4,Information Technology,1714572
+CNP,CenterPoint Energy Inc.,6.527784556669034e-4,Utilities,5392871
+TSS,Total System Services Inc.,6.505767407291212e-4,Information Technology,1841658
+CAH,Cardinal Health Inc.,6.495659534167759e-4,Health Care,3290856
+CMS,CMS Energy Corporation,6.492056727905932e-4,Utilities,3107768
+HCP,HCP Inc.,6.432110034827227e-4,Real Estate,5265679
+HBAN,Huntington Bancshares Incorporated,6.420000602669425e-4,Financials,11727211
+MSCI,MSCI Inc. Class A,6.408791872077079e-4,Financials,973073
+MGM,MGM Resorts International,6.383171916437432e-4,Consumer Discretionary,5615594
+GPC,Genuine Parts Company,6.351146971887874e-4,Consumer Discretionary,1596894
+LLL,L3 Technologies Inc,6.242862628129676e-4,Industrials,855911
+EXPE,Expedia Group Inc.,6.227650779468635e-4,Consumer Discretionary,1302209
+CBRE,CBRE Group Inc. Class A,6.219444387427811e-4,Real Estate,3469284
+LH,Laboratory Corporation of America Holdings,6.19132248299523e-4,Health Care,1117074
+INCY,Incyte Corporation,6.188320144443709e-4,Health Care,1919676
+AAL,American Airlines Group Inc.,6.180313908306319e-4,Industrials,4491503
+CTXS,Citrix Systems Inc.,6.167503930486495e-4,Information Technology,1405745
+IFF,International Flavors & Fragrances Inc.,6.166002761210734e-4,Materials,1110527
+BBY,Best Buy Co. Inc.,6.128173295461567e-4,Consumer Discretionary,2586553
+GWW,W.W. Grainger Inc.,6.113361758607397e-4,Industrials,498499
+MRO,Marathon Oil Corporation,6.033099241330063e-4,Energy,9324453
+DRI,Darden Restaurants Inc.,6.022490978448023e-4,Consumer Discretionary,1360745
+AJG,Arthur J. Gallagher & Co.,6.021890510737719e-4,Financials,1988356
+VMC,Vulcan Materials Company,5.983660733181683e-4,Materials,1443092
+ANSS,ANSYS Inc.,5.95593914055597e-4,Information Technology,918131
+SNPS,Synopsys Inc.,5.902497514338893e-4,Information Technology,1615949
+LEN,Lennar Corporation Class A,5.876577324844094e-4,Consumer Discretionary,3202630
+HES,Hess Corporation,5.869972180030747e-4,Energy,2763340
+COO,Cooper Companies Inc.,5.865468672203466e-4,Health Care,535114
+L,Loews Corporation,5.857662591969511e-4,Financials,3054518
+PFG,Principal Financial Group Inc.,5.840849496080992e-4,Financials,2908395
+ARE,Alexandria Real Estate Equities Inc.,5.832042636329864e-4,Real Estate,1159484
+CMA,Comerica Incorporated,5.827839362357734e-4,Financials,1784504
+WCG,WellCare Health Plans Inc.,5.820933983689235e-4,Health Care,548239
+HST,Host Hotels & Resorts Inc.,5.811026266469215e-4,Real Estate,8089823
+KEYS,Keysight Technologies Inc,5.80932494129002e-4,Information Technology,2048144
+ETFC,E*TRADE Financial Corporation,5.804020809848999e-4,Financials,2848791
+CDNS,Cadence Design Systems Inc.,5.783905141553807e-4,Information Technology,3085946
+DHI,D.R. Horton Inc.,5.777199918788744e-4,Consumer Discretionary,3748707
+SYMC,Symantec Corporation,5.775098281802679e-4,Information Technology,7043365
+CMG,Chipotle Mexican Grill Inc.,5.7308638271436e-4,Consumer Discretionary,270174
+LNC,Lincoln National Corporation,5.645497334328682e-4,Financials,2374585
+XYL,Xylem Inc.,5.643195541439182e-4,Industrials,1963204
+CE,Celanese Corporation,5.636490318674119e-4,Materials,1430476
+DVN,Devon Energy Corporation,5.586751576670584e-4,Energy,5166331
+SWKS,Skyworks Solutions Inc.,5.547020629838788e-4,Information Technology,1961040
+AAP,Advance Auto Parts Inc.,5.51149295697912e-4,Consumer Discretionary,808905
+ABC,AmerisourceBergen Corporation,5.47226239990591e-4,Health Care,1755330
+TXT,Textron Inc.,5.437935662466852e-4,Industrials,2729502
+EFX,Equifax Inc.,5.432731608977548e-4,Industrials,1312036
+APA,Apache Corporation,5.417719916219943e-4,Energy,4172149
+BHGE,Baker Hughes a GE Company Class A,5.402007677800315e-4,Energy,5574259
+NRG,NRG Energy Inc.,5.390298557449382e-4,Utilities,3203755
+TTWO,Take-Two Interactive Software Inc.,5.387996764559883e-4,Communication Services,1247884
+TFX,Teleflex Incorporated,5.378089047339864e-4,Health Care,515300
+HSIC,Henry Schein Inc.,5.37628764420895e-4,Health Care,1676087
+CHRW,C.H. Robinson Worldwide Inc.,5.37098351276793e-4,Industrials,1523409
+SIVB,SVB Financial Group,5.331853033646437e-4,Financials,577364
+EXPD,Expeditors International of Washington Inc.,5.322545784136722e-4,Industrials,1911883
+CINF,Cincinnati Financial Corporation,5.31804227630944e-4,Financials,1660053
+HRL,Hormel Foods Corporation,5.297926608014248e-4,Consumer Staples,2982514
+SJM,J.M. Smucker Company,5.289920371876858e-4,Consumer Staples,1239167
+HOLX,Hologic Inc.,5.269904781533384e-4,Health Care,2983970
+DOV,Dover Corporation,5.25139036046567e-4,Industrials,1621003
+IT,Gartner Inc.,5.247087008541822e-4,Information Technology,991796
+BR,Broadridge Financial Solutions Inc.,5.242883734569693e-4,Information Technology,1278076
+EXR,Extra Space Storage Inc.,5.240281707825042e-4,Real Estate,1387947
+VAR,Varian Medical Systems Inc.,5.235077654335738e-4,Health Care,1013551
+TAP,Molson Coors Brewing Company Class B,5.199549981476071e-4,Consumer Staples,2053927
+KSS,Kohl's Corporation,5.184137976911596e-4,Consumer Discretionary,1837807
+DGX,Quest Diagnostics Incorporated,5.170327219574599e-4,Health Care,1482694
+UDR,UDR Inc.,5.168525816443686e-4,Real Estate,3037185
+KMX,CarMax Inc.,5.14510757574182e-4,Consumer Discretionary,1944887
+ANET,Arista Networks Inc.,5.134299156956345e-4,Information Technology,566884
+MOS,Mosaic Company,5.094267976269395e-4,Materials,3889897
+NOV,National Oilwell Varco Inc.,5.087362597600897e-4,Energy,4167626
+MAA,Mid-America Apartment Communities Inc.,5.086662051938876e-4,Real Estate,1241354
+VNO,Vornado Realty Trust,5.058740303409729e-4,Real Estate,1888279
+UHS,Universal Health Services Inc. Class B,5.047031183058795e-4,Health Care,943676
+WYNN,Wynn Resorts Limited,5.031519100542603e-4,Consumer Discretionary,1074555
+EMN,Eastman Chemical Company,5.017107875495302e-4,Materials,1547514
+COG,Cabot Oil & Gas Corporation,5.010802964537107e-4,Energy,4841027
+NBL,Noble Energy Inc.,4.99889368828274e-4,Energy,5260611
+MLM,Martin Marietta Materials Inc.,4.971672485415614e-4,Materials,684592
+TSCO,Tractor Supply Company,4.8308628073492725e-4,Consumer Discretionary,1332127
+AKAM,Akamai Technologies Inc.,4.7789223504079563e-4,Information Technology,1798961
+KSU,Kansas City Southern,4.7753195441461305e-4,Industrials,1119047
+WDC,Western Digital Corporation,4.769014633187936e-4,Information Technology,3191211
+FMC,FMC Corporation,4.7524016932028526e-4,Materials,1460308
+LW,Lamb Weston Holdings Inc.,4.730584699728465e-4,Consumer Staples,1628314
+RJF,Raymond James Financial Inc.,4.7190757352809674e-4,Financials,1442264
+VIAB,Viacom Inc. Class B,4.7016621716821445e-4,Communication Services,3851654
+FTNT,Fortinet Inc.,4.693355701689603e-4,Information Technology,1576569
+REG,Regency Centers Corporation,4.686750556876256e-4,Real Estate,1861292
+CBOE,Cboe Global Markets Inc,4.685349465552213e-4,Financials,1222525
+CAG,Conagra Brands Inc.,4.6584284965402395e-4,Consumer Staples,5352438
+WRK,WestRock Company,4.65422522256811e-4,Materials,2799655
+TPR,Tapestry Inc.,4.6467193761893074e-4,Consumer Discretionary,3139519
+HAS,Hasbro Inc.,4.6446177392032425e-4,Consumer Discretionary,1282360
+NCLH,Norwegian Cruise Line Holdings Ltd.,4.622200278018551e-4,Consumer Discretionary,2410814
+AES,AES Corporation,4.5808680839592764e-4,Utilities,7217093
+CF,CF Industries Holdings Inc.,4.5727617698701695e-4,Materials,2548383
+IRM,Iron Mountain Inc.,4.557249687353977e-4,Real Estate,3139069
+STX,Seagate Technology PLC,4.547942437844261e-4,Information Technology,2865711
+FTI,TechnipFMC Plc,4.5203209231702663e-4,Energy,4740686
+CPRT,Copart Inc.,4.5191199877496577e-4,Industrials,2217238
+JKHY,Jack Henry & Associates Inc.,4.5143162460672243e-4,Information Technology,850716
+DRE,Duke Realty Corporation,4.499504709213053e-4,Real Estate,3895243
+LNT,Alliant Energy Corp,4.467279608760059e-4,Utilities,2563395
+URI,United Rentals Inc.,4.4422601208307156e-4,Industrials,908101
+NI,NiSource Inc,4.3668013452358173e-4,Utilities,3986891
+MAS,Masco Corporation,4.366300955477231e-4,Industrials,3370955
+JNPR,Juniper Networks Inc.,4.365600409815209e-4,Information Technology,3811734
+PNW,Pinnacle West Capital Corporation,4.279833605193421e-4,Utilities,1220876
+FFIV,F5 Networks Inc.,4.2770314225453344e-4,Information Technology,667284
+BEN,Franklin Resources Inc.,4.2759305650764436e-4,Financials,3358553
+NDAQ,Nasdaq Inc.,4.2629204313531855e-4,Financials,1261926
+SNA,Snap-on Incorporated,4.222388860907649e-4,Industrials,619890
+TIF,Tiffany & Co.,4.1820574463655483e-4,Consumer Discretionary,1197030
+PKI,PerkinElmer Inc.,4.149832345912555e-4,Health Care,1200905
+DISCK,Discovery Inc. Class C,4.123111532804016e-4,Communication Services,3949017
+FRT,Federal Realty Investment Trust,4.109100619563584e-4,Real Estate,798398
+ZION,Zions Bancorporation N.A.,4.070370452248961e-4,Financials,2132091
+NWL,Newell Brands Inc,4.0509553296157907e-4,Consumer Discretionary,4768987
+NLSN,Nielsen Holdings Plc,4.0509553296157907e-4,Industrials,3912145
+XRAY,DENTSPLY SIRONA Inc.,4.018429995307645e-4,Health Care,2436462
+HFC,HollyFrontier Corporation,4.014727111094102e-4,Energy,1778784
+RE,Everest Re Group Ltd.,3.9571822888566133e-4,Financials,448480
+ARNC,Arconic Inc.,3.901338791798319e-4,Industrials,4717944
+JBHT,J.B. Hunt Transport Services Inc.,3.8747180566414983e-4,Industrials,946361
+IPG,Interpublic Group of Companies Inc.,3.84989872461559e-4,Communication Services,4205586
+LKQ,LKQ Corporation,3.848897945098416e-4,Consumer Discretionary,3491818
+HII,Huntington Ingalls Industries Inc.,3.831384303547876e-4,Industrials,474342
+TMK,Torchmark Corporation,3.810367933687228e-4,Financials,1138170
+PKG,Packaging Corporation of America,3.807365595135707e-4,Materials,1029772
+BWA,BorgWarner Inc.,3.7665337908350196e-4,Consumer Discretionary,2293383
+PVH,PVH Corp.,3.7090890465492474e-4,Consumer Discretionary,841553
+AVY,Avery Dennison Corporation,3.696679380536293e-4,Materials,951440
+ALB,Albemarle Corporation,3.671059424896646e-4,Materials,1189915
+GRMN,Garmin Ltd.,3.6448390015466947e-4,Consumer Discretionary,1326800
+ADS,Alliance Data Systems Corporation,3.6172174868727e-4,Information Technology,520211
+WU,Western Union Company,3.603006417728833e-4,Information Technology,4904019
+WHR,Whirlpool Corporation,3.598402831949834e-4,Consumer Discretionary,699613
+ALK,Alaska Air Group Inc.,3.551566350546104e-4,Industrials,1345455
+NKTR,Nektar Therapeutics,3.5239448358721087e-4,Health Care,1893396
+MHK,Mohawk Industries Inc.,3.523744679968674e-4,Consumer Discretionary,692497
+ALLE,Allegion PLC,3.4930207487914413e-4,Industrials,1042628
+QRVO,Qorvo Inc.,3.488417163012442e-4,Information Technology,1367601
+SLG,SL Green Realty Corp.,3.4567925302697524e-4,Real Estate,948193
+BF.B,Brown-Forman Corporation Class B,3.429571327402627e-4,Consumer Staples,1841505
+IVZ,Invesco Ltd.,3.390741082136287e-4,Financials,4482629
+M,Macy's Inc,3.3896402246673954e-4,Consumer Discretionary,3342236
+RHI,Robert Half International Inc.,3.307476226307433e-4,Industrials,1341253
+UNM,Unum Group,3.298569288604587e-4,Financials,2394361
+AIV,Apartment Investment and Management Company Class A,3.295366794149631e-4,Real Estate,1718757
+DVA,DaVita Inc.,3.2335186199882945e-4,Health Care,1391255
+JEC,Jacobs Engineering Group Inc.,3.230816515291926e-4,Industrials,1302793
+PHM,PulteGroup Inc.,3.152255323193789e-4,Consumer Discretionary,2865134
+KIM,Kimco Realty Corporation,3.147751815366507e-4,Real Estate,4638746
+XEC,Cimarex Energy Co.,3.124333574664642e-4,Energy,1040911
+CPB,Campbell Soup Company,3.059182828096633e-4,Consumer Staples,2086536
+FL,Foot Locker Inc.,3.024155544995552e-4,Consumer Discretionary,1281497
+AOS,A. O. Smith Corporation,3.0109452553688594e-4,Industrials,1580907
+DISH,DISH Network Corporation Class A,3.003739642845208e-4,Communication Services,2498422
+PNR,Pentair plc,2.978319843108996e-4,Industrials,1800865
+HOG,Harley-Davidson Inc.,2.7884719687011405e-4,Consumer Discretionary,1825387
+LB,L Brands Inc.,2.770057625585144e-4,Consumer Discretionary,2503788
+CPRI,Capri Holdings Limited,2.75384499740693e-4,Consumer Discretionary,1635540
+FLIR,FLIR Systems Inc.,2.75384499740693e-4,Information Technology,1497096
+RL,Ralph Lauren Corporation Class A,2.73252839369113e-4,Consumer Discretionary,618144
+FBHS,Fortune Brands Home & Security Inc.,2.699302513720962e-4,Industrials,1559870
+TRIP,TripAdvisor Inc.,2.686692691804573e-4,Communication Services,1121751
+PBCT,People's United Financial Inc.,2.679086767474053e-4,Financials,4086260
+SEE,Sealed Air Corporation,2.652466032317232e-4,Materials,1741960
+HP,Helmerich & Payne Inc.,2.607831265851284e-4,Energy,1187802
+JEF,Jefferies Financial Group Inc.,2.5935201187557e-4,Financials,3180567
+AMG,Affiliated Managers Group Inc.,2.5715029693778777e-4,Financials,586163
+PRGO,Perrigo Co. Plc,2.5352747508561893e-4,Health Care,1378930
+GPS,Gap Inc.,2.5191622006296924e-4,Consumer Discretionary,2402455
+ROL,Rollins Inc.,2.516560173885041e-4,Industrials,1620460
+FLS,Flowserve Corporation,2.464119327185138e-4,Industrials,1427373
+HBI,Hanesbrands Inc.,2.3715472218465683e-4,Consumer Discretionary,4041642
+JWN,Nordstrom Inc.,2.3622399723368528e-4,Consumer Discretionary,1256507
+FLR,Fluor Corporation,2.3471282016275296e-4,Industrials,1533584
+HRB,H&R Block Inc.,2.31170060671958e-4,Consumer Discretionary,2235201
+XRX,Xerox Corporation,2.3111001390092756e-4,Information Technology,2439423
+LEG,Leggett & Platt Incorporated,2.2982901611894518e-4,Consumer Discretionary,1442993
+AIZ,Assurant Inc.,2.263362956040089e-4,Financials,578684
+MAC,Macerich Company,2.2115225770504902e-4,Real Estate,1174796
+GT,Goodyear Tire & Rubber Company,2.157980872881696e-4,Consumer Discretionary,2598106
+PWR,Quanta Services Inc.,2.152376507585523e-4,Industrials,1614220
+NWSA,News Corporation Class A,2.1315602936283098e-4,Communication Services,4181548
+IPGP,IPG Photonics Corporation,2.0908285672793396e-4,Information Technology,394909
+MAT,Mattel Inc.,1.9486177978889535e-4,Consumer Discretionary,3753301
+DISCA,Discovery Inc. Class A,1.9045834991333096e-4,Communication Services,1702523
+BHF,Brighthouse Financial Inc.,1.9041831873264402e-4,Financials,1308247
+UAA,Under Armour Inc. Class A,1.6652971165770727e-4,Consumer Discretionary,2028932
+NFX,Newfield Exploration Company,1.6342729515446877e-4,Energy,2179438
+UA,Under Armour Inc. Class C,1.5275898550139687e-4,Consumer Discretionary,2053998
+COTY,Coty Inc. Class A,1.502870600939778e-4,Consumer Staples,4936184
+NWS,News Corporation Class B,6.458030224322026e-5,Communication Services,1250892
