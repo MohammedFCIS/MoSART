@@ -87,11 +87,18 @@ shinyUI(
             label = h3("Select Stock Type"),
             choices = stock_choices
           ),
-          uiOutput("stock")
+          uiOutput("stock"),
+          bsButton("update_stock_db",
+                   label = "Refersh Stocks DB",
+                   style = "danger"),
+          bsTooltip("update_stock_db", 
+                    "This will update local stocks database from online data",
+                    "right", options = list(container = "body"))
           
         ),
         # returned stocks
-        mainPanel(dataTableOutput("stocks"),
+        mainPanel(bsAlert("alert"),
+                  dataTableOutput("stocks"),
                   uiOutput("stock_actions"))
       )
     ),

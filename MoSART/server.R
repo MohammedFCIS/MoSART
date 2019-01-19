@@ -1,6 +1,7 @@
 require(XLConnect)
 library(tidyverse)
 library(shiny)
+library(shinyBS)
 library(tidyquant)
 library(alphavantager)
 library(Quandl)
@@ -872,6 +873,11 @@ shinyServer(function(input, output, session) {
     
   })
   
+  observeEvent(input$update_stock_db, {
+    update_stocks_list(stock_indexes, stock_exchanges)
+    createAlert(session, "alert", "db_update_alert", title = "Stock List Update",
+                content = "All stocks lists are updated.")
+  })
 })
 
 
@@ -944,6 +950,7 @@ getFin <- function(stock) {
       message(stock[i], "Give error ", cond)
     })
   }
+  
 }
 
 get_returns <- function(stock.symbol,

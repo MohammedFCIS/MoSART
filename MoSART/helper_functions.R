@@ -49,6 +49,6 @@ write_stock_df <- function(stock, index = TRUE) {
   }
   
   if (nrow(stock_df) > 0) {
-    write_csv(stock_df, paste0("MoSART/data/", stock, ".csv"))
+    write_csv(stock_df, paste0("data/", stock, ".csv"))
   }
 }
