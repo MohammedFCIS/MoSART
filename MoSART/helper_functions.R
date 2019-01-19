@@ -27,7 +27,8 @@ load_stock_df <- function(stock) {
 update_stocks_list <- function(stock_indexes, stock_exchanges) {
   tryCatch({
     walk(stock_indexes, ~ write_stock_df(.x))
-    walk(stock_exchanges, ~ write_stock_df(.x, FALSE))
+    # That cause issue on ShinyIO but works locally normally
+    #walk(stock_exchanges, ~ write_stock_df(.x, FALSE))
   },
   error = function(err) {
     message("Could not update stocks")
