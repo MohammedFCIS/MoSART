@@ -1,0 +1,322 @@
+symbol,company,last.sale.price,market.cap,ipo.year,sector,industry
+XXII,"22nd Century Group, Inc",2.37,$294.83M,NA,Consumer Non-Durables,Farming/Seeds/Milling
+FAX,Aberdeen Asia-Pacific Income Fund Inc,4.03,$1.02B,1986,NA,NA
+IAF,Aberdeen Australia Equity Fund Inc,5.11,$116.21M,NA,NA,NA
+AEF,"Aberdeen Emerging Markets Equity Income Fund, Inc.",6.98,$422.28M,NA,NA,NA
+FCO,"Aberdeen Global Income Fund, Inc.",7.95,$69.36M,1992,NA,NA
+ACU,Acme United Corporation.,15.55,$52.39M,1988,Capital Goods,Industrial Machinery/Components
+ATNM,"Actinium Pharmaceuticals, Inc.",0.485,$56.12M,NA,Health Care,Major Pharmaceuticals
+AE,"Adams Resources & Energy, Inc.",40.43,$170.52M,NA,Energy,Oil Refining/Marketing
+ACY,AeroCentury Corp.,10.15,$15.69M,NA,Technology,Diversified Commercial Services
+UAVS,"AgEagle Aerial Systems, Inc.",0.5092,$5.91M,NA,Capital Goods,Aerospace
+AGE,"AgeX Therapeutics, Inc.",4.23,NA,2018,Health Care,Major Pharmaceuticals
+AIRI,Air Industries Group,0.998,$27.69M,NA,Capital Goods,Military/Government/Technical
+AXU,Alexco Resource Corp,0.94,$101.52M,NA,Basic Industries,Precious Metals
+ALO,Alio Gold Inc.,0.7749,$65.64M,2011,Basic Industries,Precious Metals
+AAU,"Almaden Minerals, Ltd.",0.7507,$83.81M,2015,Basic Industries,Precious Metals
+APT,"Alpha Pro Tech, Ltd.",4.35,$59.29M,NA,Health Care,Industrial Specialties
+AAMC,Altisource Asset Management Corp,26.94,$43.99M,NA,Finance,Real Estate
+AMBO,Ambow Education Holding Ltd.,5.99,$129.22M,NA,Consumer Services,Other Consumer Services
+DIT,AMCON Distributing Company,88.01,$54.33M,NA,Consumer Non-Durables,Food Distributors
+AMS,American Shared Hospital Services,2.58,$14.74M,NA,Health Care,Medical Specialities
+USAS,Americas Silver Corporation,1.68,$72.92M,2017,Basic Industries,Precious Metals
+AMPE,"Ampio Pharmaceuticals, Inc.",0.51,$54.43M,NA,Health Care,Major Pharmaceuticals
+APHB,AmpliPhi Biosciences Corporation,0.2585,$8.35M,NA,Health Care,Biotechnology: Biological Products (No Diagnostic Substances)
+ARNC^,Arconic Inc.,88.854,NA,NA,NA,NA
+AKG,Asanko Gold Inc.,0.6838,$154.41M,NA,Basic Industries,Mining & Quarrying of Nonmetallic Minerals (No Fuels)
+AINC,Ashford Inc.,48.6,$116.19M,2014,Consumer Services,Professional Services
+AST,"Asterias Biotherapeutics, Inc.",0.7389,$41.13M,NA,Health Care,Biotechnology: Biological Products (No Diagnostic Substances)
+AUG,Auryn Resources Inc.,0.9326,$84.3M,NA,Basic Industries,Precious Metals
+AWX,Avalon Holdings Corporation,3.01,$11.45M,NA,Public Utilities,Environmental Services
+ASM,Avino Silver,0.6175,$39.11M,NA,Basic Industries,Precious Metals
+BTG,B2Gold Corp,2.66,$2.63B,NA,Basic Industries,Precious Metals
+BTN,"Ballantyne Strong, Inc",1.72,$24.84M,NA,Miscellaneous,Industrial Machinery/Components
+BKJ,"Bancorp of New Jersey, Inc",13.29,$96.96M,NA,Finance,Major Banks
+BCV,Bancroft Fund Limited,20.2,$106.64M,NA,NA,NA
+BCV^A,Bancroft Fund Limited,25.28,NA,NA,NA,NA
+BHB,"Bar Harbor Bankshares, Inc.",23.75,$368.36M,NA,Finance,Major Banks
+BRN,"Barnwell Industries, Inc.",1.35,$11.17M,NA,Energy,Oil & Gas Production
+BGSF,BG Staffing Inc,22.38,$227.33M,NA,Technology,Professional Services
+BPMX,BioPharmX Corporation,0.1151,$24.5M,2015,Health Care,Major Pharmaceuticals
+BTX,"BioTime, Inc.",0.9998,$126.94M,NA,Health Care,Biotechnology: Biological Products (No Diagnostic Substances)
+BGI,Birks Group Inc.,1,$17.96M,NA,Consumer Services,Consumer Specialties
+BKTI,"BK Technologies, Inc.",4.64,$61.98M,NA,Technology,Radio And Television Broadcasting And Communications Equipment
+BDR,"Blonder Tongue Laboratories, Inc.",1.1742,$10.9M,NA,Technology,Radio And Television Broadcasting And Communications Equipment
+BRG,"Bluerock Residential Growth REIT, Inc.",10.4,$247.34M,2014,Consumer Services,Real Estate Investment Trusts
+BRG^A,"Bluerock Residential Growth REIT, Inc.",25.5794,NA,NA,NA,NA
+BRG^C,"Bluerock Residential Growth REIT, Inc.",25.06,NA,NA,NA,NA
+BRG^D,"Bluerock Residential Growth REIT, Inc.",22.1,NA,NA,NA,NA
+BWL.A,"Bowl America, Inc.",NA,NA,NA,NA,NA
+CMCL,Caledonia Mining Corporation Plc,6.01,$63.72M,NA,Basic Industries,Precious Metals
+CEI,"Camber Energy, Inc.",0.61,$4.13M,NA,Energy,Oil & Gas Production
+CANF,Can-Fite Biopharma Ltd,1.2,$24.24M,NA,Health Care,Major Pharmaceuticals
+ROX,"Castle Brands, Inc.",0.883,$148.96M,2006,Consumer Non-Durables,Beverages (Production/Distribution)
+CAW,"CCA Industries, Inc.",2.43,$18.12M,NA,Consumer Non-Durables,Package Goods/Cosmetics
+CVM,Cel-Sci Corporation,2.72,$77.22M,NA,Health Care,Biotechnology: Biological Products (No Diagnostic Substances)
+CET,Central Securities Corporation,26.25,$651.29M,NA,NA,NA
+LEU,Centrus Energy Corp.,2.15,$19.43M,2014,Basic Industries,Mining & Quarrying of Nonmetallic Minerals (No Fuels)
+CHAC.U,Chardan Healthcare Acquisition Corp.,NA,NA,2018,NA,NA
+CCF,Chase Corporation,98.4,$925.23M,NA,Consumer Durables,Building Products
+CQP,"Cheniere Energy Partners, LP",39.98,$19.35B,2007,Public Utilities,Oil/Gas Transmission
+LNG,"Cheniere Energy, Inc.",64.8,$16.65B,NA,Public Utilities,Oil/Gas Transmission
+CVR,Chicago Rivet & Machine Co.,31.4363,$30.37M,NA,Technology,Industrial Machinery/Components
+CPHI,"China Pharma Holdings, Inc.",0.299,$13.03M,NA,Health Care,Major Pharmaceuticals
+CKX,"CKX Lands, Inc.",10.61,$20.61M,NA,Energy,Oil & Gas Production
+GLV,Clough Global Dividend and Income Fund,10.8,$75.67M,2004,NA,NA
+GLQ,Clough Global Equity Fund,11.98,$132.09M,2005,NA,NA
+GLO,Clough Global Opportunities Fund,9.07,$292.28M,2006,NA,NA
+COHN,Cohen & Company Inc.,8.2927,$10.08M,NA,Finance,Investment Bankers/Brokers/Service
+MOC,Command Security Corporation,2.8,$28.38M,NA,Consumer Services,Diversified Commercial Services
+CIX,CompX International Inc.,14.2,$176.58M,1998,Capital Goods,Industrial Machinery/Components
+LODE,"Comstock Mining, Inc.",0.1389,$9.84M,NA,Basic Industries,Precious Metals
+CDOR,"Condor Hospitality Trust, Inc.",8.52,$101.28M,NA,Consumer Services,Real Estate Investment Trusts
+CTO,Consolidated-Tomoka Land Co.,63.55,$350.57M,NA,Finance,Real Estate
+MCF,Contango Oil & Gas Company,3.93,$134.25M,NA,Energy,Oil & Gas Production
+CUO,Continental Materials Corporation,14.7975,$25.12M,NA,Capital Goods,Building Materials
+CMT,Core Molding Technologies Inc,8.31,$67.3M,NA,Consumer Non-Durables,Plastic Products
+CVRS,"Corindus Vascular Robotics, Inc.",1.15,$220.02M,2015,Health Care,Medical/Dental Instruments
+CRMD,CorMedix Inc,1.71,$183.91M,NA,Health Care,Major Pharmaceuticals
+CRF,"Cornerstone Strategic Return Fund, Inc. (The)",11.45,$259.15M,NA,NA,NA
+CLM,"Cornerstone Strategic Value Fund, Inc.",11.73,$524M,1987,NA,NA
+CVU,"CPI Aerostructures, Inc.",7.24,$84.91M,NA,Capital Goods,Military/Government/Technical
+CIK,"Credit Suisse Asset Management Income Fund, Inc.",2.9,$151.68M,NA,NA,NA
+DHY,Credit Suisse High Yield Bond Fund,2.3,$237.97M,1998,NA,NA
+CRHM,CRH Medical Corporation,3.27,$237.23M,2015,Health Care,Medical/Dental Instruments
+CTEK,"CynergisTek, Inc.",4.7,$45.2M,2017,Miscellaneous,Business Services
+DXR,Daxor Corporation,14.5,$54.07M,NA,Health Care,Medical/Dental Instruments
+VCF,"Delaware Investments Colorado Municipal Income Fund, Inc",13.72,$66.37M,1993,NA,NA
+VFL,Delaware Investments Florida Insured Municipal Income Fund,12.3,$55.7M,1993,NA,NA
+VMM,"Delaware Investments Minnesota Municipal Income Fund II, Inc.",12.17,$140.02M,1993,NA,NA
+DLA,"Delta Apparel, Inc.",20.2,$141.04M,NA,Consumer Non-Durables,Apparel
+DNN,Denison Mine Corp,0.4914,$289.52M,NA,Basic Industries,Precious Metals
+DGSE,"DGSE Companies, Inc.",0.43,$11.58M,NA,Consumer Services,Consumer Specialties
+DSS,"Document Security Systems, Inc.",0.94,$15.8M,NA,Consumer Durables,Containers/Packaging
+DPW,"DPW Holdings, Inc.",0.1065,$7.98M,NA,Capital Goods,Industrial Machinery/Components
+DMF,"Dreyfus Municipal Income, Inc.",7.8,$161.82M,1988,NA,NA
+DXF,Dunxin Financial Holdings Limited,2.54,$52.92M,NA,Consumer Non-Durables,Apparel
+GRF,"Eagle Capital Growth Fund, Inc.",7.299,$27.21M,NA,NA,NA
+EVM,Eaton Vance California Municipal Bond Fund,10.34,$262.45M,2002,NA,NA
+CEV,Eaton Vance California Municipal Income Trust,11.57,$82.54M,1999,NA,NA
+EVV,Eaton Vance Limited Duration Income Fund,12.21,$1.42B,2003,NA,NA
+MMV,Eaton Vance Massachusetts Municipal Income Trust,12.65,$34.62M,1999,NA,NA
+EIM,Eaton Vance Municipal Bond Fund,11.43,$817.03M,2002,NA,NA
+EIV,Eaton Vance Municipal Bond Fund II,11.33,$113.45M,2002,NA,NA
+EMJ,Eaton Vance New Jersey Municipal Bond Fund,12.06,$31.1M,2002,NA,NA
+EVJ,Eaton Vance New Jersey Municipal Income Trust,11.5,$52.88M,1999,NA,NA
+ENX,Eaton Vance New York Municipal Bond Fund,11.3,$204.74M,2002,NA,NA
+EVY,Eaton Vance New York Municipal Income Trust,11.846,$64.87M,1999,NA,NA
+EIO,Eaton Vance Ohio Municipal Bond Fund,11.71,$29.72M,2002,NA,NA
+EVO,Eaton Vance Ohio Municipal Income Trust,12.62,$36.06M,1999,NA,NA
+EIP,Eaton Vance Pennsylvania Municipal Bond Fund,11.7408,$34.75M,2002,NA,NA
+EVP,Eaton Vance Pennsylvania Municipal Income Trust,11.4589,$29.8M,1999,NA,NA
+ELMD,"Electromed, Inc.",5,$41.77M,2011,Health Care,Biotechnology: Electromedical & Electrotherapeutic Apparatus
+ELLO,Ellomay Capital Ltd.,8.21,$87.65M,NA,Public Utilities,Electric Utilities: Central
+ECF,Ellsworth Growth and Income Fund Ltd.,8.91,$115.25M,1986,NA,NA
+ECF^A,Ellsworth Growth and Income Fund Ltd.,23.86,NA,NA,NA,NA
+EMAN,eMagin Corporation,0.89,$40.19M,NA,Technology,Semiconductors
+MSN,Emerson Radio Corporation,1.41,$30.27M,NA,Consumer Non-Durables,Consumer Electronics/Appliances
+EMX,EMX Royalty Corporation,1.1256,$90.7M,NA,Basic Industries,Precious Metals
+UUUU,Energy Fuels Inc,2.91,$265.5M,NA,Basic Industries,Mining & Quarrying of Nonmetallic Minerals (No Fuels)
+UUUU.WS,Energy Fuels Inc,NA,NA,NA,NA,NA
+ENSV,ENSERVCO Corporation,0.59,$32.06M,NA,Energy,Oilfield Services/Equipment
+ESNC,"EnSync, Inc.",0.1994,$13.58M,NA,Public Utilities,Electric Utilities: Central
+EGI,Entree Resources Ltd.,0.3898,$68.14M,2017,Basic Industries,Precious Metals
+ESP,Espey Mfg. & Electronics Corp.,26.5019,$63.51M,NA,Capital Goods,Industrial Machinery/Components
+EVBN,"Evans Bancorp, Inc.",33.65,$162.56M,NA,Finance,Major Banks
+EVI,"EVI Industries, Inc.",31.62,$361.02M,NA,Consumer Services,Other Consumer Services
+EPM,"Evolution Petroleum Corporation, Inc.",7.69,$254.98M,NA,Energy,Oil & Gas Production
+FEN,First Trust Energy Income and Growth Fund,21.62,$432.06M,2004,NA,NA
+BDL,"Flanigan&#39;s Enterprises, Inc.",24.7,$45.91M,NA,Consumer Services,Restaurants
+FSI,Flexible Solutions International Inc.,1.39,$16.17M,NA,Basic Industries,Major Chemicals
+FTF,Franklin Limited Duration Income Trust,9.5,$286.32M,2003,NA,NA
+FSP,Franklin Street Properties Corp.,6.82,$731.32M,NA,Consumer Services,Real Estate Investment Trusts
+FRD,Friedman Industries Inc.,7.59,$53.2M,NA,Capital Goods,Steel/Iron Ore
+FTNW,"FTE Networks, Inc.",2.22,$40.06M,NA,Public Utilities,Telecommunications Equipment
+GGN,"GAMCO Global Gold, Natural Reources & Income Trust",3.99,$541.35M,2005,NA,NA
+GGN^B,"GAMCO Global Gold, Natural Reources & Income Trust",22.6666,NA,NA,NA,NA
+JOB,GEE Group Inc.,1.51,$16.92M,NA,Technology,Diversified Commercial Services
+GMO,"General Moly, Inc",0.2802,$33.71M,NA,Basic Industries,Precious Metals
+GSB,"GlobalSCAPE, Inc.",4.45,$79.96M,NA,Technology,Computer Software: Prepackaged Software
+GSAT,"Globalstar, Inc.",0.6561,$830.62M,2006,Consumer Services,Telecommunications Equipment
+GLOW,"Glowpoint, Inc.",0.1301,$6.48M,NA,Public Utilities,Telecommunications Equipment
+GORO,Gold Resource Corporation,4.25,$245.3M,NA,Basic Industries,Precious Metals
+GSV,Gold Standard Ventures Corporation,1.15,$298.78M,NA,Basic Industries,Mining & Quarrying of Nonmetallic Minerals (No Fuels)
+AUMN,Golden Minerals Company,0.2893,$27.66M,NA,Basic Industries,Precious Metals
+GSS,"Golden Star Resources, Ltd",3.18,$346.01M,NA,Basic Industries,Precious Metals
+GV,Goldfield Corporation (The),2.67,$67.96M,NA,Basic Industries,Water Supply
+GDP,Goodrich Petroleum Corporation,14.2,$168.92M,2017,Energy,Oil & Gas Production
+GTE,Gran Tierra Energy Inc.,2.51,$982.26M,NA,Energy,Oil & Gas Production
+GPL,Great Panther Silver Limited,0.6,$101.5M,NA,Basic Industries,Precious Metals
+SIM,"Grupo Simec, S.A. de C.V.",9.69,$1.58B,1993,Basic Industries,Steel/Iron Ore
+HEB,"Hemispherx BioPharma, Inc.",0.2216,$10.68M,NA,Health Care,Biotechnology: Biological Products (No Diagnostic Substances)
+HLM^,Hillman Group Capital Trust,32.77,NA,NA,NA,NA
+HMG,"HMG/Courtland Properties, Inc.",14,$14.19M,NA,Consumer Services,Real Estate Investment Trusts
+HUSA,Houston American Energy Corporation,0.2099,$13.06M,NA,Energy,Oil & Gas Production
+IBIO,"iBio, Inc.",0.87,$16.26M,NA,Health Care,Major Pharmaceuticals
+IBO,IBO (Listing Market - NYSE Amex Network B F),24.84,NA,NA,NA,NA
+IEC,IEC Electronics Corp.,6.97,$71.48M,NA,Technology,Electrical Products
+IMH,"Impac Mortgage Holdings, Inc.",4.05,$85.52M,1997,Consumer Services,Real Estate Investment Trusts
+IMO,Imperial Oil Limited,28.03,$22.01B,NA,Energy,Integrated oil Companies
+IOR,"Income Opportunity Realty Investors, Inc.",10.855,$45.25M,NA,Consumer Services,Real Estate Investment Trusts
+INFU,"InfuSystems Holdings, Inc.",3.61,$70.55M,NA,Health Care,Medical/Dental Instruments
+IHT,InnSuites Hospitality Trust,1.737,$16.63M,NA,Consumer Services,Real Estate Investment Trusts
+NSPR,InspireMD Inc.,0.1949,$7.33M,NA,Health Care,Medical/Dental Instruments
+NSPR.WS,InspireMD Inc.,NA,NA,NA,NA,NA
+NSPR.WS.B,InspireMD Inc.,NA,NA,NA,NA,NA
+IDN,"Intellicheck, Inc.",2.5003,$39.1M,1999,Technology,Computer Software: Prepackaged Software
+INS,Intelligent Systems Corporation,21.3,$187.82M,1992,Technology,Computer Software: Prepackaged Software
+THM,International Tower Hill Mines Ltd,0.52,$97.24M,NA,Basic Industries,Precious Metals
+INTT,inTest Corporation,7.13,$74.79M,1997,Capital Goods,Electrical Products
+INUV,"Inuvo, Inc",1.2466,$42.48M,NA,Consumer Services,Advertising
+VKI,Invesco Advantage Municipal Income Trust II,10.3,$457.23M,NA,NA,NA
+ISR,"IsoRay, Inc.",0.4115,$27.71M,NA,Health Care,Medical/Dental Instruments
+ISDR,Issuer Direct Corporation,13.25,$50.74M,NA,Miscellaneous,Publishing
+ITP,"IT Tech Packaging, Inc.",0.7,$15.39M,NA,Consumer Durables,Containers/Packaging
+KIQ,Kelso Technologies Inc,0.5332,$25.15M,NA,Capital Goods,Railroads
+LTS,Ladenburg Thalmann Financial Services Inc,3.1,$454.53M,NA,Finance,Investment Bankers/Brokers/Service
+LTS^A,Ladenburg Thalmann Financial Services Inc,24.1,NA,NA,NA,NA
+LTSK,Ladenburg Thalmann Financial Services Inc,24,NA,2018,Finance,Investment Bankers/Brokers/Service
+LTSL,Ladenburg Thalmann Financial Services Inc,22.946,NA,2017,Finance,Investment Bankers/Brokers/Service
+LTSF,Ladenburg Thalmann Financial Services Inc.,23.3944,NA,2018,Finance,Investment Bankers/Brokers/Service
+LEVB,"Level Brands, Inc.",4.55,$45.93M,2017,Consumer Non-Durables,Package Goods/Cosmetics
+LGL,"LGL Group, Inc. (The)",6.91,$33.34M,NA,Capital Goods,Industrial Machinery/Components
+LBY,"Libbey, Inc.",4.94,$109.41M,1993,Capital Goods,Industrial Machinery/Components
+LLEX,"Lilis Energy, Inc.",1.79,$128.83M,NA,Energy,Oil & Gas Production
+LIQT,"LiqTech International, Inc.",2.02,$147.27M,NA,Technology,Industrial Machinery/Components
+MAG,MAG Silver Corporation,7.42,$634.7M,NA,Basic Industries,Precious Metals
+MJCO,Majesco,7.41,$271.69M,2015,Technology,Computer Software: Prepackaged Software
+MHH,"Mastech Digital, Inc",7.15,$78.53M,NA,Consumer Services,Professional Services
+MTNB,"Matinas Biopharma Holdings, Inc.",1.12,$125.87M,2017,Health Care,Major Pharmaceuticals
+MNI,McClatchy Company (The),7.22,$56.38M,1988,Consumer Services,Newspapers/Magazines
+IPB,"Merrill Lynch & Co., Inc. 6.0518% Index Plus Trust Certificate",25.8,NA,NA,Finance,Finance: Consumer Services
+MXC,Mexco Energy Corporation,3.67,$7.49M,NA,Energy,Oil & Gas Production
+CCA,MFS California Insured Municipal Trust,10.49,$29.23M,1999,NA,NA
+MICR,"Micron Solutions, Inc.",2.7,$7.71M,NA,Health Care,Biotechnology: Electromedical & Electrotherapeutic Apparatus
+MLSS,"Milestone Scientific, Inc.",0.405,$13.7M,2015,Health Care,Industrial Specialties
+MYO,Myomo Inc.,1.74,$21.64M,2017,Health Care,Industrial Specialties
+NNVC,"NanoViricides, Inc.",0.2601,$18.05M,NA,Health Care,Biotechnology: Commercial Physical & Biological Resarch
+ATEST,NASDAQ TEST STOCK,25,NA,NA,NA,NA
+ATEST.A,NASDAQ TEST STOCK,NA,NA,NA,NA,NA
+ATEST.B,NASDAQ TEST STOCK,NA,NA,NA,NA,NA
+ATEST.C,NASDAQ TEST STOCK,NA,NA,NA,NA,NA
+NHC,National HealthCare Corporation,75.29,$1.15B,NA,Health Care,Hospital/Nursing Management
+NAVB,"Navidea Biopharmaceuticals, Inc.",0.1289,$23.45M,NA,Health Care,Biotechnology: In Vitro & In Vivo Diagnostic Substances
+NTIP,"Network-1 Technologies, Inc.",2.58,$61.29M,NA,Miscellaneous,Multi-Sector Companies
+NBW,Neuberger Berman California Municipal Fund Inc,12.539,$69.6M,2002,NA,NA
+NHS,Neuberger Berman High Yield Strategies Fund,10.41,$203.42M,NA,NA,NA
+NML,Neuberger Berman MLP Income Fund Inc.,7.63,$432.31M,2013,NA,NA
+NBH,Neuberger Berman Municipal Fund Inc.,13.39,$251.79M,2002,NA,NA
+NBO,Neuberger Berman New York Municipal Fund Inc.,11.52,$58.49M,2002,NA,NA
+NRO,"Neuberger Berman Real Estate Securities Income Fund, Inc.",4.46,$211.49M,2003,NA,NA
+UWN,"Nevada Gold & Casinos, Inc.",2.44,$43.35M,NA,Consumer Services,Services-Misc. Amusement & Recreation
+NSU,Nevsun Resources Ltd,4.52,$1.4B,NA,Basic Industries,Precious Metals
+GBR,"New Concept Energy, Inc",1.9,$9.75M,NA,Energy,Oil & Gas Production
+NEN,New England Realty Associates Limited Partnership,59,$220.16M,NA,Consumer Services,Building operators
+NGD,New Gold Inc.,0.9582,$554.91M,NA,Basic Industries,Precious Metals
+NXE,Nexgen Energy Ltd.,1.76,$618.18M,NA,Basic Industries,Precious Metals
+HLTH,Nobilis Health Corp.,0.43120000000000003,$33.74M,2015,Health Care,Hospital/Nursing Management
+NAK,"Northern Dynasty Minerals, Ltd.",0.72,$225.66M,NA,Basic Industries,Precious Metals
+NOG,"Northern Oil and Gas, Inc.",2.8,$1.08B,NA,Energy,Oil & Gas Production
+NBY,"NovaBay Pharmaceuticals, Inc.",1.13,$19.31M,2007,Health Care,Major Pharmaceuticals
+NG,Novagold Resources Inc.,3.5,$1.14B,NA,Basic Industries,Precious Metals
+NRCG,NRC Group Holdings Corp.,9.39,$346.51M,2017,Basic Industries,Environmental Services
+NRCG.WS,NRC Group Holdings Corp.,NA,NA,NA,NA,NA
+NTN,"NTN Buzztime, Inc.",3.18,$9.14M,NA,Consumer Services,Broadcasting
+NES,"Nuverra Environmental Solutions, Inc.",11.18,$174.58M,2017,Energy,Oilfield Services/Equipment
+OCX,OncoCyte Corporation,1.8,$73.2M,2015,Health Care,Biotechnology: In Vitro & In Vivo Diagnostic Substances
+OGEN,Oragenics Inc.,0.98,$28.84M,NA,Health Care,Major Pharmaceuticals
+TIS,Orchids Paper Products Company,1.4,$14.94M,2005,Basic Industries,Paper
+ORM,"Owens Realty Mortgage, Inc.",20.52,$174.07M,2013,Consumer Services,Real Estate Investment Trusts
+PCG^A,Pacific Gas & Electric Co.,15.7,NA,NA,NA,NA
+PCG^B,Pacific Gas & Electric Co.,14.1553,NA,NA,NA,NA
+PCG^C,Pacific Gas & Electric Co.,13.15,NA,NA,NA,NA
+PCG^D,Pacific Gas & Electric Co.,13.03,NA,NA,NA,NA
+PCG^E,Pacific Gas & Electric Co.,13,NA,NA,NA,NA
+PCG^G,Pacific Gas & Electric Co.,12.75,NA,NA,NA,NA
+PCG^H,Pacific Gas & Electric Co.,13,NA,NA,NA,NA
+PCG^I,Pacific Gas & Electric Co.,12.6,NA,NA,NA,NA
+PTN,"Palatin Technologies, Inc.",0.701,$142.35M,NA,Health Care,Major Pharmaceuticals
+PZG,Paramount Gold Nevada Corp.,0.9114,$23.22M,2015,Basic Industries,Precious Metals
+PRK,Park National Corporation,94.17,$1.48B,NA,Finance,Major Banks
+PED,Pedevco Corp.,1.54,$23.38M,NA,Energy,Oil & Gas Production
+PFNX,Pfenex Inc.,3.93,$123.64M,2014,Health Care,Major Pharmaceuticals
+HNW,Pioneer Diversified High Income Trust,13.53,$112.74M,2007,NA,NA
+PLAG,Planet Green Holdings Corp,2.6847,$11783.15,NA,Consumer Non-Durables,Packaged Foods
+PLG,Platinum Group Metals Ltd.,1.38,$40.19M,NA,Basic Industries,Precious Metals
+PLYM,"Plymouth Industrial REIT, Inc.",15.43,$74.4M,2017,Consumer Services,Real Estate Investment Trusts
+PLYM^A,"Plymouth Industrial REIT, Inc.",24.072,NA,NA,NA,NA
+PLM,Polymet Mining Corp.,0.78,$250.14M,NA,Basic Industries,Precious Metals
+PW,Power REIT,5.21,$9.74M,NA,Consumer Services,Real Estate Investment Trusts
+PW^A,Power REIT,25.51,NA,NA,NA,NA
+PLX,"Protalix BioTherapeutics, Inc.",0.4281,$63.52M,NA,Health Care,Biotechnology: Biological Products (No Diagnostic Substances)
+RLGT,"Radiant Logistics, Inc.",5.2,$257.19M,NA,Transportation,Oil Refining/Marketing
+RFL,"Rafael Holdings, Inc.",16.49,$207.34M,2018,Finance,Real Estate
+UTG,Reaves Utility Income Fund,30.8,$1.5B,2004,NA,NA
+REED,"Reeds, Inc.",2.54,$65.31M,NA,Consumer Non-Durables,Beverages (Production/Distribution)
+RHE,"Regional Health Properties, Inc.",1.21,$2.04M,2017,Health Care,Hospital/Nursing Management
+RHE^A,"Regional Health Properties, Inc.",3.6626,NA,NA,NA,NA
+RCG,"RENN Fund, Inc.",1.58,$7.05M,NA,NA,NA
+RVP,"Retractable Technologies, Inc.",0.7,$22.87M,NA,Health Care,Medical/Dental Instruments
+RNN,"Rexahn Pharmaceuticals, Inc.",1.25,$46.9M,NA,Health Care,Major Pharmaceuticals
+REI,"Ring Energy, Inc.",6.05,$366.27M,NA,Energy,Oil & Gas Production
+RIF,RMR Real Estate Income Fund,16.76,$170.99M,NA,NA,NA
+SACH,Sachem Capital Corp.,4.058,$62.65M,2017,Consumer Services,Real Estate Investment Trusts
+SNMP,Sanchez Midstream Partners LP,2.29,$37.07M,NA,Energy,Oil & Gas Production
+SAND,Sandstorm Gold Ltd,4.41,$805.49M,NA,Basic Industries,Precious Metals
+SEB,Seaboard Corporation,3773.28,$4.42B,1996,Finance,Investment Bankers/Brokers/Service
+SENS,"Senseonics Holdings, Inc.",2.73,$482.8M,NA,Capital Goods,Industrial Machinery/Components
+SVT,"Servotronics, Inc.",11.23,$29M,NA,Capital Goods,Industrial Machinery/Components
+SMTS,Sierra Metals Inc.,1.8585,$303.73M,NA,Basic Industries,Precious Metals
+SIF,"SIFCO Industries, Inc.",3.36,$19.12M,NA,Capital Goods,Aerospace
+SVM,Silvercorp Metals Inc.,2,$336.85M,NA,Basic Industries,Precious Metals
+SILV,SilverCrest Metals Inc.,3.03,$257.32M,2018,Basic Industries,Precious Metals
+XPL,Solitario Zinc Corp.,0.2741,$15.95M,NA,Basic Industries,Precious Metals
+SCE^B,Southern California Edison Company,17.2,NA,NA,NA,NA
+SCE^C,Southern California Edison Company,17.73,NA,NA,NA,NA
+SCE^D,Southern California Edison Company,18,NA,NA,NA,NA
+SCE^E,Southern California Edison Company,19.8671,NA,NA,NA,NA
+SGB,Southwest Georgia Financial Corporation,21.9799,$55.96M,NA,Finance,Major Banks
+LOV,"Spark Networks, Inc.",9.1,$118.19M,2017,Consumer Services,Other Consumer Services
+SRCI,SRC Energy Inc.,5.04,$1.22B,NA,Energy,Oil & Gas Production
+SDI,Standard Diversified Inc.,14.97,$256.15M,NA,Consumer Non-Durables,Tobacco
+SSY,"SunLink Health Systems, Inc.",1.19,$8.39M,NA,Health Care,Hospital/Nursing Management
+SDPI,"Superior Drilling Products, Inc.",1.87,$45.91M,2014,Energy,Metal Fabrications
+SYN,"Synthetic Biologics, Inc",0.69,$9.3M,NA,Health Care,Major Pharmaceuticals
+TKAT,"Takung Art Co., Ltd.",0.6899,$7.74M,NA,Consumer Services,Other Specialty Stores
+TALO.WS,"Talos Energy, Inc.",NA,NA,NA,NA,NA
+TRX,Tanzanian Royalty Exploration Corporation,0.33,$41.3M,NA,Basic Industries,Precious Metals
+TGB,Taseko Mines Limited,0.5799,$132.45M,NA,Basic Industries,Precious Metals
+TIK,Tel-Instrument Electronics Corp.,4.96,$16.15M,NA,Capital Goods,Electrical Products
+TGC,"Tengasco, Inc.",0.9125,$9.71M,NA,Energy,Oil & Gas Production
+GLU,The Gabelli Global Utility and Income Trust,17.98,$73.92M,2004,NA,NA
+GLU^A,The Gabelli Global Utility and Income Trust,48.55,NA,NA,NA,NA
+GLU^B,The Gabelli Global Utility and Income Trust,51.97,NA,NA,NA,NA
+GGO,The Gabelli Go Anywhere Trust,14.42,$23.24M,2016,NA,NA
+GGO^A,The Gabelli Go Anywhere Trust,42.05,NA,NA,NA,NA
+TDW.WS,Tidewater Inc.,NA,NA,NA,NA,NA
+TMP,Tompkins Financial Corporation,80.78,$1.23B,NA,Finance,Major Banks
+TAT,Transatlantic Petroleum Ltd,1.15,$60.28M,NA,Energy,Oil & Gas Production
+TRXC,"TransEnterix, Inc.",2.79,$602.97M,NA,Health Care,Medical/Dental Instruments
+TMQ,Trilogy Metals Inc.,2.07,$272.38M,NA,Basic Industries,Precious Metals
+TPHS,Trinity Place Holdings Inc.,4.6,$145.58M,NA,Consumer Services,Building operators
+TRT,Trio-Tech International,2.9157,$10.52M,NA,Technology,Industrial Machinery/Components
+UFAB,"Unique Fabricating, Inc.",5.41,$52.87M,2015,Capital Goods,Auto Parts:O.E.M.
+UAMY,United States Antimony Corporation,0.6692,$45.66M,NA,Capital Goods,Metal Fabrications
+UUU,"Universal Security Instruments, Inc.",1.2,$2.78M,NA,Consumer Non-Durables,Electronic Components
+UQM,UQM Technologies Inc.,1.13,$61.31M,NA,Capital Goods,Industrial Machinery/Components
+URG,Ur Energy Inc,0.684,$108.91M,NA,Basic Industries,Precious Metals
+UEC,Uranium Energy Corp.,1.29,$228.85M,NA,Basic Industries,Precious Metals
+VHC,VirnetX Holding Corp,5.52,$368.53M,NA,Miscellaneous,Multi-Sector Companies
+VGZ,Vista Gold Corporation,0.6297,$63.06M,NA,Basic Industries,Precious Metals
+VNRX,VolitionRX Limited,2.34,$82.68M,2015,Health Care,Biotechnology: In Vitro & In Vivo Diagnostic Substances
+VISI,"Volt Information Sciences, Inc.",3.6,$76.29M,NA,Technology,Professional Services
+EAD,Wells Fargo Income Opportunities Fund,7.54,$519.9M,2003,NA,NA
+ERC,Wells Fargo Multi-Sector Income Fund,11.75,$385.72M,2003,NA,NA
+ERH,Wells Fargo Utilities and High Income Fund,11.92,$110.28M,2004,NA,NA
+WRN,Western Copper and Gold Corporation,0.5997,$60.44M,2011,Basic Industries,Precious Metals
+WYY,WidePoint Corporation,0.4467,$37.42M,NA,Technology,EDP Services
+WTT,"Wireless Telecom Group,  Inc.",1.6301,$34.32M,NA,Capital Goods,Electrical Products
+XTNT,"Xtant Medical Holdings, Inc.",2.24,$29.5M,NA,Health Care,Biotechnology: Biological Products (No Diagnostic Substances)
+YUMA,"Yuma Energy, Inc.",0.127,$2.95M,NA,Energy,Oil & Gas Production
+ZDGE,"Zedge, Inc.",2.38,$24.54M,2016,Technology,Computer Software: Prepackaged Software
+ZOM,Zomedica Pharmaceuticals Corp.,1.03,$104.16M,2017,Health Care,Major Pharmaceuticals
