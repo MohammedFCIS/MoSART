@@ -39,7 +39,9 @@ exchange_headers <-
     "IPO",
     "Sector",
     "Industry")
+# load stock data
 walk(stock_indexes, load_stock_df)
+walk(stock_exchanges, load_stock_df)
 ## keep track of inserted indicators and not yet removed
 inserted_indicators <- c()
 
@@ -54,15 +56,7 @@ shinyServer(function(input, output, session) {
     if (is.null(input$stockType)) {
       return()
     }
-    switch(input$stockType,
-           "index" = load_stock_df(input$stock),
-           "exchange" = {
-             if (!input$stock %in% tq_exchange_options()) {
-               return(tq_exchange("AMEX"))
-             }
-             ex <- tq_exchange(input$stock)
-             return(ex)
-           })
+    load_stock_df(input$stock)
   })
   
   # return the correct table headers based on stock type
