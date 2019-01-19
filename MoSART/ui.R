@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+library(shinyBS)
 require(DT)
 
 
